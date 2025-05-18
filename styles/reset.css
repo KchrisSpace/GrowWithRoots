@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+
+html,
+body {
+  width: 100vw !important; 
+}
+html{
+  font-size: 12px;
+}
+@font-face {
+  font-family: 'fangfang';
+  src: url('../assets/fonts/字魂100号-方方先锋体.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'PingFang-SC-Semibold';
+  src: url('../assets/fonts/PingFang Semibold.ttf') format('truetype');
+  /* font-weight: 600; */
+}
+@font-face {
+  font-family: 'PingFang-SC-Medium';
+  src: url('../assets/fonts/PingFang Medium.ttf') format('truetype');
+  /* font-weight: 500; */
+}
+@font-face {
+  font-family: 'PingFang-SC-Regular';
+  src: url('../assets/fonts/PingFang Regular.ttf') format('truetype');
+  /* font-weight: 400; */
+}
+a{
+  color: #000000;
+}

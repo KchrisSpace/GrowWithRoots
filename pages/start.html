@@ -1,209 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5dc;
-            font-family: 'Arial', sans-serif;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5dc;
+        font-family: 'Arial', sans-serif;
+      }
 
-        .container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
+      .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
 
-        }
+      .container img {
+        position: absolute;
+      }
 
-        .container img {
-            position: absolute;
-        }
+      .car {
+        bottom: 5%;
+        left: 15px;
+        width: 10%;
+        rotate: -5deg;
+      }
 
-        .car {
-            bottom: 5%;
-            left: 15px;
-            width: 10%;
-            rotate: -5deg;
-        }
+      .leaf {
+        transform: translate(-50%, -50%);
+        width: 15%;
+      }
 
-        .leaf {
+      .line {
+        top: 10%;
+        right: 10%;
+        width: 20%;
+      }
 
-            transform: translate(-50%, -50%);
-            width: 15%;
-        }
+      .cloud1 {
+        top: 5%;
+        left: 20%;
+        width: 15%;
+      }
 
-        .line {
-            top: 10%;
-            right: 10%;
-            width: 20%;
-        }
+      .cloud2 {
+        top: 15%;
+        right: 15%;
+        width: 20%;
+      }
 
-        .cloud1 {
-            top: 5%;
-            left: 20%;
-            width: 15%;
-        }
+      .cloud3 {
+        bottom: 10%;
+        left: 10%;
+        width: 25%;
+      }
 
-        .cloud2 {
-            top: 15%;
-            right: 15%;
-            width: 20%;
-        }
+      .center img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20%;
+      }
 
-        .cloud3 {
-            bottom: 10%;
-            left: 10%;
-            width: 25%;
-        }
+      .center .lb {
+        top: 70%;
+        left: 30%;
+        width: 15%;
+      }
 
-        .center img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20%;
-        }
+      .center .lt {
+        top: 20%;
+        left: 30%;
+        width: 15%;
+      }
 
-        .center .lb {
-            top: 70%;
-            left: 30%;
-            width: 15%;
-        }
+      .center .rt {
+        top: 20%;
+        left: 55%;
+        width: 15%;
+      }
 
-        .center .lt {
-            top: 20%;
-            left: 30%;
-            width: 15%;
-        }
+      .center .rb {
+        top: 70%;
+        left: 55%;
+        width: 15%;
+      }
 
-        .center .rt {
-            top: 20%;
-            left: 55%;
-            width: 15%;
-        }
+      svg {
+        position: absolute;
+        /* scale: 0.5; */
+      }
 
-        .center .rb {
-            top: 70%;
-            left: 55%;
-            width: 15%;
-        }
+      .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95vh;
+        height: 95vh;
+        overflow: hidden;
+      }
 
-        svg {
-            position: absolute;
-            /* scale: 0.5; */
-        }
+      .center svg {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
 
-        .center {
+      .center .tree {
+        position: absolute;
+        width: 70%;
+      }
 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 95vh;
-            height: 95vh;
-            overflow: hidden;
+      .center .tree:nth-child(2) {
+        top: -18%;
+        left: -26%;
+        transform: rotate(260deg);
+      }
 
-        }
+      .center .tree:nth-child(3) {
+        top: -10%;
+        left: 55%;
 
-        .center svg {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        transform: rotate(0deg);
+      }
 
-        }
+      .center .tree:nth-child(4) {
+        top: 50%;
+        left: -23%;
 
-        .center .tree {
-            position: absolute;
-            width: 70%;
+        transform: rotate(140deg);
+      }
 
-        }
-
-        .center .tree:nth-child(2) {
-            top: -18%;
-            left: -26%;
-            transform: rotate(260deg);
-        }
-
-        .center .tree:nth-child(3) {
-            top: -10%;
-            left: 55%;
-
-            transform: rotate(0deg);
-        }
-
-        .center .tree:nth-child(4) {
-            top: 50%;
-            left: -23%;
-
-
-            transform: rotate(140deg);
-        }
-
-        .center .tree:nth-child(5) {
-
-            transform: rotate(180deg);
-        }
+      .center .tree:nth-child(5) {
+        transform: rotate(180deg);
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
+    <!-- 导航栏容器 -->
+    <div id="navbar-container"></div>
 
     <div class="container">
-        <img src="../assets/imgs/home/car.png" alt="" class="car">
-        <img src="../assets/imgs/home/leaf.png" alt="" class="leaf">
-        <img src="../assets/imgs/home/line.png" alt="" class="line">
-        <div class="clouds">
-            <img src="../assets/imgs/home/clouds/clouds-1.png" alt="" class="cloud1">
-            <img src="../assets/imgs/home/clouds/clouds-2.png" alt="" class="cloud2">
-            <img src="../assets/imgs/home/clouds/clouds-3.png" alt="" class="cloud3">
-        </div>
-        <div class="center">
-            <svg width="1049" height="1065" viewBox="0 0 1049 1065" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <clipPath id="clipPath">
-                        <path
-                            d="M469.996 16.432C503.138 -5.11309 545.862 -5.11311 579.004 16.432L652.64 64.3018C667.765 74.1342 685.268 79.692 703.294 80.3866L791.313 83.7778C831.426 85.3233 866.727 110.706 880.963 148.24L910.407 225.87C916.991 243.229 928.277 258.412 943.002 269.719L1009.15 320.516C1041.79 345.583 1055.75 388.091 1044.3 427.627L1022 504.702C1016.75 522.862 1016.75 542.138 1022 560.298L1044.3 637.373C1055.75 676.909 1041.79 719.417 1009.15 744.484L943.002 795.281C928.277 806.588 916.991 821.771 910.407 839.13L880.963 916.76C866.727 954.294 831.426 979.677 791.313 981.222L703.294 984.613C685.268 985.308 667.765 990.866 652.64 1000.7L579.004 1048.57C545.862 1070.11 503.138 1070.11 469.996 1048.57L396.36 1000.7C381.235 990.866 363.732 985.308 345.706 984.613L257.687 981.222C217.574 979.677 182.273 954.294 168.037 916.76L138.593 839.13C132.009 821.771 120.723 806.588 105.998 795.281L39.8487 744.484C7.20528 719.417 -6.74557 676.909 4.69538 637.373L26.9998 560.298C32.2548 542.138 32.2548 522.862 26.9998 504.702L4.6954 427.627C-6.74555 388.091 7.20527 345.583 39.8487 320.516L105.998 269.719C120.723 258.412 132.009 243.228 138.593 225.87L168.037 148.24C182.273 110.706 217.574 85.3233 257.687 83.7778L345.706 80.3866C363.732 79.692 381.235 74.1342 396.36 64.3018L469.996 16.432Z" />
-                    </clipPath>
-                </defs>
-                <g clip-path="url(#clipPath)" filter="url(#filter0_i_92_3498)">
-                    <path
-                        d="M469.996 16.432C503.138 -5.11309 545.862 -5.11311 579.004 16.432L652.64 64.3018C667.765 74.1342 685.268 79.692 703.294 80.3866L791.313 83.7778C831.426 85.3233 866.727 110.706 880.963 148.24L910.407 225.87C916.991 243.229 928.277 258.412 943.002 269.719L1009.15 320.516C1041.79 345.583 1055.75 388.091 1044.3 427.627L1022 504.702C1016.75 522.862 1016.75 542.138 1022 560.298L1044.3 637.373C1055.75 676.909 1041.79 719.417 1009.15 744.484L943.002 795.281C928.277 806.588 916.991 821.771 910.407 839.13L880.963 916.76C866.727 954.294 831.426 979.677 791.313 981.222L703.294 984.613C685.268 985.308 667.765 990.866 652.64 1000.7L579.004 1048.57C545.862 1070.11 503.138 1070.11 469.996 1048.57L396.36 1000.7C381.235 990.866 363.732 985.308 345.706 984.613L257.687 981.222C217.574 979.677 182.273 954.294 168.037 916.76L138.593 839.13C132.009 821.771 120.723 806.588 105.998 795.281L39.8487 744.484C7.20528 719.417 -6.74557 676.909 4.69538 637.373L26.9998 560.298C32.2548 542.138 32.2548 522.862 26.9998 504.702L4.6954 427.627C-6.74555 388.091 7.20527 345.583 39.8487 320.516L105.998 269.719C120.723 258.412 132.009 243.228 138.593 225.87L168.037 148.24C182.273 110.706 217.574 85.3233 257.687 83.7778L345.706 80.3866C363.732 79.692 381.235 74.1342 396.36 64.3018L469.996 16.432Z"
-                        fill="#F9F1D4" />
-                </g>
-                <defs>
-                    <filter id="filter0_i_92_3498" x="0.75" y="0.272949" width="1047.5" height="1064.45"
-                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                            result="hardAlpha" />
-                        <feOffset />
-                        <feGaussianBlur stdDeviation="21.9" />
-                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_92_3498" />
-                    </filter>
-                </defs>
-            </svg>
+      <img src="../assets/imgs/home/car.png" alt="" class="car" />
+      <img src="../assets/imgs/home/leaf.png" alt="" class="leaf" />
+      <img src="../assets/imgs/home/line.png" alt="" class="line" />
+      <div class="clouds">
+        <img
+          src="../assets/imgs/home/clouds/clouds-1.png"
+          alt=""
+          class="cloud1" />
+        <img
+          src="../assets/imgs/home/clouds/clouds-2.png"
+          alt=""
+          class="cloud2" />
+        <img
+          src="../assets/imgs/home/clouds/clouds-3.png"
+          alt=""
+          class="cloud3" />
+      </div>
+      <div class="center">
+        <svg
+          width="1049"
+          height="1065"
+          viewBox="0 0 1049 1065"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="clipPath">
+              <path
+                d="M469.996 16.432C503.138 -5.11309 545.862 -5.11311 579.004 16.432L652.64 64.3018C667.765 74.1342 685.268 79.692 703.294 80.3866L791.313 83.7778C831.426 85.3233 866.727 110.706 880.963 148.24L910.407 225.87C916.991 243.229 928.277 258.412 943.002 269.719L1009.15 320.516C1041.79 345.583 1055.75 388.091 1044.3 427.627L1022 504.702C1016.75 522.862 1016.75 542.138 1022 560.298L1044.3 637.373C1055.75 676.909 1041.79 719.417 1009.15 744.484L943.002 795.281C928.277 806.588 916.991 821.771 910.407 839.13L880.963 916.76C866.727 954.294 831.426 979.677 791.313 981.222L703.294 984.613C685.268 985.308 667.765 990.866 652.64 1000.7L579.004 1048.57C545.862 1070.11 503.138 1070.11 469.996 1048.57L396.36 1000.7C381.235 990.866 363.732 985.308 345.706 984.613L257.687 981.222C217.574 979.677 182.273 954.294 168.037 916.76L138.593 839.13C132.009 821.771 120.723 806.588 105.998 795.281L39.8487 744.484C7.20528 719.417 -6.74557 676.909 4.69538 637.373L26.9998 560.298C32.2548 542.138 32.2548 522.862 26.9998 504.702L4.6954 427.627C-6.74555 388.091 7.20527 345.583 39.8487 320.516L105.998 269.719C120.723 258.412 132.009 243.228 138.593 225.87L168.037 148.24C182.273 110.706 217.574 85.3233 257.687 83.7778L345.706 80.3866C363.732 79.692 381.235 74.1342 396.36 64.3018L469.996 16.432Z" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clipPath)" filter="url(#filter0_i_92_3498)">
+            <path
+              d="M469.996 16.432C503.138 -5.11309 545.862 -5.11311 579.004 16.432L652.64 64.3018C667.765 74.1342 685.268 79.692 703.294 80.3866L791.313 83.7778C831.426 85.3233 866.727 110.706 880.963 148.24L910.407 225.87C916.991 243.229 928.277 258.412 943.002 269.719L1009.15 320.516C1041.79 345.583 1055.75 388.091 1044.3 427.627L1022 504.702C1016.75 522.862 1016.75 542.138 1022 560.298L1044.3 637.373C1055.75 676.909 1041.79 719.417 1009.15 744.484L943.002 795.281C928.277 806.588 916.991 821.771 910.407 839.13L880.963 916.76C866.727 954.294 831.426 979.677 791.313 981.222L703.294 984.613C685.268 985.308 667.765 990.866 652.64 1000.7L579.004 1048.57C545.862 1070.11 503.138 1070.11 469.996 1048.57L396.36 1000.7C381.235 990.866 363.732 985.308 345.706 984.613L257.687 981.222C217.574 979.677 182.273 954.294 168.037 916.76L138.593 839.13C132.009 821.771 120.723 806.588 105.998 795.281L39.8487 744.484C7.20528 719.417 -6.74557 676.909 4.69538 637.373L26.9998 560.298C32.2548 542.138 32.2548 522.862 26.9998 504.702L4.6954 427.627C-6.74555 388.091 7.20527 345.583 39.8487 320.516L105.998 269.719C120.723 258.412 132.009 243.228 138.593 225.87L168.037 148.24C182.273 110.706 217.574 85.3233 257.687 83.7778L345.706 80.3866C363.732 79.692 381.235 74.1342 396.36 64.3018L469.996 16.432Z"
+              fill="#F9F1D4" />
+          </g>
+          <defs>
+            <filter
+              id="filter0_i_92_3498"
+              x="0.75"
+              y="0.272949"
+              width="1047.5"
+              height="1064.45"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset />
+              <feGaussianBlur stdDeviation="21.9" />
+              <feComposite
+                in2="hardAlpha"
+                operator="arithmetic"
+                k2="-1"
+                k3="1" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend
+                mode="normal"
+                in2="shape"
+                result="effect1_innerShadow_92_3498" />
+            </filter>
+          </defs>
+        </svg>
 
-            <img src="../assets/imgs/home/tree.png" alt="" class="tree"
-                style="top: 10%; left: 20%; width: 10%; transform: rotate(0deg);">
-            <img src="../assets/imgs/home/tree.png" alt="" class="tree"
-                style="top: 30%; left: 40%; width: 10%; transform: rotate(45deg);">
-            <img src="../assets/imgs/home/tree.png" alt="" class="tree"
-                style="top: 50%; left: 60%; width: 10%; transform: rotate(90deg);">
-            <img src="../assets/imgs/home/tree.png" alt="" class="tree"
-                style="top: 70%; left: 80%; width: 10%; transform: rotate(135deg);">
-
-        </div>
-
-
+        <img
+          src="../assets/imgs/home/tree.png"
+          alt=""
+          class="tree"
+          style="top: 10%; left: 20%; width: 10%; transform: rotate(0deg)" />
+        <img
+          src="../assets/imgs/home/tree.png"
+          alt=""
+          class="tree"
+          style="top: 30%; left: 40%; width: 10%; transform: rotate(45deg)" />
+        <img
+          src="../assets/imgs/home/tree.png"
+          alt=""
+          class="tree"
+          style="top: 50%; left: 60%; width: 10%; transform: rotate(90deg)" />
+        <img
+          src="../assets/imgs/home/tree.png"
+          alt=""
+          class="tree"
+          style="top: 70%; left: 80%; width: 10%; transform: rotate(135deg)" />
+      </div>
     </div>
-</body>
 
+    <!-- 引入导航栏的 JavaScript -->
+    <script>
+      // 加载导航栏
+      fetch('components/navbar.html')
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+  </body>
 </html>
