@@ -88,11 +88,7 @@ p {
   margin: 0 0 0 10rem;
 }
 .marquee-section {
-  z-index: 0;
-  font-size: 3.75rem; /* text-6xl */
-  letter-spacing: 0.1em; /* tracking-widest */
-  pointer-events: none;
-  overflow: hidden;
+  overflow:hidden;
   width: 100%;
   margin-top: 5rem;
 }
@@ -100,13 +96,18 @@ p {
 .marquee-container {
   display: flex;
   white-space: nowrap;
+  animation: scroll 40s linear infinite;
 }
 
-.marquee-container > div {
+.marquee-container div {
   display: flex;
 }
 
 .marquee-container span {
   margin-right: 2rem; /* me-8 */
-  scale: 0.75;
+  scale: 0.65;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
