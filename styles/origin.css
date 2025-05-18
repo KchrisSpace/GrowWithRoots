@@ -1,0 +1,113 @@
+.container-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.img-bg-1 {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+header {
+  position: relative;
+}
+.bg-clip {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.main-bg {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../assets/imgs/background.png');
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.svg-clip-1 {
+  position: absolute;
+  bottom: 12rem;
+  left: 0;
+  z-index: 1;
+}
+.svg-clip-2 {
+  position: absolute;
+  bottom: 10rem;
+  right: 40%;
+  z-index: 1;
+}
+.poem {
+  margin-top: 8%;
+  width: 100%;
+}
+p {
+  font-family: 'PingFang-SC-Semibold';
+  width: fit-content;
+  color: #462204;
+  line-height: 244%;
+  letter-spacing: 6%;
+}
+.poem-title {
+  font-size: 3rem;
+}
+.poem-author {
+  font-size: 2rem;
+  line-height: 200%;
+  transform: translateY(-1.5rem);
+}
+.poem-content {
+  font-family: 'PingFang-SC-Medium';
+  font-size: 2rem;
+}
+.poem-main {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.poem-p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cloud-1 {
+  width: 100%;
+  margin: 0 auto;
+  transform: translateX(-20rem);
+}
+.cloud-2 {
+  transform: translateY(-3rem);
+  margin: 0 20rem 0 0;
+}
+.cloud-3 {
+  transform: translateY(-4rem);
+  margin: 0 0 0 10rem;
+}
+.marquee-section {
+  overflow:hidden;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.marquee-container {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 40s linear infinite;
+}
+
+.marquee-container div {
+  display: flex;
+}
+
+.marquee-container span {
+  margin-right: 2rem; /* me-8 */
+  scale: 0.65;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
