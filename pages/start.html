@@ -5,196 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>start</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5dc;
-            font-family: 'Arial', sans-serif;
-            min-width: 100vw;
-            min-height: 100vh;
-            overflow: hidden;
-        }
+    <link rel="stylesheet" href="../styles/start.css">
+    <link rel="stylesheet" href="../styles/reset.css">
 
-      .container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-      }
+</head>
 
-      .container img {
-        position: absolute;
-      }
-
-        .car {
-            bottom: 5%;
-            left: 15px;
-            width: 10%;
-            /* rotate: -5deg; */
-            z-index: 10;
-            animation: goright 8s linear forwards;
-        }
-
-        .leaf {
-            left: 65%;
-            top: 30px;
-            position: relative;
-            z-index: -5;
-            width: 15%;
-
-        }
-
-        .leaf-img {
-            width: 100%;
-        }
-
-        .leaf-text {
-            position: absolute;
-            top: -12px;
-            left: -25px;
-            scale: 0.5;
-        }
-
-
-        .line {
-            top: 5%;
-            right: 2%;
-            width: 15%;
-            z-index: 10;
-        }
-
-        .cloud1 {
-            top: 70%;
-            left: 60%;
-            width: 15%;
-            z-index: 10;
-            animation: swing 2s linear infinite;
-        }
-
-
-        .cloud2 {
-            top: 25%;
-            right: 15%;
-            width: 20%;
-            z-index: 10;
-            animation: swing 2s linear infinite 0.5s;
-        }
-
-        .cloud3 {
-            bottom: 50%;
-            left: 8%;
-            width: 25%;
-            z-index: 10;
-            animation: swing 2s linear infinite 1s;
-        }
-
-      svg {
-        position: absolute;
-        /* scale: 0.5; */
-      }
-
-      .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 95vh;
-        height: 95vh;
-        overflow: hidden;
-      }
-
-      .center svg {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-        g {
-            position: absolute;
-        }
-
-        .tree {
-            width: 80%;
-            transform-origin: center;
-        }
-
-        .tree1 {
-            width: 90%;
-            translate: -45% -45%;
-            transform: rotate(-120deg);
-        }
-
-        .tree2 {
-            width: 100%;
-            translate: 35% -46%;
-            transform: rotate(-30deg);
-        }
-
-        .tree3 {
-            translate: -60% 30%;
-            transform: rotate(170deg);
-        }
-
-        .tree4 {
-            translate: 56% 35%;
-            transform: rotate(20deg);
-        }
-
-        .start-bg{
-            position: absolute;
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20%;
-        }
-
-        @keyframes swing {
-            0% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(20px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes jump {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes goright {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(88vw);
-            }
-        }
-    </style>
-  </head>
-
-  <body>
-    <!-- 导航栏容器 -->
-    <div id="navbar-container"></div>
+<body>
+   
 
     <div class="container">
+        <div class="title"><span>一地人间</span></div>
         <img src="../assets/imgs/start/car.png" alt="" class="car">
-
         <div class="leaf">
             <img src="../assets/imgs/start/leaf.png" alt="" class="leaf-img">
             <img src="../assets/imgs/start/leaf-text.png" alt="" class="leaf-text">
@@ -240,14 +61,24 @@
                     </filter>
                 </defs>
             </svg>
-            <img src="../assets/imgs/start/start-bg.png" alt="" class="start-bg">
+            <div class="start-bg-container">
+                <img src="../assets/imgs/start/start-bg.png" alt="" class="start-bg">
+                <span class="start-text">开始旅程</span>
+            </div>
         </div>
     </div>
+    <script>
+        function scaleSvgToZero() {
+            document.querySelector('.center svg').style.transform = 'scale(0)';
+            window.location.href = './home.html';
+        }
+        document.querySelector('.start-bg-container').addEventListener('click', scaleSvgToZero);
+
+
+    </script>
 </body>
-<script>
-    document.addEventListener('click', (e) => {
-        console.log(e.clientX, e.clientY);
-    });
-</script>
+
+
+</html>
 
 </html>

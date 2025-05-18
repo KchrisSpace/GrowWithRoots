@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/imgs/background.png");
+}
+.container {
+  width: 90vw;
+  height: 80vh;
+
+  background-image: url("../assets/imgs/wish/wish-bg.png");
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
