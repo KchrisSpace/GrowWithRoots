@@ -146,3 +146,23 @@ body {
     left: 60%;
   }
 }
+.page-3 {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-3 .img {
+  img {
+    position: relative;
+  }
+  .green-3 {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
