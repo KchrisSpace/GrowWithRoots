@@ -18,10 +18,11 @@ body {
   position: relative;
 
   overflow: hidden;
+  img {
+    position: absolute;
+  }
 }
-img {
-  position: absolute;
-}
+
 .page-1 .wish-bg {
   width: 90%;
   height: 75%;
@@ -67,23 +68,81 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  .img {
+    img {
+      position: absolute;
+    }
+  }
 }
 .page-2 .content {
   width: 800px;
   height: 500px;
-  padding: 0px 50px;
+  padding: 0px 60px;
   /* border: 1px solid #000; */
   display: flex;
-  gap: 30px;
+  gap: 80px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.page-2 .content p{
+.page-2 .content p {
   text-align: center;
   letter-spacing: 1px;
-  font-family:'PingFang-SC-Medium';
+  font-family: "PingFang-SC-Medium";
   font-size: 1.4rem;
-
+  line-height: 1.8;
 }
- 
+.page-2 .clouds {
+  .cloud1 {
+    width: 25%;
+    position: absolute;
+    top: 15%;
+    left: 28%;
+  }
+  .cloud2 {
+    width: 15%;
+    position: absolute;
+    top: 45%;
+    left: 14%;
+  }
+  .cloud3 {
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    left: 78%;
+
+    transform: scaleX(-1);
+  }
+  .sun {
+    width: 13%;
+    position: absolute;
+    top: 8%;
+    right: 5%;
+  }
+}
+.page-2 .people {
+  .left {
+    width: 20%;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+  }
+  .right {
+    width: 20%;
+    position: absolute;
+    top: 60%;
+    right: 5%;
+  }
+}
+.page-2 .gomove {
+  .car {
+    width: 10%;
+    top: 57%;
+    left: 28%;
+  }
+  .cow {
+    width: 13%;
+    top: 33%;
+    left: 60%;
+  }
+}
