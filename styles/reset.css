@@ -30,6 +30,11 @@ html{
   src: url('../assets/fonts/PingFang Regular.ttf') format('truetype');
   /* font-weight: 400; */
 }
+@font-face {
+  font-family: 'shangshouxingyu';
+  src: url('../assets/fonts/No.327-ShangShouXingYuTi-2.ttf') format('truetype');
+  /* font-weight: 300; */
+}
 a{
   color: #000000;
 }
