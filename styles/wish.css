@@ -157,12 +157,107 @@ body {
 }
 .page-3 .img {
   img {
-    position: relative;
+    position: absolute;
   }
   .green-3 {
     width: 100%;
-    position: absolute;
     bottom: 0;
     left: 0;
+  }
+  .cover-3 {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  .brown-3 {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+  .line-1 {
+    width: 50%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  .line-2 {
+    width: 50%;
+    top: 40%;
+    left: 0;
+    z-index: -5;
+  }
+  .line-3 {
+    width: 30%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+  .line-4 {
+    width: 100%;
+    top: 10%;
+    left: 0;
+  }
+}
+
+.page-3 .card {
+  width: 300px;
+  height: 400px;
+  background-image: url("../assets/imgs/wish/page-3/card.png");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  display: flex; /* 新增 */
+  flex-direction: column; /* 新增 */
+  gap: 20px; /* 新增 */
+  justify-content: center; /* 垂直居中 */
+  align-items: center; /* 水平居中 */
+  h3 {
+    font-family: "PingFang-SC-Medium";
+    font-size: 1.8rem;
+    line-height: 1.8;
+    letter-spacing: 0.6rem;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    top: -30px;
+  }
+  button {
+    width: 60px;
+    height: 40px;
+    background-color: #f6eac9;
+    border: none;
+    border-radius: 20px;
+    color: #137c41;
+    font-family: "PingFang-SC-Medium";
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    top: -20px;
+  }
+}
+.page-3 {
+  .card-1 {
+    top: 18%;
+    left: 10%;
+    rotate: 5deg;
+    z-index: -1;
+  }
+  .card-2 {
+    top: 40%;
+    left: 40%;
+    z-index: -1;
+    img {
+      width: 120%;
+      position: absolute;
+      top: 60px;
+      left: 5px;
+    }
+  }
+  .card-3 {
+    top: 23%;
+    right: 10%;
+    rotate: -2deg;
+    z-index: -1;
   }
 }
