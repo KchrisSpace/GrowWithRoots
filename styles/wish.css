@@ -60,6 +60,59 @@ body {
   left: 0%;
   bottom: 15%;
 }
+.page-1 .select {
+  width: 70vw;
+  height: 60vh;
+  border: 1px solid #000;
+  position: absolute;
+  right: 2vw;
+  bottom: 2vh;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "fangfang";
+  font-size: 2rem;
+  line-height: 1.8;
+}
+.page-1 .select .tip {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  font-size: 2rem;
+  line-height: 1.8;
+}
+.page-1 .select {
+  gap: 20px;
+  color: aliceblue;
+  .green div,
+  .orange div,
+  .yellowgreen div {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .green div {
+    background-color: #0b572d;
+  }
+  .orange div {
+    background-color: #ffd24d;
+  }
+  .yellowgreen div {
+    background-color: #137c41;
+  }
+  .label {
+    border-radius: 50%;
+  }
+  .content {
+    width: 50vw;
+  }
+}
+
 .page-2 {
   width: 100vw;
   height: 100vh;
@@ -355,11 +408,9 @@ body {
     left: 2vw;
     top: -26vh;
   }
-   
 }
 
 .page-4 .buttons button {
-   
   width: 100px;
   height: 100px;
   border: none;
