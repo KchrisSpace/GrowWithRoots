@@ -3,13 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  /* 隐藏滚动条但保留滚动功能 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
 body {
   display: flex;
   width: 100vw;
   flex-direction: column;
   position: relative;
   background-image: url("../assets/imgs/background.png");
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .navbar {
@@ -120,6 +127,7 @@ body {
   gap: 50px;
   font-size: 2rem;
   line-height: 1.8;
+  transform: translateX(100vw);
 }
 .page-1 .select {
   gap: 20px;
@@ -182,7 +190,7 @@ body {
   padding: 0px 60px;
   /* border: 1px solid #000; */
   display: flex;
-  gap: 80px;
+  gap: 100px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -198,20 +206,23 @@ body {
   .cloud1 {
     width: 25%;
     position: absolute;
-    top: 15%;
+    top: 8%;
     left: 28%;
+    animation: swing 2s infinite alternate;
   }
   .cloud2 {
     width: 15%;
     position: absolute;
     top: 45%;
     left: 14%;
+    animation: swing 2s infinite alternate 0.5s;
   }
   .cloud3 {
     width: 20%;
     position: absolute;
     top: 50%;
     left: 78%;
+    animation: swing 2s infinite alternate 1s;
 
     transform: scaleX(-1);
   }
@@ -220,6 +231,7 @@ body {
     position: absolute;
     top: 8%;
     right: 5%;
+    animation: scale 2s infinite alternate;
   }
 }
 .page-2 .people {
@@ -348,6 +360,7 @@ body {
     top: 40%;
     left: 40%;
     z-index: -1;
+
     img {
       width: 120%;
       position: absolute;
@@ -362,6 +375,22 @@ body {
     z-index: -1;
   }
 }
+.page-3 .card {
+  transform: translateY(30px);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  cursor: pointer;
+  z-index: -1; /* 保证卡片在底层但可被hover */
+  pointer-events: auto; /* 确保可以响应鼠标事件 */
+}
+.page-3 .card button {
+  z-index: 100;
+}
+.page-3 .card button:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px 5px #ffd24d;
+  transition: all 0.3s;
+}
+
 .page-4 {
   width: 100vw;
   height: 120vh;
@@ -478,4 +507,30 @@ body {
   background-color: #ffd24d;
   box-shadow: 0 0 20px 5px #ffd24d;
   transition: all 0.3s;
+}
+/* 动画
+ */
+@keyframes swing {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(30px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
