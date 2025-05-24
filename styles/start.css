@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url(/assets/imgs/background.png);
+  background-image: url(../assets/imgs/background.png);
   font-family: "Arial", sans-serif;
   min-width: 100vw;
   min-height: 100vh;
@@ -10,13 +10,18 @@ body {
 
 .title {
   position: absolute;
-  font-size: 6rem;
-  font-family: fangfang;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
+  font-family: logo-name;
+  /* filter: contrast(30); */
+  span {
+    font-size: 8rem;
+  }
 }
+
 .container {
   position: relative;
   width: 100vw;
@@ -29,7 +34,7 @@ body {
 
 .car {
   bottom: 5%;
-  left: 15px;
+  left: -30px;
   width: 10%;
   /* rotate: -5deg; */
   z-index: 10;
@@ -98,7 +103,7 @@ svg {
   transform: translate(-50%, -50%);
   width: 95vh;
   height: 95vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .center svg {
@@ -146,7 +151,7 @@ g {
   width: 20%;
   /* scale: 1.1; */
 }
-.start-text{
+.start-text {
   position: absolute;
   left: 50%;
   top: 85%;
@@ -155,6 +160,7 @@ g {
   color: #f5f5dc;
   /* scale: 1.1; */
 }
+/* 动画 */
 @keyframes swing {
   0% {
     transform: translateX(0);
@@ -169,26 +175,42 @@ g {
   }
 }
 
-@keyframes jump {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes goright {
   from {
-    transform: translateX(0);
+    transform: translateX(-5vw);
   }
 
   to {
     transform: translateX(88vw);
+  }
+}
+/* 标题动画 */
+.ani-title {
+  animation: ani-title 1s linear forwards;
+  /* filter: blur(2px); */
+}
+@keyframes ani-title {
+  from {
+    letter-spacing: 1rem;
+
+    /* filter: blur(0px); */
+  }
+  to {
+    letter-spacing: 30px;
+    font-size: 10rem;
+    opacity: 0;
+    /* filter: blur(10px); */
+  }
+}
+/* 消失 */
+.disappear {
+  animation: disappear 1s linear forwards !important;
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

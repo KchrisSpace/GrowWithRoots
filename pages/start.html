@@ -67,20 +67,7 @@
             </div>
         </div>
     </div>
-    <script>
-        function scaleSvgToZero() {
-            document.querySelector('.center svg').style.transform = 'scale(0)';
-        }
-        function jumpToHome() {
-            window.location.href = './home.html'
-        }
-        document.querySelector('.start-bg-container').addEventListener('click', function () {
-            scaleSvgToZero();
-            setTimeout(jumpToHome, 1000); // 0.5秒后跳转，根据动画时长调整
-        });
-
-
-    </script>
+    <script src="../js/start.js"></script>
 </body>
 
 
