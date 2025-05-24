@@ -1,11 +1,25 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url(../assets/imgs/start/bg.png);
+  background-image: url(../assets/imgs/background.png);
   font-family: "Arial", sans-serif;
   min-width: 100vw;
   min-height: 100vh;
   overflow: hidden;
+}
+
+.title {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  font-family: logo-name;
+  /* filter: contrast(30); */
+  span {
+    font-size: 8rem;
+  }
 }
 
 .container {
@@ -20,18 +34,13 @@ body {
 
 .car {
   bottom: 5%;
-  left: 15px;
+  left: -30px;
   width: 10%;
   /* rotate: -5deg; */
   z-index: 10;
   animation: goright 8s linear forwards;
 }
-.rice {
-  z-index: 10;
-  top: 5%;
-  left: 29%;
-  scale: 0.4;
-}
+
 .leaf {
   left: 65%;
   top: 30px;
@@ -94,7 +103,7 @@ svg {
   transform: translate(-50%, -50%);
   width: 95vh;
   height: 95vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .center svg {
@@ -140,18 +149,18 @@ g {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 20%;
+  /* scale: 1.1; */
 }
-.start-btn {
+.start-text {
   position: absolute;
-  top: 80%;
   left: 50%;
-  transform: translate(-50%, 100%);
-  padding-top: 3px;
-  border: none;
-  color: aliceblue;
-  background-color: transparent;
-  cursor: pointer;
+  top: 85%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  color: #f5f5dc;
+  /* scale: 1.1; */
 }
+/* 动画 */
 @keyframes swing {
   0% {
     transform: translateX(0);
@@ -166,30 +175,42 @@ g {
   }
 }
 
-@keyframes jump {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes goright {
   from {
-    transform: translateX(0);
+    transform: translateX(-5vw);
   }
 
   to {
     transform: translateX(88vw);
   }
 }
-@keyframes twink {
- 
-    
+/* 标题动画 */
+.ani-title {
+  animation: ani-title 1s linear forwards;
+  /* filter: blur(2px); */
+}
+@keyframes ani-title {
+  from {
+    letter-spacing: 1rem;
+
+    /* filter: blur(0px); */
+  }
+  to {
+    letter-spacing: 30px;
+    font-size: 10rem;
+    opacity: 0;
+    /* filter: blur(10px); */
+  }
+}
+/* 消失 */
+.disappear {
+  animation: disappear 1s linear forwards !important;
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>start</title>
     <link rel="stylesheet" href="../styles/start.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+
 </head>
 
 <body>
 
-    <div class="container">
-        <img src="../assets/imgs/start/car.png" alt="" class="car">
-        <img src="../assets/imgs/start/rice.png" alt="" class="rice">
 
+    <div class="container">
+        <div class="title"><span>一地人间</span></div>
+        <img src="../assets/imgs/start/car.png" alt="" class="car">
         <div class="leaf">
             <img src="../assets/imgs/start/leaf.png" alt="" class="leaf-img">
             <img src="../assets/imgs/start/leaf-text.png" alt="" class="leaf-text">
@@ -59,15 +61,16 @@
                     </filter>
                 </defs>
             </svg>
-            <img src="../assets/imgs/start/start-bg.png" alt="" class="start-bg">
-           <button class="start-btn" onclick="window.location.href='./wish/wish.html'">开始旅程</button>
+            <div class="start-bg-container">
+                <img src="../assets/imgs/start/start-bg.png" alt="" class="start-bg">
+                <span class="start-text">开始旅程</span>
+            </div>
         </div>
     </div>
+    <script src="../js/start.js"></script>
 </body>
-<script>
-    document.addEventListener('click', (e) => {
-        console.log(e.clientX, e.clientY);
-    });
-</script>
+
+
+</html>
 
 </html>
