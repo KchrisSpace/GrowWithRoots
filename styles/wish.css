@@ -274,22 +274,14 @@ body::-webkit-scrollbar {
   img {
     position: absolute;
   }
-  .green-3 {
+  .bg-3 {
     width: 100%;
-    bottom: 0;
+    object-fit: cover;
+    bottom: 10%;
     left: 0;
+    /* z-index: -1; */
   }
-  .cover-3 {
-    width: 100%;
-    bottom: 0;
-    left: 0;
-  }
-  .brown-3 {
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-  }
+
   .line-1 {
     width: 50%;
     top: 0;
@@ -389,7 +381,9 @@ body::-webkit-scrollbar {
     z-index: -1;
   }
   .card-2 {
-    top: 40%;
+    /* width: 70%; */
+    scale: 0.8;
+    top: 22%;
     left: 40%;
     z-index: -1;
 
@@ -402,7 +396,7 @@ body::-webkit-scrollbar {
   }
   .card-3 {
     top: 23%;
-    right: 10%;
+    right: 8%;
     rotate: -2deg;
     z-index: -1;
   }
@@ -443,7 +437,7 @@ body::-webkit-scrollbar {
   text-align: center;
   letter-spacing: 3rem;
   line-height: 1;
-  opacity: 0.6;
+  /* opacity: 0.6; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -574,6 +568,7 @@ body::-webkit-scrollbar {
 .page-5 {
   margin-top: 10%;
   padding-left: 5%;
+  margin-bottom: 10%;
   width: 100vw;
   height: 40vh;
   position: relative;
@@ -631,7 +626,7 @@ body::-webkit-scrollbar {
 .page-6 {
   width: 100vw;
   height: 100vh;
-  background-image: url(/assets/imgs/wish/page-6/bg-6.png);
+  background-image: url(../assets/imgs/wish/page-6/bg-6.png);
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -656,7 +651,7 @@ body::-webkit-scrollbar {
     right: 0;
     width: 50%;
   }
-  .seed{
+  .seed {
     position: absolute;
     left: 50%;
     top: 10%;
