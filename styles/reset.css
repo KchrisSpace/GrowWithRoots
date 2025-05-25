@@ -30,6 +30,10 @@ html{
   src: url('../assets/fonts/PingFang Regular.ttf') format('truetype');
   /* font-weight: 400; */
 }
+@font-face {
+  font-family: 'ZS';
+  src: url('../assets/fonts/ZC0005-Regular-2.ttf') format('truetype');
+}
 a{
   color: #000000;
 }

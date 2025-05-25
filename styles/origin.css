@@ -5,11 +5,11 @@
   width: 100%;
   height: 100%;
 }
-/* .img-bg-1 {
+.img-bg-1 {
   width: 100%;
   height: 100vh;
   object-fit: cover;
-} */
+}
 header {
   position: relative;
 }
@@ -134,47 +134,26 @@ p {
   width: 100%;
   height: 100%;
 }
-.agricultural-change-title {
-  margin-top: 1rem;
-  font-family: 'fangfang';
-  line-height: 150%;
-  font-size: 4rem;
-  letter-spacing: -1.1%;
-  color: #462204;
-  margin-left: 8rem;
-  position: relative;
-}
-.agricultural-change-title h6 {
-  font-size: 2rem;
-  padding: 0;
-  opacity: 0.7;
-  transform: translateY(-3rem);
-}
-.agricultural-change-title > div,
-h5 + span {
-  display: flex;
-  align-items: center;
-}
 .agricultural-change-content {
   position: relative;
-  z-index: 100;
+  z-index: 10;
   width: 100%;
   height: 60%;
   overflow-y: auto;
 }
-.content-container{
- display: grid;
- grid-template-columns:50% 50%;
- margin: 2rem 8rem;
+.content-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 2rem 8rem;
 }
-.content-container img{
+.content-container img {
   width: 80%;
+  border-radius: 14rem;
 }
-.agricultural-change-content-text-container{
+.agricultural-change-content-text-container {
   display: flex;
-
 }
-.agricultural-change-content-text{
+.agricultural-change-content-text {
   width: 90%;
   font-size: 1.5rem;
   margin-right: 2rem;
@@ -184,67 +163,68 @@ h5 + span {
   gap: 1rem;
   justify-content: space-between;
 }
-.agricultural-change-content-text h6{
+.agricultural-change-content-text h6 {
   font-size: 2rem;
   font-family: 'PingFang-SC-Semibold';
-line-height: 118%;
-letter-spacing: -1.1%;
-
-
+  line-height: 118%;
+  letter-spacing: -1.1%;
 }
-.agricultural-change-content-text p{
- opacity: 0.7;
- font-family: 'PingFang-SC-Regular';
-line-height: 144%;
-letter-spacing: -1.1%;
-
+.agricultural-change-content-text p {
+  opacity: 0.7;
+  font-family: 'PingFang-SC-Regular';
+  line-height: 144%;
+  letter-spacing: -1.1%;
 }
-.scroll-container{
+.scroll-container {
   width: 1rem;
-  height: 100%;
-  background-color: #137C41;
-  border-radius:8px;
+  height: 50%;
+  background-color: #137c41;
+  border-radius: 8px;
+  position: absolute;
+  right: 5%;
+  top: 0;
+  transform: translateY(50%);
 }
-.scroll-bar{
+.scroll-bar {
   width: 100%;
   height: 25%;
-  background-color: #F3E46C;
-  border-radius:8px;
+  background-color: #f3e46c;
+  border-radius: 8px;
 }
-.scroll-flat{
+.scroll-flat {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   margin-top: 2rem;
- 
 }
-.scroll-flat svg{
-  z-index: 100;
+.scroll-flat svg {
+  z-index: 10;
 }
-.land-container{
+.land-container {
   height: 100%;
 }
-.land-container svg{
+.land-container svg {
   width: 100%;
   height: 100%;
 }
-.land-green{
+.land-green {
   width: 100%;
   height: 100vh;
   background-color: #137c41;
+  position: relative;
 }
-.land-green>svg{
+.land-green > svg {
   width: 100%;
   height: 100%;
   position: absolute;
 }
-.land-green-start{
+.land-green-start {
   margin-top: 6rem;
   transform: translateY(0.5rem);
 }
-.land-green-end{
+.land-green-end {
   margin-bottom: 6rem;
   transform: translateY(-2px);
 }
@@ -253,7 +233,51 @@ letter-spacing: -1.1%;
   color: #fbf1d7;
   font-weight: 400;
 }
-.land-green-title{
+.land-green-title {
   margin-top: 0rem;
-padding-top: 1rem;
+  padding-top: 1rem;
+  font-family: 'fangfang';
+  line-height: 150%;
+  font-size: 4rem;
+  letter-spacing: -1.1%;
+  margin-left: 8rem;
+  position: relative;
+}
+.land-green-title h6 {
+  font-size: 2rem;
+  padding: 0;
+  opacity: 0.7;
+  transform: translateY(-2rem);
+}
+.land-green-title > div,
+h5 + span {
+  display: flex;
+  align-items: center;
+}
+#jigsaw {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 640px;
+  /* scale: 0.8; */
+
+}
+#jigsaw svg {
+  object-fit: cover;
+}
+.plow-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  }
+.plow-container svg {
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
 }
