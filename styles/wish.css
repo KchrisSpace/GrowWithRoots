@@ -81,6 +81,7 @@ body::-webkit-scrollbar {
   z-index: 15;
   left: 0;
   top: 0;
+  animation: scale 1.5s linear infinite alternate;
 }
 .page-1 .cover-bg {
   width: 100%;
@@ -313,6 +314,37 @@ body::-webkit-scrollbar {
     left: 0;
   }
 }
+.page-3 .title {
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  font-family: "fangfang";
+  font-size: 5rem;
+  color: #3f271c;
+  letter-spacing: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; /* 调小上下间距 */
+  .title-text {
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+    img {
+      width: 7%;
+      margin-left: 10px;
+    }
+  }
+  .en-text {
+    font-family: "PingFang-SC-Medium";
+    font-size: 3rem;
+    color: #3f271c;
+    opacity: 0.8;
+    letter-spacing: 0.2rem;
+    margin-top: 10px; /* 移除多余间距 */
+  }
+}
 .page-3 .card {
   width: 300px;
   height: 400px;
@@ -327,7 +359,7 @@ body::-webkit-scrollbar {
   align-items: center; /* 水平居中 */
   h3 {
     font-family: "PingFang-SC-Medium";
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 1.8;
     letter-spacing: 0.6rem;
     color: #fff;
@@ -445,6 +477,37 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+.page-4 .title {
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  font-family: "fangfang";
+  font-size: 5rem;
+  color: #3f271c;
+  letter-spacing: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; /* 调小上下间距 */
+  .title-text {
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+    img {
+      width: 12%;
+      margin-left: 10px;
+    }
+  }
+  .en-text {
+    font-family: "PingFang-SC-Medium";
+    font-size: 3rem;
+    color: #3f271c;
+    opacity: 0.8;
+    letter-spacing: 0.2rem;
+    margin-top: 10px; /* 移除多余间距 */
+  }
 }
 
 .page-4 .tree .tree-img {

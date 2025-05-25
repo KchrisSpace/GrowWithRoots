@@ -13,10 +13,12 @@ function animateTitle() {
 function disappear() {
   const clouds = document.querySelectorAll(".clouds>img");
   const car = document.querySelector(".car");
+  const rice=document.querySelector(".rice");
   clouds.forEach((cloud, index) => {
     cloud.classList.add("disappear");
   });
   car.classList.add("disappear");
+  rice.classList.add("disappear");
 }
 
 document
