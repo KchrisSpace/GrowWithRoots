@@ -451,17 +451,20 @@ body::-webkit-scrollbar {
     width: 8%;
     top: -50px;
     left: 140px;
+    animation: scale 1s linear infinite alternate;
   }
   .item-2 {
     width: 8%;
     top: -50px;
     left: 42%;
+    animation: scale 1s linear infinite alternate 0.5s;
   }
   .item-3 {
     width: 7%;
     top: 50px;
     right: 360px;
     z-index: -1;
+    animation: scale 1s linear infinite alternate 1s;
   }
 }
 .page-4 .tree {
@@ -634,6 +637,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .page-6 .imgs {
   width: 100%;
@@ -642,14 +646,16 @@ body::-webkit-scrollbar {
   .left-hand {
     position: absolute;
     top: 10%;
-    left: 0;
-    width: 50%;
+    left: -10%;
+    height: 90%;
+    width: 70%;
   }
   .right-hand {
     position: absolute;
     top: 9%;
-    right: 0;
-    width: 50%;
+    right: -10%;
+    height: 90%;
+    width: 70%;
   }
   .seed {
     position: absolute;
@@ -659,6 +665,24 @@ body::-webkit-scrollbar {
     width: 5%;
   }
 }
+.page-7 {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.page-7 .bg-7 {
+  width: 70%;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
 /* 动画*/
 @keyframes swing {
   0% {

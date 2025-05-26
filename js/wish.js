@@ -118,3 +118,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(page3);
 });
+//  种子掉下
+ScrollTrigger.create({
+  trigger: ".seed",
+  start: "top center",
+  end: "+=500 center",
+  markers: true,
+  scrub: true,
+  animation: gsap
+    .timeline()
+    .to(".seed", {
+      y: 460,
+      ease: "none",
+    })
+    .to(".left-hand", {
+      x: 90,
+      ease: "none",
+    } ,"<")
+    .to(".right-hand", {
+      x: -90,
+      ease: "none",
+    },"<"
+    )
+});
