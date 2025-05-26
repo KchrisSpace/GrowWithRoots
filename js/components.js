@@ -33,7 +33,7 @@ html{
 opacity: 0;
 position: fixed;
 top: 0;
-margin-top: 4rem;
+margin-top: 2rem;
 z-index: 100;
 }
 .navbar:hover{
@@ -68,10 +68,10 @@ z-index: 100;
     </style>
       <nav class="navbar">
         <ul>
-          <li><a href="../pages/start.html">首页</a></li>
-          <li><a href="../pages/origin.html">根·起源</a></li>
-          <li><a href="../pages/coexistence.html">苦·共生</a></li>
-          <li><a href="../pages/new-growth.html">新·生长</a></li>
+          <li><a href="/pages/start.html">首页</a></li>
+          <li><a href="/pages/origin.html">根·起源</a></li>
+          <li><a href="/pages/coexistence.html">苦·共生</a></li>
+          <li><a href="/pages/wish.html">新·生长</a></li>
         </ul>
       </nav>
     `;
