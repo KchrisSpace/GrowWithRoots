@@ -3,6 +3,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-image: url(../assets/imgs/background.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-size: 24px;
+  margin: 0 20px;
+}
+
+a:hover {
+  color: #ff6347;
+  /* Change to your desired hover color */
+}
 .imgs {
   width: 100vw;
   height: 100vh;
@@ -54,12 +73,12 @@
   pointer-events: auto;
 }
 .tabs .tab a {
-    transition:0.5s;
+  transition: 0.5s;
 }
 
 .tabs .tab:hover a {
-    color: #ffd700;
-    font-size: 50px;
+  color: #ffd700;
+  font-size: 50px;
 }
 
 .tabs {
