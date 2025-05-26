@@ -2,81 +2,117 @@ class NavbarComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.lastScrollY = window.scrollY;
+    this.ticking = false;
   }
 
   connectedCallback() {
     this.render();
+    this.setupScrollListener();
+  }
+
+  setupScrollListener() {
+    window.addEventListener('scroll', () => {
+      if (!this.ticking) {
+        window.requestAnimationFrame(() => this.handleScroll());
+        this.ticking = true;
+      }
+    });
+  }
+
+  handleScroll() {
+    const navbar = this.shadowRoot.querySelector('.navbar');
+    if (window.scrollY === 0) {
+      navbar.style.transform = 'translateY(0)';
+      navbar.style.opacity = '1';
+    } else if (window.scrollY > this.lastScrollY) {
+      // 向下滚动，隐藏navbar
+      navbar.style.transform = 'translateY(-100%)';
+      navbar.style.opacity = '0';
+    } else {
+      // 向上滚动，显示navbar
+      navbar.style.transform = 'translateY(0)';
+      navbar.style.opacity = '1';
+    }
+    this.lastScrollY = window.scrollY;
+    this.ticking = false;
   }
 
   render() {
     this.shadowRoot.innerHTML = `
     <style>
     * {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-  transition: all 0.5s;
-}
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
 
-html{
-  font-size: 12px;
-}
-@font-face {
-  font-family: 'fangfang';
-  src: url('/assets/fonts/字魂100号-方方先锋体.ttf') format('truetype');
-  font-weight: 400;
-}
-      .navbar {
- width: 100%;
-opacity: 0;
-position: fixed;
-top: 0;
-margin-top: 2rem;
-z-index: 100;
-}
-.navbar:hover{
-  opacity: 1;
-}
-.navbar ul{
-  width: 70%;
-  height: 84px;
-  margin: 0 auto;
-  border-radius: 200px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0px 8px 24px -5px rgba(0, 0, 0, 0.15); 
-  display: flex;
-  justify-content:space-evenly;
-  align-items: center;
-}
-.navbar ul li{
-  padding: 15px;
-  font-family: 'fangfang';
-  border-radius: 50px;
-  font-size: 2rem;
-}
-.navbar ul li a{
-  color: #462204;
-}
-.navbar ul li:hover{
-  background-color: #137C41;
-}
-.navbar ul li:hover a{
-  color: #F9F1D4;
-}
+    html{
+      font-size: 12px;
+    }
+
+    @font-face {
+      font-family: 'fangfang';
+      src: url('/assets/fonts/字魂100号-方方先锋体.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      margin-top: 2rem;
+      z-index: 100;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .navbar ul{
+      width: 70%;
+      height: 84px;
+      margin: 0 auto;
+      border-radius: 200px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0px 8px 24px -5px rgba(0, 0, 0, 0.15); 
+      display: flex;
+      justify-content:space-evenly;
+      align-items: center;
+    }
+
+    .navbar ul li{
+      padding: 15px;
+      font-family: 'fangfang';
+      border-radius: 50px;
+      font-size: 2rem;
+    }
+
+    .navbar ul li a{
+      color: #462204;
+    }
+
+    .navbar ul li:hover{
+      background-color: #137C41;
+    }
+
+    .navbar ul li:hover a{
+      color: #F9F1D4;
+    }
     </style>
       <nav class="navbar">
         <ul>
-          <li><a href="/pages/start.html">首页</a></li>
-          <li><a href="/pages/origin.html">根·起源</a></li>
-          <li><a href="/pages/coexistence.html">苦·共生</a></li>
-          <li><a href="/pages/wish.html">新·生长</a></li>
+          <li><a href="../pages/start.html">首页</a></li>
+          <li><a href="../pages/origin.html">根·起源</a></li>
+          <li><a href="../pages/coexistence.html">苦·共生</a></li>
+          <li><a href="../pages/wish.html">新·生长</a></li>
         </ul>
       </nav>
     `;
   }
 }
+
 class TitleComponent extends HTMLElement {
   constructor() {
     super();
