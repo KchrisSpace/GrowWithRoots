@@ -829,9 +829,110 @@ class AgriculturalChangeComponent extends HTMLElement {
   }
 }
 
+class PlowDetailItem extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  static get observedAttributes() {
+    return ['title', 'poem', 'description', 'image'];
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this.render();
+    }
+  }
+
+  render() {
+    const title = this.getAttribute('title') || '';
+    const poem = this.getAttribute('poem') || '';
+    const description = this.getAttribute('description') || '';
+    const image = this.getAttribute('image') || '';
+
+    this.shadowRoot.innerHTML = `
+      <style>
+        .plow-item {
+          height: fit-content;
+          display: flex;
+          justify-content: center;
+        }
+
+        .plow-item-left {
+          transform: translateY(12rem);
+          height: fit-content;
+        }
+
+        .plow-item-left p {
+          font-family: 'fangfang', sans-serif;
+          text-align: center;
+          font-size: 1.8rem;
+          line-height: 185%;
+          letter-spacing: 3%;
+          opacity: 0.7;
+        }
+
+        .plow-item-middle {
+          margin: 0 10rem;
+        }
+
+        .plow-item-middle p {
+          font-family: 'fangfang', sans-serif;
+          font-size: 2.5rem;
+          line-height: 150%;
+          letter-spacing: -1.1%;
+          opacity: 1;
+        }
+
+        .plow-item-middle img {
+          scale: 0.9;
+          transform: translateY(-4rem);
+        }
+        .plow-item-middle p {
+          text-align: center;
+        }
+        .plow-item-right {
+          transform: translateY(8rem);
+          height: fit-content;
+          max-width: 25rem;
+        }
+
+        .plow-item-right p {
+          font-family: 'fangfang', sans-serif;
+          text-align: center;
+          font-size: 1.8rem;
+          line-height: 185%;
+          letter-spacing: 3%;
+          opacity: 0.7;
+        }
+      </style>
+
+      <div class="plow-item">
+        <div class="plow-item-left">
+          <p>《${title}》</p>
+          ${poem
+            .split('\n')
+            .map((line) => `<p>${line}</p>`)
+            .join('')}
+        </div>
+        <div class="plow-item-middle">
+          <p class="plow-item-middle-title">《${title}》</p>
+          <img src="${image}" alt="${title}" />
+        </div>
+        <div class="plow-item-right">
+          <p class="plow-item-right-title">${description}</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
 customElements.define('navbar-component', NavbarComponent);
 customElements.define('title-component', TitleComponent);
-customElements.define(
-  'agricultural-change-component',
-  AgriculturalChangeComponent
-);
+customElements.define('agricultural-change-component',AgriculturalChangeComponent);
+customElements.define('plow-detail-item', PlowDetailItem);

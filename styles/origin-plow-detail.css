@@ -6,23 +6,74 @@
   background-position: center;
   background-attachment: fixed;
 }
-footer {
-  overflow-x: hidden;
+.svg-1 {
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+}
+.svg-1 svg {
+  width: 100%;
+}
+.cloud-1 {
+  position: absolute;
+  left: 20%;
+  top: 10%;
+}
+.cloud-2 {
+  position: absolute;
+  left: 5%;
+  top: 40%;
+}
+.cloud-3 {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+}
+.line-svg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-70%);
+  scale: 0.75;
+}
+
+.move-svg {
+  position: absolute;
+  left: 5%;
+  top: 7%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 100;
+  scale: 0.75;
+}
+.move-svg:hover {
+  scale: 0.9;
+}
+.detail-container-inner {
   width: 100%;
   position: absolute;
   bottom: 2rem;
+}
+.plow-container {
+  position: relative;
+  z-index: 10;
+}
+
+footer {
+  overflow-x: hidden;
+  width: 100%;
   display: flex;
-  cursor: pointer;
+  position: relative;
+  z-index: 20;
 }
 
 footer > span {
   margin-right: 2rem; /* me-8 */
-  flex: 0 0 15.5rem; /* 固定宽度，不允许缩放 */
+  flex: 0 0 12.5rem; /* 固定宽度，不允许缩放 */
   /* overflow: hidden; */
 }
 footer > span > p {
   font-family: 'PingFang-SC-Semibold';
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 144%;
   letter-spacing: -1.1%;
   color: #6b401d;
@@ -34,10 +85,29 @@ footer > span > p {
   width: 100%;
 }
 footer img {
-  height: 14rem;
+  height: 12rem;
   scale: 1.6;
   transform: translate(10%, -14%);
+  cursor: pointer;
 }
 .footer-img-container:hover {
   scale: 0.9;
+}
+.scroll-flat {
+  width: 100%;
+  margin-top: 1rem;
+}
+.scroll-container {
+  width: 753px;
+  height: 12px;
+  border-radius: 8px;
+  background-color: #137c41;
+  margin: 0 auto;
+}
+.scroll-bar {
+  width: 323px;
+  height: 12px;
+  border-radius: 8px;
+  background-color: #e6be50;
+  cursor: pointer;
 }
