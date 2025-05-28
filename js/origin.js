@@ -34,23 +34,66 @@ const agriculturalChangeContent = document.querySelector(
 
 const jigsawSvgs = document.querySelectorAll('#jigsaw svg');
 
-// 添加过渡效果
-jigsawSvgs.forEach((img) => {
-  img.style.transition = 'all 0.8s ease';
-});
 
-// jigsawSvgs[0].addEventListener('mouseenter', () => {
-//   jigsawSvgs[0].style.translate = '-6rem -8rem';
-//   jigsawSvgs[0].style.rotate = '-32.5deg';
-// });
 jigsawSvgs[1].addEventListener('mouseenter', () => {
-  jigsawSvgs[1].style.translate = '4rem -5rem';
-  jigsawSvgs[1].style.rotate = '32.5deg';
+  // jigsawSvgs[1].style.translate = '4rem -5rem';
+  // jigsawSvgs[1].style.rotate = '32.5deg';
+  gsap.to(jigsawSvgs[1], {
+    rotation: 25,
+    duration: 0.1,
+    ease: 'power1.inOut',
+    yoyo: true,
+    repeat: 1,
+  });
+});
+jigsawSvgs[1].addEventListener('mouseleave', () => {
+  gsap.killTweensOf(jigsawSvgs[1]);
+  gsap.to(jigsawSvgs[1], {
+    rotation: 0,
+    duration: 0.1,
+  });
+});
+jigsawSvgs[1].addEventListener('click', () => {
+  gsap.to(jigsawSvgs[1], {
+    x: '4rem',
+    y: '-5rem',
+    rotation: 32.5,
+    duration: 0.2,
+    onComplete: () => {
+      setTimeout(() => {
+        window.location.href = '../pages/origin-jigsaw-foodcoupon.html';
+      }, 500);
+    },
+  });
 });
 jigsawSvgs[2].addEventListener('mouseenter', () => {
-  jigsawSvgs[2].style.translate = '-10rem 4rem';
-  jigsawSvgs[2].style.rotate = '-15.5deg';
+  // jigsawSvgs[2].style.translate = '-10rem 4rem';
+  // jigsawSvgs[2].style.rotate = '-15.5deg';
+  gsap.to(jigsawSvgs[2], {
+    rotation: 25,
+    duration: 0.1,
+    ease: 'power1.inOut',
+    yoyo: true,
+    repeat: 1,
+  });
 });
-// jigsawSvgs[3].addEventListener('mouseenter', () => {
-//   jigsawSvgs[3].style.translate = '0 -5rem';
-// });
+jigsawSvgs[2].addEventListener('mouseleave', () => {
+  gsap.killTweensOf(jigsawSvgs[2]);
+  gsap.to(jigsawSvgs[2], {
+    rotation: 0,
+    duration: 0.1,
+  });
+});
+jigsawSvgs[2].addEventListener('click', () => {
+  gsap.to(jigsawSvgs[2], {
+    x: '-6rem',
+    y: '6rem',
+    rotation: 15.5,
+    duration: 0.2,
+    onComplete: () => {
+      setTimeout(() => {
+        window.location.href = '../pages/origin-jigsaw-farmtool.html';
+      }, 500);
+    },
+  });
+});

@@ -1,7 +1,3 @@
-
-
-
-
 class NavbarComponent extends HTMLElement {
   constructor() {
     super();
@@ -182,6 +178,11 @@ h5 + span {
   display: flex;
   align-items: center;
 }
+  circle{
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+  }
      
     </style>
      <div class="title">
@@ -263,7 +264,7 @@ class AgriculturalChangeComponent extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.currentIndex = 0;
     this.isScrolling = false;
-    this.throttleTimeout = 1000;
+    this.throttleTimeout = 300;
     this.expanded = {
       profile: false,
       method: false,
@@ -356,6 +357,17 @@ class AgriculturalChangeComponent extends HTMLElement {
         }
         this.updateContent();
       }, this.throttleTimeout);
+    });
+
+    // 添加 flat-text span 元素的点击事件监听
+    const flatTextSpans = this.shadowRoot.querySelectorAll('.flat-text span');
+    flatTextSpans.forEach((span, index) => {
+      span.addEventListener('click', () => {
+        if (index !== this.currentIndex) {
+          this.currentIndex = index;
+          this.updateContent();
+        }
+      });
     });
   }
 
@@ -474,6 +486,12 @@ class AgriculturalChangeComponent extends HTMLElement {
 
     // 遍历每一个 <circle> 元素，根据 currentIndex 设置透明度
     circles.forEach((circle, index) => {
+      circle.addEventListener('click', () => {
+        if (index !== this.currentIndex) {
+          this.currentIndex = index;
+          this.updateContent();
+        }
+      });
       const opacity = index === this.currentIndex ? 1 : 0; // 只有当前索引的 <circle> 不透明
       circle.setAttribute('fill-opacity', opacity);
     });
@@ -497,7 +515,7 @@ class AgriculturalChangeComponent extends HTMLElement {
           text-decoration: none;
           list-style: none;
           box-sizing: border-box;
-          transition: all 0.5s;
+          transition: all 0.3s;
         }
 .agricultural-change-content {
   position: relative;
@@ -648,8 +666,14 @@ class AgriculturalChangeComponent extends HTMLElement {
   line-height: 118%;
   letter-spacing: -1.1%;
   color: #462204;
-}
+  position:relative;
+  z-index:100;
  
+}
+ .flat-text{
+  cursor: pointer;
+  }
+
       </style>
     <div class="agricultural-change-content">
       <div class="content-container">
@@ -938,5 +962,8 @@ class PlowDetailItem extends HTMLElement {
 
 customElements.define('navbar-component', NavbarComponent);
 customElements.define('title-component', TitleComponent);
-customElements.define('agricultural-change-component',AgriculturalChangeComponent);
+customElements.define(
+  'agricultural-change-component',
+  AgriculturalChangeComponent
+);
 customElements.define('plow-detail-item', PlowDetailItem);

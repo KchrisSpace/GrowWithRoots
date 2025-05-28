@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../assets/imgs/background.png');
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-container > svg {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+
+.container-content > svg {
+  position: absolute;
+  bottom: 4%;
+  left: 45%;
+  transform: translateX(-50%);
+  scale: 0.6;
+  margin-right: 4rem;
+}
+
+
+.title img{
+width: 7rem;
+}
+.title p{
+  font-family: 'fangfang';
+  font-size: 3rem;
+  line-height: 141%;
+  letter-spacing: -1.1%;
+  width: fit-content;
+  
+}
+.time{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.time p{
+border-radius: 22px;
+background:#137C41;
+color:#F9F1D4;
+font-family: STZhongsong;
+font-size: 1.5rem;
+line-height: 123%;
+letter-spacing: -1.1%;
+width: fit-content;
+padding: 0.5rem;
+
+}
+.description p{
+width:55rem;
+font-family: PingFang-SC-Regular;
+font-weight: 400;
+font-size: 1.5rem;
+line-height: 123%;
+letter-spacing: -1.1%;
+text-align: center;
+color:#462204;
+}

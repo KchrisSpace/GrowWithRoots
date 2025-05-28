@@ -1,5 +1,5 @@
 // 导航栏
-const navbar = document.querySelector(".navbar");
+const navbar = document.querySelector('.navbar');
 let lastScrollY = window.scrollY;
 let ticking = false;
 
@@ -26,33 +26,33 @@ window.addEventListener('scroll', function () {
 });
 // tips进入
 // tips依次从右向左进入动画
-window.addEventListener("DOMContentLoaded", () => {
-  const tips = document.querySelectorAll(".select .tip");
+window.addEventListener('DOMContentLoaded', () => {
+  const tips = document.querySelectorAll('.select .tip');
   tips.forEach((tip, i) => {
     // tip.style.transform = 'translateX(100vw)';
-    tip.style.opacity = "0";
+    tip.style.opacity = '0';
     tip.style.transition =
-      "transform 0.7s cubic-bezier(.77,0,.18,1), opacity 0.7s";
+      'transform 0.7s cubic-bezier(.77,0,.18,1), opacity 0.7s';
     setTimeout(() => {
-      tip.style.transform = "translateX(0)";
-      tip.style.opacity = "1";
+      tip.style.transform = 'translateX(0)';
+      tip.style.opacity = '1';
     }, 300 + i * 250);
   });
 });
 // cow向左
 // cow向左动画
-window.addEventListener("DOMContentLoaded", () => {
-  const cow = document.querySelector(".cow");
+window.addEventListener('DOMContentLoaded', () => {
+  const cow = document.querySelector('.cow');
   if (!cow) return;
 
   // 初始状态
-  cow.style.transition = "transform 5s linear";
-  cow.style.transform = "translateX(0) ";
+  cow.style.transition = 'transform 5s linear';
+  cow.style.transform = 'translateX(0) ';
 
   function animateCow(entries) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        cow.style.transform = "translateX(-34vw)";
+        cow.style.transform = 'translateX(-34vw)';
       }
     });
   }
@@ -65,18 +65,18 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // car向右
-window.addEventListener("DOMContentLoaded", () => {
-  const car = document.querySelector(".car");
+window.addEventListener('DOMContentLoaded', () => {
+  const car = document.querySelector('.car');
   if (!car) return;
 
-  car.style.transition = "transform 4s linear";
-  car.style.transform = "translateX(0)";
+  car.style.transition = 'transform 4s linear';
+  car.style.transform = 'translateX(0)';
 
   function animateCar(entries) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setTimeout(() => {
-          car.style.transform = "translateX(35vw)";
+          car.style.transform = 'translateX(35vw)';
         }, 500);
       }
     });
@@ -89,14 +89,14 @@ window.addEventListener("DOMContentLoaded", () => {
   observer.observe(car);
 });
 // 当page3进入页面时
-window.addEventListener("DOMContentLoaded", () => {
-  const page3 = document.querySelector(".page-3");
+window.addEventListener('DOMContentLoaded', () => {
+  const page3 = document.querySelector('.page-3');
   if (!page3) return;
 
-  const cards = page3.querySelectorAll(".cards .card");
+  const cards = page3.querySelectorAll('.cards .card');
   cards.forEach((card) => {
-    card.style.transform = "translateY(80px)";
-    card.style.transition = "transform 0.6s  opacity 0.6s";
+    card.style.transform = 'translateY(80px)';
+    card.style.transition = 'transform 0.6s  opacity 0.6s';
   });
 
   function animateCards(entries) {
@@ -105,7 +105,7 @@ window.addEventListener("DOMContentLoaded", () => {
         cards.forEach((card, i) => {
           setTimeout(() => {
             // card.style.zIndex = "-1";
-            card.style.transform = "translateY(0px)";
+            card.style.transform = 'translateY(0px)';
           }, i * 600);
         });
       }
@@ -119,25 +119,34 @@ window.addEventListener("DOMContentLoaded", () => {
   observer.observe(page3);
 });
 //  种子掉下
-ScrollTrigger.create({
-  trigger: ".seed",
-  start: "top center",
-  end: "+=500 center",
-  markers: true,
-  scrub: true,
-  animation: gsap
-    .timeline()
-    .to(".seed", {
-      y: 460,
-      ease: "none",
-    })
-    .to(".left-hand", {
-      x: 90,
-      ease: "none",
-    } ,"<")
-    .to(".right-hand", {
-      x: -90,
-      ease: "none",
-    },"<"
-    )
+window.addEventListener('DOMContentLoaded', () => {
+  ScrollTrigger.create({
+    trigger: '.seed',
+    start: 'top center',
+    end: '+=500 center',
+    markers: true,
+    scrub: true,
+    animation: gsap
+      .timeline()
+      .to('.seed', {
+        y: 460,
+        ease: 'none',
+      })
+      .to(
+        '.left-hand',
+        {
+          x: 90,
+          ease: 'none',
+        },
+        '<'
+      )
+      .to(
+        '.right-hand',
+        {
+          x: -90,
+          ease: 'none',
+        },
+        '<'
+      ),
+  });
 });
