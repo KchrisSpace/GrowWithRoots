@@ -187,20 +187,42 @@ h5 + span {
   align-items: center;
 }
 #jigsaw {
+  max-width: 66rem;
+  max-height: 67rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -35%);
   z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 640px;
-  /* scale: 0.8; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-#jigsaw svg {
-  object-fit: cover;
+.jigsaw-main-svg1,
+.jigsaw-main-svg4 {
+  scale: 0.71;
+}
+
+.jigsaw-main-svg1,
+.jigsaw-main-svg2,
+.jigsaw-main-svg3,
+.jigsaw-main-svg4 {
+  position: relative;
+}
+.jigsaw-main-svg1 {
+  left: 18%;
+}
+.jigsaw-main-svg2 {
+  right: 17.5%;
+  cursor: pointer;
+}
+.jigsaw-main-svg3 {
+  top: -57.5%;
+  left: 19.5%;
+  cursor: pointer;
+}
+.jigsaw-main-svg4 {
+  top: -59%;
+  right: 18%;
 }
 .plow-container {
   width: 100%;
@@ -228,7 +250,7 @@ h5 + span {
   display: flex;
   align-items: center;
 }
-.plow-text-container p{
+.plow-text-container p {
   font-family: 'ZS';
 }
 .plow-img-container {
@@ -245,14 +267,14 @@ h5 + span {
   letter-spacing: -1.1%;
 }
 .plow-check-container a {
- position: absolute;
- bottom: 2rem;
- left: 50%;
- transform: translateX(-50%);
- cursor: pointer;
- color: #137c41;
- font-family: 'ZS';
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  color: #137c41;
+  font-family: 'ZS';
 }
-.plow-check-container a:hover{
+.plow-check-container a:hover {
   opacity: 0.7;
 }

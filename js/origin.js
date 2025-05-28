@@ -32,29 +32,25 @@ const agriculturalChangeContent = document.querySelector(
   '.agricultural-change-content'
 );
 
-const jigsawImages = document.querySelectorAll('#jigsaw img');
-jigsawImages[0].style.translate = '27px 0';
-jigsawImages[1].style.translate = '-27px 1px';
-jigsawImages[2].style.translate = '-27px -118px';
-jigsawImages[3].style.translate = '-90px -119px';
+const jigsawSvgs = document.querySelectorAll('#jigsaw svg');
 
 // 添加过渡效果
-jigsawImages.forEach((img) => {
-  img.style.transition = 'all 0.3s ease';
+jigsawSvgs.forEach((img) => {
+  img.style.transition = 'all 0.8s ease';
 });
 
-jigsawImages[0].addEventListener('mouseenter', () => {
-  jigsawImages[0].style.translate = '-6rem -8rem';
-  jigsawImages[0].style.rotate = '-32.5deg';
+// jigsawSvgs[0].addEventListener('mouseenter', () => {
+//   jigsawSvgs[0].style.translate = '-6rem -8rem';
+//   jigsawSvgs[0].style.rotate = '-32.5deg';
+// });
+jigsawSvgs[1].addEventListener('mouseenter', () => {
+  jigsawSvgs[1].style.translate = '4rem -5rem';
+  jigsawSvgs[1].style.rotate = '32.5deg';
 });
-jigsawImages[1].addEventListener('mouseenter', () => {
-  jigsawImages[1].style.translate = '4rem -5rem';
-  jigsawImages[1].style.rotate = '32.5deg';
+jigsawSvgs[2].addEventListener('mouseenter', () => {
+  jigsawSvgs[2].style.translate = '-10rem 4rem';
+  jigsawSvgs[2].style.rotate = '-15.5deg';
 });
-jigsawImages[2].addEventListener('mouseenter', () => {
-  jigsawImages[2].style.translate = '-3rem 1rem';
-  jigsawImages[2].style.rotate = '-15.5deg';
-});
-jigsawImages[3].addEventListener('mouseenter', () => {
-  jigsawImages[3].style.translate = '0 -5rem';
-});
+// jigsawSvgs[3].addEventListener('mouseenter', () => {
+//   jigsawSvgs[3].style.translate = '0 -5rem';
+// });
