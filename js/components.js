@@ -1802,6 +1802,8 @@ class RotatingBoxes extends HTMLElement {
   }
 }
 
+
+
 customElements.define('navbar-component', NavbarComponent);
 customElements.define('title-component', TitleComponent);
 customElements.define(
