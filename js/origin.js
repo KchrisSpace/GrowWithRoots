@@ -1,3 +1,4 @@
+
 let changeContent = [
   {
     imgs: '/assets/imgs/origin/agricultural-change-1.png',
@@ -33,7 +34,6 @@ const agriculturalChangeContent = document.querySelector(
 );
 
 const jigsawSvgs = document.querySelectorAll('#jigsaw svg');
-
 
 jigsawSvgs[1].addEventListener('mouseenter', () => {
   // jigsawSvgs[1].style.translate = '4rem -5rem';
@@ -97,3 +97,4 @@ jigsawSvgs[2].addEventListener('click', () => {
     },
   });
 });
+

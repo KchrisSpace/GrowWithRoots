@@ -9,9 +9,19 @@ class NavbarComponent extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setupScrollListener();
-    this.updateContent(); // 确保首次加载时更新内容
+    // this.updateContent(); // 确保首次加载时更新内容
+    // 添加如下代码
+    const links = this.shadowRoot.querySelectorAll('li');
+  // 自动高亮当前页面
+  const path = window.location.pathname;
+  links.forEach(link => {
+    const a = link.querySelector('a');
+    if (a && path.endsWith(a.getAttribute('href').split('/').pop())) {
+      link.classList.add('active');
+    }
+  });
   }
-
+  
   setupScrollListener() {
     window.addEventListener('scroll', () => {
       if (!this.ticking) {
@@ -94,13 +104,15 @@ z-index: 100;
   color: #462204;
 }
 
-.navbar ul li:hover{
-  background-color: #137C41;
-}
+.navbar ul li:hover,
+    .navbar ul li.active{
+      background-color: #137C41;
+    }
 
-.navbar ul li:hover a{
-  color: #F9F1D4;
-}
+    .navbar ul li:hover a,
+    .navbar ul li.active a{
+      color: #F9F1D4;
+    }
     </style>
       <nav class="navbar">
         <ul>
@@ -158,7 +170,6 @@ html{
   font-weight: 400;
 }
   .title {
-  margin-top: 1rem;
   font-family: 'fangfang';
   line-height: 150%;
   font-size: 4rem;
@@ -1320,18 +1331,18 @@ class RotatingBoxes extends HTMLElement {
       const titleDiv = rotateContent.querySelector('.title');
       const timeDiv = rotateContent.querySelector('.time');
       const descriptionDiv = rotateContent.querySelector('.description');
-      
+
       if (titleDiv) {
         titleDiv.innerHTML = `
           <img src="${currentContent.images[index]}" alt="farm-tools">
           <p>${details.title}</p>
         `;
       }
-      
+
       if (timeDiv) {
         timeDiv.innerHTML = details.time.map((t) => `<p>${t}</p>`).join('');
       }
-      
+
       if (descriptionDiv) {
         descriptionDiv.innerHTML = `<p>${details.description}</p>`;
       }
