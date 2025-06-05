@@ -158,7 +158,6 @@ html{
   font-weight: 400;
 }
   .title {
-  margin-top: 1rem;
   font-family: 'fangfang';
   line-height: 150%;
   font-size: 4rem;
