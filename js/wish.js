@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       tip.style.transform = 'translateX(0)';
       tip.style.opacity = '1';
-    }, 300 + i * 250);
+    }, 300 + i * 450);
   });
 });
 // cow向左
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!cow) return;
 
   // 初始状态
-  cow.style.transition = 'transform 5s linear';
+  cow.style.transition = 'transform 10s linear';
   cow.style.transform = 'translateX(0) ';
 
   function animateCow(entries) {
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const car = document.querySelector('.car');
   if (!car) return;
 
-  car.style.transition = 'transform 4s linear';
+  car.style.transition = 'transform 10s linear';
   car.style.transform = 'translateX(0)';
 
   function animateCar(entries) {
@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         cards.forEach((card, i) => {
           setTimeout(() => {
-            // card.style.zIndex = "-1";
+            card.style.zIndex = "1";
             card.style.transform = 'translateY(0px)';
           }, i * 600);
         });
@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
     trigger: '.seed',
     start: 'top center',
     end: '+=500 center',
-    markers: true,
+    markers: false,
     scrub: true,
     animation: gsap
       .timeline()

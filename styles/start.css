@@ -46,7 +46,7 @@ body {
   left: 30%;
   width: 13%;
   z-index: 10;
-  animation: updown 1s linear alternate infinite;
+  animation: updown 2s linear alternate infinite;
 }
 
 .leaf {
@@ -55,7 +55,7 @@ body {
   position: relative;
   z-index: -5;
   width: 15%;
-  animation: updown 1.5s linear alternate infinite;
+  animation: updown 2.5s linear alternate infinite;
   animation-delay: 0.5s;
 }
 
@@ -75,7 +75,7 @@ body {
   right: 2%;
   width: 15%;
   z-index: 10;
-  animation: updown 3s linear alternate infinite 1s;
+  animation: updown 5s linear alternate infinite 1s;
 }
 
 .cloud1 {
@@ -83,7 +83,7 @@ body {
   left: 60%;
   width: 15%;
   z-index: 10;
-  animation: swing 2s linear infinite;
+  animation: swing 3s linear infinite;
 }
 
 .cloud2 {
@@ -91,7 +91,7 @@ body {
   right: 15%;
   width: 20%;
   z-index: 10;
-  animation: swing 2s linear infinite 0.5s;
+  animation: swing 3s linear infinite 0.5s;
 }
 
 .cloud3 {
@@ -99,7 +99,7 @@ body {
   left: 8%;
   width: 25%;
   z-index: 10;
-  animation: swing 2s linear infinite 1s;
+  animation: swing 3s linear infinite 1s;
 }
 
 svg {
