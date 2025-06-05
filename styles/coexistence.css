@@ -128,7 +128,7 @@ video {
   transition: all 0.3s ease-out;
   font-family: 'PingFang-SC-Regular';
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 177%;
   letter-spacing: -1.1%;
   text-align: center;
@@ -139,6 +139,7 @@ video {
   flex-direction: column;
   align-items: center;
 }
+
 .accordion-content p {
   width: 70%;
 }
@@ -180,4 +181,5 @@ video {
 }
 .farmer-container{
   height:100vh;
+  padding-top: 3rem;
 }

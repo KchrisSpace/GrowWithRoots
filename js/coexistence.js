@@ -42,24 +42,24 @@ document.addEventListener('DOMContentLoaded', function () {
   // 创建内容容器
   const contentContainer = document.createElement('div');
   contentContainer.className = 'accordion-content';
-  document.querySelector('.middle-container').appendChild(contentContainer);
+  document.querySelector('.accordion-text').appendChild(contentContainer);
 
   // 初始化显示第三个内容
   updateContent(2);
   accordionItems[2].classList.add('active');
 
   // 设置定时器，实现自动循环
-  // let currentIndex = 2;
-  // setInterval(() => {
-  //   // 移除所有项的active类
-  //   accordionItems.forEach((i) => i.classList.remove('active'));
-  //   // 更新索引
-  //   currentIndex = (currentIndex + 1) % accordionItems.length;
-  //   // 为当前项添加active类
-  //   accordionItems[currentIndex].classList.add('active');
-  //   // 更新内容
-  //   updateContent(currentIndex);
-  // }, 5000); // 每5秒切换一次
+  let currentIndex = 2;
+  setInterval(() => {
+    // 移除所有项的active类
+    accordionItems.forEach((i) => i.classList.remove('active'));
+    // 更新索引
+    currentIndex = (currentIndex + 1) % accordionItems.length;
+    // 为当前项添加active类
+    accordionItems[currentIndex].classList.add('active');
+    // 更新内容
+    updateContent(currentIndex);
+  }, 5000); // 每5秒切换一次
 
   // 点击事件处理
   accordionItems.forEach((item, index) => {
