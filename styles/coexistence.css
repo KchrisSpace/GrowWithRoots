@@ -182,4 +182,18 @@ video {
 .farmer-container{
   height:100vh;
   padding-top: 3rem;
+  position: relative;
+}
+.farmers-bg{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+
+}
+.farmers-bg  > svg{
+  width: 70%;
+  height: fit-content;
 }
