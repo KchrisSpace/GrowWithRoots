@@ -111,7 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const cards = page3.querySelectorAll(".cards .card");
   cards.forEach((card) => {
     card.style.transform = "translateY(80px)";
-    card.style.transition = "transform 0.6s  opacity 0.6s";
+    card.style.transition = "transform 1s  opacity 0.6s";
   });
 
   function animateCards(entries) {
@@ -121,7 +121,7 @@ window.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             card.style.zIndex = "1";
             card.style.transform = "translateY(0px)";
-          }, i * 600);
+          }, i * 800);
         });
       }
     });

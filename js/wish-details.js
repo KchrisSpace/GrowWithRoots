@@ -24,8 +24,8 @@ function initializeCarousel(carousel, items) {
 
   let position = 0;
   function animate() {
-    // Check if this is the past carousel and reverse direction
-    const direction = carousel.closest(".past") ? 0.1 : -0.1;
+    //    速度调整
+    const direction = carousel.closest(".past") ? 0.01 : -0.01;
     position += direction;
     if (carousel.closest(".past")) {
       if (position >= 100) position = 0;
@@ -58,164 +58,178 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // details渲染数据
 const detailsData = {
-    农事监测: {
-        today: [
-            {
-                title: "农田环境监测",
-                image: "../assets/imgs/wish-detalis/watch/today/农田环境监测.png",
-            },
-            {
-                title: "农业大数据监测",
-                image: "../assets/imgs/wish-detalis/watch/today/农业大数据监测.png", 
-            },
-            {
-                title: "卫星遥感检测",
-                image: "../assets/imgs/wish-detalis/watch/today/卫星遥感检测.png",
-            },
-            {
-                title: "无人机监测",
-                image: "../assets/imgs/wish-detalis/watch/today/无人机监测.png",
-            },
-            {
-                title: "遥感识别虫害",
-                image: "../assets/imgs/wish-detalis/watch/today/遥感识别虫害.png",
-            },
-        ],
-        past: [
-            {
-                title: "二十四节气",
-                image: "../assets/imgs/wish-detalis/watch/past/二十四节气.png",
-            },
-            {
-                title: "农谚",
-                image: "../assets/imgs/wish-detalis/watch/past/农谚.png",
-            },
-            {
-                title: "手感判断",
-                image: "../assets/imgs/wish-detalis/watch/past/手感判断.png",
-            },
-            {
-                title: "天气变换",
-                image: "../assets/imgs/wish-detalis/watch/past/天气变换.png",
-            },
-            {
-                title: "星宿",
-                image: "../assets/imgs/wish-detalis/watch/past/星宿.png",
-            },
-        ],
-    },
-    施肥与灌溉: {
-        today: [
-            {
-                title: "机械浇灌",
-                image: "../assets/imgs/wish-detalis/water/today/机械浇灌.png",
-            },
-            {
-                title: "水肥一体化",
-                image: "../assets/imgs/wish-detalis/water/today/滴灌水肥一体化.png",
-            },
-            {
-                title: "精准施肥",
-                image: "../assets/imgs/wish-detalis/water/today/精准施肥机器.png",
-            },
-            {
-                title: "无人机喷洒",
-                image: "../assets/imgs/wish-detalis/water/today/无人机喷洒.png",
-            },
-            {
-                title: "中心轴旋喷灌",
-                image: "../assets/imgs/wish-detalis/water/today/中心轴旋转喷灌.png",
-            },
-        ],
-        past: [
-            {
-                title: "畜粪草灰施肥",
-                image: "../assets/imgs/wish-detalis/water/past/畜粪草灰施肥.png",
-            },
-            {
-                title: "灌溉劳作",
-                image: "../assets/imgs/wish-detalis/water/past/灌溉劳作.png",
-            },
-            {
-                title: "灌溉引水",
-                image: "../assets/imgs/wish-detalis/water/past/灌溉引水.png",
-            },
-            {
-                title: "手撒肥料",
-                image: "../assets/imgs/wish-detalis/water/past/手撒肥料.png",
-            },
-            {
-                title: "水车灌溉",
-                image: "../assets/imgs/wish-detalis/water/past/水车灌溉.png",
-            },
-        ],
-    },
-    生产工具与技术: {
-        today: [
-            {
-                title: "大型联合收割机",
-                image: "../assets/imgs/wish-detalis/tools/today/大型联合收割机.png",
-            },
-            {
-                title: "机器人采摘",
-                image: "../assets/imgs/wish-detalis/tools/today/机器人采摘.png",
-            },
-            {
-                title: "农机维护车间",
-                image: "../assets/imgs/wish-detalis/tools/today/农机维护车间.png",
-            },
-            {
-                title: "无人驾驶播种机",
-                image: "../assets/imgs/wish-detalis/tools/today/无人驾驶播种车.png",
-            },
-            {
-                title: "智能插秧机",
-                image: "../assets/imgs/wish-detalis/tools/today/智能插秧机.png",
-            },
-            {
-                title: "智能温室控制系统",
-                image: "../assets/imgs/wish-detalis/tools/today/智能温室控制系统.png",
-            },
-            {
-                title: "GPS农机导航仪",
-                image: "../assets/imgs/wish-detalis/tools/today/GPS农机导航仪.png",
-            }
-        ],
-        past: [
-            {
-                title: "耕牛犁地",
-                image: "../assets/imgs/wish-detalis/tools/past/耕牛犁地.png",
-            },
-            {
-                title: "牛拉圆盘耙",
-                image: "../assets/imgs/wish-detalis/tools/past/牛拉圆盘耙.png",
-            },
-            {
-                title: "手工插秧",
-                image: "../assets/imgs/wish-detalis/tools/past/手工插秧.png", 
-            },
-            {
-                title: "手扶耕地机",
-                image: "../assets/imgs/wish-detalis/tools/past/手扶耕地机.png",
-            },
-            {
-                title: "手工收割",
-                image: "../assets/imgs/wish-detalis/tools/past/手工收割.png",
-            }
-        ]
-    }
+  农事监测: {
+    today: [
+      {
+        title: "农田环境监测",
+        image: "../assets/imgs/wish-detalis/watch/today/农田环境监测.png",
+      },
+      {
+        title: "农业大数据监测",
+        image: "../assets/imgs/wish-detalis/watch/today/农业大数据监测.png",
+      },
+      {
+        title: "卫星遥感检测",
+        image: "../assets/imgs/wish-detalis/watch/today/卫星遥感检测.png",
+      },
+      {
+        title: "无人机监测",
+        image: "../assets/imgs/wish-detalis/watch/today/无人机监测.png",
+      },
+      {
+        title: "遥感识别虫害",
+        image: "../assets/imgs/wish-detalis/watch/today/遥感识别虫害.png",
+      },
+    ],
+    past: [
+      {
+        title: "二十四节气",
+        image: "../assets/imgs/wish-detalis/watch/past/二十四节气.png",
+      },
+      {
+        title: "农谚",
+        image: "../assets/imgs/wish-detalis/watch/past/农谚.png",
+      },
+      {
+        title: "手感判断",
+        image: "../assets/imgs/wish-detalis/watch/past/手感判断.png",
+      },
+      {
+        title: "天气变换",
+        image: "../assets/imgs/wish-detalis/watch/past/天气变换.png",
+      },
+      {
+        title: "星宿",
+        image: "../assets/imgs/wish-detalis/watch/past/星宿.png",
+      },
+    ],
+  },
+  施肥与灌溉: {
+    today: [
+      {
+        title: "机械浇灌",
+        image: "../assets/imgs/wish-detalis/water/today/机械浇灌.png",
+      },
+      {
+        title: "水肥一体化",
+        image: "../assets/imgs/wish-detalis/water/today/滴灌水肥一体化.png",
+      },
+      {
+        title: "精准施肥",
+        image: "../assets/imgs/wish-detalis/water/today/精准施肥机器.png",
+      },
+      {
+        title: "无人机喷洒",
+        image: "../assets/imgs/wish-detalis/water/today/无人机喷洒.png",
+      },
+      {
+        title: "中心轴旋喷灌",
+        image: "../assets/imgs/wish-detalis/water/today/中心轴旋转喷灌.png",
+      },
+    ],
+    past: [
+      {
+        title: "畜粪草灰施肥",
+        image: "../assets/imgs/wish-detalis/water/past/畜粪草灰施肥.png",
+      },
+      {
+        title: "灌溉劳作",
+        image: "../assets/imgs/wish-detalis/water/past/灌溉劳作.png",
+      },
+      {
+        title: "灌溉引水",
+        image: "../assets/imgs/wish-detalis/water/past/灌溉引水.png",
+      },
+      {
+        title: "手撒肥料",
+        image: "../assets/imgs/wish-detalis/water/past/手撒肥料.png",
+      },
+      {
+        title: "水车灌溉",
+        image: "../assets/imgs/wish-detalis/water/past/水车灌溉.png",
+      },
+    ],
+  },
+  生产工具与技术: {
+    today: [
+      {
+        title: "大型联合收割机",
+        image: "../assets/imgs/wish-detalis/tools/today/大型联合收割机.png",
+      },
+      {
+        title: "机器人采摘",
+        image: "../assets/imgs/wish-detalis/tools/today/机器人采摘.png",
+      },
+      {
+        title: "农机维护车间",
+        image: "../assets/imgs/wish-detalis/tools/today/农机维护车间.png",
+      },
+      {
+        title: "无人驾驶播种机",
+        image: "../assets/imgs/wish-detalis/tools/today/无人驾驶播种车.png",
+      },
+      {
+        title: "智能插秧机",
+        image: "../assets/imgs/wish-detalis/tools/today/智能插秧机.png",
+      },
+      {
+        title: "智能温室控制系统",
+        image: "../assets/imgs/wish-detalis/tools/today/智能温室控制系统.png",
+      },
+      {
+        title: "GPS农机导航仪",
+        image: "../assets/imgs/wish-detalis/tools/today/GPS农机导航仪.png",
+      },
+    ],
+    past: [
+      {
+        title: "耕牛犁地",
+        image: "../assets/imgs/wish-detalis/tools/past/耕牛犁地.png",
+      },
+      {
+        title: "背篓运输",
+        image: "../assets/imgs/wish-detalis/tools/past/背篓运输.png",
+      },
+      {
+        title: "手工插秧",
+        image: "../assets/imgs/wish-detalis/tools/past/手工插秧.png",
+      },
+      {
+        title: "镰刀收割",
+        image: "../assets/imgs/wish-detalis/tools/past/镰刀收割.png",
+      },
+      {
+        title: "木锄劳作",
+        image: "../assets/imgs/wish-detalis/tools/past/木锄劳作.png",
+      },
+      {
+        title: "人工打谷",
+        image: "../assets/imgs/wish-detalis/tools/past/人工打谷.png",
+      },
+    ],
+  },
 };
 // details默认隐藏，点击查看后出现
 document.addEventListener("DOMContentLoaded", function () {
   const details = document.querySelector(".details");
   const viewButtons = document.querySelectorAll(".card button");
+  const p3Gray = document.querySelector(".p3-gray");
 
   // 初始隐藏详情
   details.style.display = "none";
+  // 初始隐藏灰色背景
+  p3Gray.style.display = "none";
 
   // 为每个按钮添加点击事件
   viewButtons.forEach((button) => {
     button.addEventListener("click", function () {
+      // Jump to page-3 section
+      document.querySelector(".page-3").scrollIntoView({
+        behavior: "smooth",
+      });
+      // 显示灰色背景
+      p3Gray.style.display = "block";
+
       const buttonValue = button.value; // 读取button的value值
 
       // Get the corresponding data based on button value
@@ -227,38 +241,72 @@ document.addEventListener("DOMContentLoaded", function () {
       todayCarousel.innerHTML = "";
       pastCarousel.innerHTML = "";
 
-      // Render today's items
-      data.today.forEach((item) => {
-        const li = document.createElement("li");
-        const img = document.createElement("img");
-        const span = document.createElement("span");
-        img.src = item.image;
-        img.alt = item.title;
-        span.className = "name";
-        span.textContent = item.title;
-        li.appendChild(img);
-        li.appendChild(span);
-        todayCarousel.appendChild(li);
-      });
+      // Render today's items 10 times
+      for (let i = 0; i < 10; i++) {
+        data.today.forEach((item) => {
+          const li = document.createElement("li");
+          const img = document.createElement("img");
+          const span = document.createElement("span");
+          img.src = item.image;
+          img.alt = item.title;
+          span.className = "name";
+          span.textContent = item.title;
+          li.appendChild(img);
+          li.appendChild(span);
+          todayCarousel.appendChild(li);
+        });
+      }
 
-      // Render past items
-      data.past.forEach((item) => {
-        const li = document.createElement("li");
-        const img = document.createElement("img");
-        const span = document.createElement("span");
-        img.src = item.image;
-        img.alt = item.title;
-        span.className = "name";
-        span.textContent = item.title;
-        li.appendChild(img);
-        li.appendChild(span);
-        pastCarousel.appendChild(li);
-      });
+      // Render past items 10 times
+      for (let i = 0; i < 10; i++) {
+        data.past.forEach((item) => {
+          const li = document.createElement("li");
+          const img = document.createElement("img");
+          const span = document.createElement("span");
+          img.src = item.image;
+          img.alt = item.title;
+          span.className = "name";
+          span.textContent = item.title;
+          li.appendChild(img);
+          li.appendChild(span);
+          pastCarousel.appendChild(li);
+        });
+      }
 
       // 显示详情区域
+      const today = document.querySelector(".details .today");
+      const past = document.querySelector(".details .past");
+      const closeBT = document.querySelector(".details .close-bt");
       details.style.display = "block";
+      // 从右出场
+      today.style.transform = "translateX(100%)";
+      today.style.transition = "transform 1s ease-out";
+      setTimeout(() => {
+        today.style.transform = "translateX(0)";
+      }, 0);
+        // 关闭按钮也从右出场
+        closeBT.style.transform = "translateX(100%)";
+        closeBT.style.transition = "transform 1s ease-out";
+        setTimeout(() => {
+            closeBT.style.transform = "translateX(0)";
+        }, 0);
+      // 从左出场
+      past.style.transform = "translateX(-100%)";
+      past.style.transition = "transform 1s ease-out";
+      setTimeout(() => {
+        past.style.transform = "translateX(0)";
+      }, 0);
+
       // 隐藏所有查看按钮
       viewButtons.forEach((btn) => (btn.style.display = "none"));
     });
   });
+    // 关闭按钮点击事件
+    const closeButton = document.querySelector(".details .close-bt");
+    closeButton.addEventListener("click", () => {
+        details.style.display = "none";
+        p3Gray.style.display = "none";
+        viewButtons.forEach(btn => btn.style.display = "block");
+
+    });
 });

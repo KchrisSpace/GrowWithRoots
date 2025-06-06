@@ -408,7 +408,7 @@ body::-webkit-scrollbar {
 }
 .page-3 .card {
   transform: translateY(30px);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  transition: transform 1s box-shadow 1s;
   cursor: pointer;
   z-index: -1; /* 保证卡片在底层但可被hover */
   pointer-events: auto; /* 确保可以响应鼠标事件 */
