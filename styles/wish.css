@@ -69,11 +69,13 @@ body::-webkit-scrollbar {
 .page-1 .wish-bg {
   width: 90%;
   height: 75%;
+  position: absolute;
   object-fit: fill;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 12%;
+  transform: translateX(100vw);
 }
+
 .page-1 .sun {
   width: 13%;
 
@@ -331,7 +333,7 @@ body::-webkit-scrollbar {
     }
   }
   .en-text {
-    font-family: "PingFang-SC-Medium";
+    font-family: "fangfang";
     font-size: 3rem;
     color: #3f271c;
     opacity: 0.8;
@@ -348,14 +350,15 @@ body::-webkit-scrollbar {
   position: absolute;
   display: flex; /* 新增 */
   flex-direction: column; /* 新增 */
-  gap: 20px; /* 新增 */
+  gap: 10px; /* 新增 */
   justify-content: center; /* 垂直居中 */
   align-items: center; /* 水平居中 */
   h3 {
-    font-family: "PingFang-SC-Medium";
-    font-size: 2rem;
+    font-family: "shangshouxingyu";
+    font-size: 3rem;
     line-height: 1.8;
-    letter-spacing: 0.6rem;
+    letter-spacing: 0.2rem;
+    font-weight: 500;
     color: #fff;
     text-align: center;
     position: relative;
@@ -385,7 +388,7 @@ body::-webkit-scrollbar {
   .card-2 {
     /* width: 70%; */
     scale: 0.8;
-    top: 22%;
+    top: 24%;
     left: 40%;
     z-index: -1;
 
@@ -400,7 +403,7 @@ body::-webkit-scrollbar {
     top: 23%;
     right: 8%;
     rotate: -2deg;
-    z-index: -1;
+    z-index: -3;
   }
 }
 .page-3 .card {
@@ -502,7 +505,7 @@ body::-webkit-scrollbar {
     }
   }
   .en-text {
-    font-family: "PingFang-SC-Medium";
+    font-family: "fangfang";
     font-size: 3rem;
     color: #3f271c;
     opacity: 0.8;
@@ -731,3 +734,4 @@ body::-webkit-scrollbar {
     transform: scale(1);
   }
 }
+ 

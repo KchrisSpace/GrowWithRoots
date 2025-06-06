@@ -1,58 +1,71 @@
 // 导航栏
-const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector(".navbar");
 let lastScrollY = window.scrollY;
 let ticking = false;
 
 function handleScroll() {
   if (window.scrollY === 0) {
-    navbar.style.top = '0';
-    navbar.style.transition = 'top 0.3s';
+    navbar.style.top = "0";
+    navbar.style.transition = "top 0.3s";
   } else if (window.scrollY > lastScrollY) {
     // 向下滚动，隐藏navbar
-    navbar.style.top = '-100px'; // 假设navbar高度为60px
+    navbar.style.top = "-100px"; // 假设navbar高度为60px
   } else {
     // 向上滚动，显示navbar
-    navbar.style.top = '0';
+    navbar.style.top = "0";
   }
   lastScrollY = window.scrollY;
   ticking = false;
 }
 
-window.addEventListener('scroll', function () {
+window.addEventListener("scroll", function () {
   if (!ticking) {
     window.requestAnimationFrame(handleScroll);
     ticking = true;
   }
 });
+// picture进入
+window.addEventListener("DOMContentLoaded", () => {});
+
 // tips进入
 // tips依次从右向左进入动画
-window.addEventListener('DOMContentLoaded', () => {
-  const tips = document.querySelectorAll('.select .tip');
+window.addEventListener("DOMContentLoaded", () => {
+  // bg
+  const bg = document.querySelector(".wish-bg");
+  bg.style.transform = "translateX(100vw)";
+  bg.style.opacity = "0";
+  bg.style.transition = "transform 1s cubic-bezier(.77,0,.18,1), opacity 0.7s";
+  setTimeout(() => {
+    bg.style.transform = "translateX(0)";
+    bg.style.opacity = "1";
+  }, 0);
+  // tips
+  const tips = document.querySelectorAll(".select .tip");
   tips.forEach((tip, i) => {
-    // tip.style.transform = 'translateX(100vw)';
-    tip.style.opacity = '0';
+    tip.style.transform = "translateX(100vw)";
+    tip.style.opacity = "0";
     tip.style.transition =
-      'transform 0.7s cubic-bezier(.77,0,.18,1), opacity 0.7s';
+      "transform 1s cubic-bezier(.77,0,.18,1), opacity 0.7s";
     setTimeout(() => {
-      tip.style.transform = 'translateX(0)';
-      tip.style.opacity = '1';
-    }, 300 + i * 450);
+      tip.style.transform = "translateX(0)";
+      tip.style.opacity = "1";
+    }, 600 + i * 450);
   });
 });
 // cow向左
 // cow向左动画
-window.addEventListener('DOMContentLoaded', () => {
-  const cow = document.querySelector('.cow');
+window.addEventListener("DOMContentLoaded", () => {
+  const cow = document.querySelector(".cow");
   if (!cow) return;
 
   // 初始状态
-  cow.style.transition = 'transform 10s linear';
-  cow.style.transform = 'translateX(0) ';
+  cow.style.transition = "transform 10s linear";
+  cow.style.transform = "translateX(0) ";
 
   function animateCow(entries) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        cow.style.transform = 'translateX(-34vw)';
+        cow.style.transform = "translateX(-34vw)";
       }
     });
   }
@@ -65,38 +78,40 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // car向右
-window.addEventListener('DOMContentLoaded', () => {
-  const car = document.querySelector('.car');
-  if (!car) return;
 
-  car.style.transition = 'transform 10s linear';
-  car.style.transform = 'translateX(0)';
+window.addEventListener("DOMContentLoaded", () => {
+  const car = document.querySelector(".car");
+  if (!car) return; 
+ 
 
-  function animateCar(entries) {
+  // 初始状态
+  car.style.transition = "transform 10s linear";
+  car.style.transform = "translateX(0) ";
+
+  function animateCow(entries) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          car.style.transform = 'translateX(35vw)';
-        }, 500);
+        car.style.transform = "translateX(34vw)";
       }
     });
   }
 
-  const observer = new IntersectionObserver(animateCar, {
-    threshold: 1, // 100%可见时触发
+  const observer = new IntersectionObserver(animateCow, {
+    threshold: 0.5, // 50%可见时触发
   });
 
   observer.observe(car);
 });
+
 // 当page3进入页面时
-window.addEventListener('DOMContentLoaded', () => {
-  const page3 = document.querySelector('.page-3');
+window.addEventListener("DOMContentLoaded", () => {
+  const page3 = document.querySelector(".page-3");
   if (!page3) return;
 
-  const cards = page3.querySelectorAll('.cards .card');
+  const cards = page3.querySelectorAll(".cards .card");
   cards.forEach((card) => {
-    card.style.transform = 'translateY(80px)';
-    card.style.transition = 'transform 0.6s  opacity 0.6s';
+    card.style.transform = "translateY(80px)";
+    card.style.transition = "transform 0.6s  opacity 0.6s";
   });
 
   function animateCards(entries) {
@@ -105,7 +120,7 @@ window.addEventListener('DOMContentLoaded', () => {
         cards.forEach((card, i) => {
           setTimeout(() => {
             card.style.zIndex = "1";
-            card.style.transform = 'translateY(0px)';
+            card.style.transform = "translateY(0px)";
           }, i * 600);
         });
       }
@@ -119,34 +134,34 @@ window.addEventListener('DOMContentLoaded', () => {
   observer.observe(page3);
 });
 //  种子掉下
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
-    trigger: '.seed',
-    start: 'top center',
-    end: '+=500 center',
+    trigger: ".seed",
+    start: "top center",
+    end: "+=500 center",
     markers: false,
     scrub: true,
     animation: gsap
       .timeline()
-      .to('.seed', {
+      .to(".seed", {
         y: 460,
-        ease: 'none',
+        ease: "none",
       })
       .to(
-        '.left-hand',
+        ".left-hand",
         {
           x: 90,
-          ease: 'none',
+          ease: "none",
         },
-        '<'
+        "<"
       )
       .to(
-        '.right-hand',
+        ".right-hand",
         {
           x: -90,
-          ease: 'none',
+          ease: "none",
         },
-        '<'
+        "<"
       ),
   });
 });
