@@ -81,14 +81,16 @@ body::-webkit-scrollbar {
   z-index: 15;
   left: 0;
   top: 0;
-  animation: scale 1.5s linear infinite alternate;
+  animation: scale 2.5s linear infinite alternate;
 }
 .page-1 .cover-bg {
   width: 100%;
   height: 30%;
+  position: absolute;
+
   object-fit: fill;
   z-index: 10;
-  bottom: 0;
+  bottom: -5px;
 }
 .page-1 .green-bg {
   width: 100%;
@@ -209,21 +211,21 @@ body::-webkit-scrollbar {
     position: absolute;
     top: 8%;
     left: 28%;
-    animation: swing 2s infinite alternate;
+    animation: swing 3s infinite alternate;
   }
   .cloud2 {
     width: 15%;
     position: absolute;
     top: 45%;
     left: 14%;
-    animation: swing 2s infinite alternate 0.5s;
+    animation: swing 3s infinite alternate 0.5s;
   }
   .cloud3 {
     width: 20%;
     position: absolute;
     top: 50%;
     left: 78%;
-    animation: swing 2s infinite alternate 1s;
+    animation: swing 3s infinite alternate 1s;
 
     transform: scaleX(-1);
   }
@@ -232,7 +234,7 @@ body::-webkit-scrollbar {
     position: absolute;
     top: 8%;
     right: 5%;
-    animation: scale 2s infinite alternate;
+    animation: scale 3s infinite alternate;
   }
 }
 .page-2 .people {
@@ -413,7 +415,9 @@ body::-webkit-scrollbar {
 }
 .page-3 .card button:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 20px 5px #ffd24d;
+  box-shadow: 0 0 20px 5px #ffffff85;
+  scale: 1.1;
+  color: #137c41;
   transition: all 0.3s;
 }
 
@@ -432,7 +436,7 @@ body::-webkit-scrollbar {
 .page-4 .slogan span {
   font-family: "shangshouxingyu";
   font-size: 10rem;
-  color: #0b572d;
+  color: #0b572da4;
   font-weight: 400;
   text-align: center;
   letter-spacing: 3rem;
@@ -681,6 +685,25 @@ body::-webkit-scrollbar {
   left: 0;
   z-index: -1;
   overflow: hidden;
+}
+.page-7 .scroll-photos {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-type: x mandatory; /* 启用横向滚动对齐 */
+}
+
+.page-7 .scroll-photos .photo {
+  width: 15%;
+  height: 40%;
+  background-image: url(../assets/imgs/wish/page-7/photo-bg.png);
+  background-size: contain;
+  border: 1px solid #000;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* 动画*/
