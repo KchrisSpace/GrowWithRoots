@@ -137,20 +137,21 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".seed",
-    start: "top center",
-    end: "+=500 center",
+    start: "bottom bottom",
+    end: "+=600 center",
     markers: false,
     scrub: true,
     animation: gsap
       .timeline()
       .to(".seed", {
-        y: 460,
+        y: 520,
         ease: "none",
       })
       .to(
         ".left-hand",
         {
-          x: 90,
+          x: 520,
+          y:150,
           ease: "none",
         },
         "<"
@@ -158,7 +159,8 @@ window.addEventListener("DOMContentLoaded", () => {
       .to(
         ".right-hand",
         {
-          x: -90,
+          x: -520,
+          y:150,
           ease: "none",
         },
         "<"

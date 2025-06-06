@@ -652,17 +652,19 @@ body::-webkit-scrollbar {
   overflow: hidden;
   .left-hand {
     position: absolute;
-    top: 10%;
-    left: -10%;
-    height: 90%;
-    width: 70%;
+    top: -40%;
+    left: -80%;
+    height: 100%;
+    width: 120%;
+    transform: rotate(15deg);
   }
   .right-hand {
     position: absolute;
-    top: 9%;
-    right: -10%;
-    height: 90%;
-    width: 70%;
+    top: -40%;
+    right: -80%;
+    height: 100%;
+    width: 120%;
+    transform: rotate(-15deg);
   }
   .seed {
     position: absolute;
@@ -734,4 +736,3 @@ body::-webkit-scrollbar {
     transform: scale(1);
   }
 }
- 
