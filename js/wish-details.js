@@ -310,3 +310,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 });
+// 政策树
+const btn1 = document.querySelector(".btn-1");
+const btn2 = document.querySelector(".btn-2");
+const btn3 = document.querySelector(".btn-3");
+const btn4 = document.querySelector(".btn-4");
+btn1.addEventListener("click", () => {
+  window.location.href = './policytree-1.html';
+}
+);
+btn2.addEventListener("click", () => {
+  window.location.href = './policytree-2.html';
+}
+);
+btn3.addEventListener("click", () => {
+  window.location.href = './policytree-3.html';
+}
+);
+btn4.addEventListener("click", () => {
+  window.location.href = './policytree-4.html';
+}
+);

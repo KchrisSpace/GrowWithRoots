@@ -20,6 +20,9 @@ body {
     font-size: 8rem;
   }
 }
+.ani-title {
+  animation: ani-title 1.5s linear forwards;
+}
 
 .container {
   position: relative;
@@ -213,24 +216,17 @@ g {
     transform: translateX(0) scaleX(-1);
   }
 }
-/* 标题动画 */
-.ani-title {
-  animation: ani-title 1s linear forwards;
-  /* filter: blur(2px); */
-}
 @keyframes ani-title {
   from {
-    letter-spacing: 1rem;
-
-    /* filter: blur(0px); */
+    opacity: 1;
   }
   to {
-    letter-spacing: 30px;
-    font-size: 10rem;
     opacity: 0;
-    /* filter: blur(10px); */
+
+    letter-spacing: 3rem;
   }
 }
+
 /* 消失 */
 .disappear {
   animation: disappear 1s linear forwards !important;
