@@ -699,7 +699,8 @@ body::-webkit-scrollbar {
   width: 70%;
   position: absolute;
   top: -20px;
-  left: 0;
+  left: -10px;
+  overflow: hidden;
   z-index: -1;
   overflow: hidden;
 }
@@ -795,7 +796,7 @@ body::-webkit-scrollbar {
 .page-7 .photos .photo.active::after {
   opacity: 1;
 }
-.page-7 .photos .photo:hover{
+.page-7 .photos .photo:hover {
   position: relative;
   transform: translateY(-10px) scale(1.2);
   background-image: url(../assets/imgs/wish/page-7/photo-bg.png);
@@ -821,7 +822,6 @@ body::-webkit-scrollbar {
   top: -25vh;
   left: 1vw;
 }
-
 
 .page-7 .intro {
   position: absolute;

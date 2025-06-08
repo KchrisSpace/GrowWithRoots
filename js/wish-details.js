@@ -330,6 +330,27 @@ btn4.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const photos = document.querySelectorAll(".page-7 .photos .photo");
   let currentIndex = 0;
+  // 点击时可跳转页面
+  photos.forEach((photo, index) => {
+    photo.addEventListener("click", () => {
+      // 跳转到对应的页面
+      switch (index) {
+        case 0:
+          window.location.href = "./story-detail.html";
+          localStorage.setItem('story-currentIndex', '0');
+          break;
+        case 1:
+          window.location.href = "./story-detail.html";
+          localStorage.setItem('story-currentIndex', '1');
+          break;
+        case 2:
+          window.location.href = "./story-detail.html";
+          localStorage.setItem('story-currentIndex', '2');
+          break;
+      }
+    });
+  });
+
 
   function cyclePhotos() {
     // Remove active from all photos
