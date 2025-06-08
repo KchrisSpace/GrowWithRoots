@@ -284,12 +284,12 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         today.style.transform = "translateX(0)";
       }, 0);
-        // 关闭按钮也从右出场
-        closeBT.style.transform = "translateX(100%)";
-        closeBT.style.transition = "transform 1s ease-out";
-        setTimeout(() => {
-            closeBT.style.transform = "translateX(0)";
-        }, 0);
+      // 关闭按钮也从右出场
+      closeBT.style.transform = "translateX(100%)";
+      closeBT.style.transition = "transform 1s ease-out";
+      setTimeout(() => {
+        closeBT.style.transform = "translateX(0)";
+      }, 0);
       // 从左出场
       past.style.transform = "translateX(-100%)";
       past.style.transition = "transform 1s ease-out";
@@ -301,14 +301,13 @@ document.addEventListener("DOMContentLoaded", function () {
       viewButtons.forEach((btn) => (btn.style.display = "none"));
     });
   });
-    // 关闭按钮点击事件
-    const closeButton = document.querySelector(".details .close-bt");
-    closeButton.addEventListener("click", () => {
-        details.style.display = "none";
-        p3Gray.style.display = "none";
-        viewButtons.forEach(btn => btn.style.display = "block");
-
-    });
+  // 关闭按钮点击事件
+  const closeButton = document.querySelector(".details .close-bt");
+  closeButton.addEventListener("click", () => {
+    details.style.display = "none";
+    p3Gray.style.display = "none";
+    viewButtons.forEach((btn) => (btn.style.display = "block"));
+  });
 });
 // 政策树
 const btn1 = document.querySelector(".btn-1");
@@ -316,18 +315,50 @@ const btn2 = document.querySelector(".btn-2");
 const btn3 = document.querySelector(".btn-3");
 const btn4 = document.querySelector(".btn-4");
 btn1.addEventListener("click", () => {
-  window.location.href = './policytree-1.html';
-}
-);
+  window.location.href = "./policytree-1.html";
+});
 btn2.addEventListener("click", () => {
-  window.location.href = './policytree-2.html';
-}
-);
+  window.location.href = "./policytree-2.html";
+});
 btn3.addEventListener("click", () => {
-  window.location.href = './policytree-3.html';
-}
-);
+  window.location.href = "./policytree-3.html";
+});
 btn4.addEventListener("click", () => {
-  window.location.href = './policytree-4.html';
-}
-);
+  window.location.href = "./policytree-4.html";
+});
+// 三卡片页面
+document.addEventListener("DOMContentLoaded", () => {
+  const photos = document.querySelectorAll(".page-7 .photos .photo");
+  let currentIndex = 0;
+
+  function cyclePhotos() {
+    // Remove active from all photos
+    photos.forEach((photo) => photo.classList.remove("active"));
+
+    // Add active to current photo
+    photos[currentIndex].classList.add("active");
+
+    // 根据索性渲染intro
+    const title = document.querySelector(".target");
+    const subtitle = document.querySelector(".subtitle");
+    const titles = ["勤者阿尾", "十个勤天", "田下一米"];
+    const subtitles = [
+      "来自祖祖辈辈辛勤耕作的家庭，从小在田野里长大。阿尾，以田为伴，耕作技艺精湛，作为一名农耕师，开展多种作物种植实验。",
+      "十位朝气蓬勃的年轻人走进乡村，用两年多的时间进行播种灌溉、施肥、收获、用汗水与努力见证一粒粒种子要成美田，一片农野的荒野变成田园。",
+
+      "自从阿米来到农场，田里多了欢声笑语。她每日认真除草施肥、精心照料庄稼，与禾苗一同生长、一同成熟。",
+    ];
+    function updateContent() {
+      title.textContent = titles[currentIndex];
+      subtitle.textContent = subtitles[currentIndex];
+    }
+    updateContent();
+    // 更新索引并循环
+    currentIndex = (currentIndex + 1) % photos.length;
+
+    setTimeout(cyclePhotos, 3000);
+  }
+
+  // Start the cycle
+  cyclePhotos();
+});
