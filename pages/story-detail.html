@@ -5,41 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>农人故事</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            overflow-y: hidden;
+    <link rel="stylesheet" href="../styles/story-detail.css">
+    <link rel="stylesheet" href="../styles/reset.css">
 
-        }
 
-        .bg {
-            background-image: url('../assets/imgs/background.png');
-            width: 100vw;
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .bg-top {
-            width: 70%;
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            overflow: hidden;
-        }
-    </style>
 </head>
 
 <body>
     <div class="bg">
+        <button class="back-button">
+            < </button>
+                <img src="../assets/imgs/story-detail/bg-top.png" alt="" class="bg-top">
+                <div class="title">
+                    <p class="t1">十个勤劳</p>
+                    </p>
+                    <p class="t2">
+                        他们通过实际行动，展示了新时代“新农人”的风采，推动了农业现代化和乡村振兴。
+                    </p>
+                </div>
+                <div class="scroll-area">
+                    <div class="bg-line">
+                        <img src="../assets/imgs/story-detail/line.png" alt="">
+                    </div>
+                    <div class="scroll-content">
+                        <!-- 按需渲染 -->
+                    </div>
 
-        <img src="../assets/imgs/story-detail/bg-top.png" alt="" class="bg-top">
 
-
-    </div>
-
+                </div>
+                <script src="../js/story-detail.js"></scripts>
 </body>
 
 </html>
