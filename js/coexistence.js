@@ -1,3 +1,71 @@
+// 添加TV底部动画
+function animateSvg() {
+  const tvSvgs = document.querySelectorAll('.tv-bottom svg');
+  tvSvgs.forEach((svg) => {
+    gsap.to(svg, {
+      y: '-=10',
+      duration: 2,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      delay: Math.random() * 4, // 随机延迟让动画错开
+    });
+   
+  });
+}
+
+// 添加24节气麦穗摆动动画
+function animateSvgSwing() {
+  const svg1 = document.querySelectorAll('.wheatear-1 svg');
+  const svg2 = document.querySelectorAll('.wheatear-2 svg');
+  if (!svg1) return;
+
+  gsap.to(svg1[0], {
+    rotation: 2,
+    duration: 2,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
+  });
+  gsap.to(svg1[1], {
+    rotation: 2,
+    duration: 2,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
+  });
+  gsap.to(svg2[0], {
+    rotation: -2,
+    duration: 2,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
+  });
+  gsap.to(svg2[1], {
+    rotation: -2,
+    duration: 2,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
+  });
+}
+// 控制麦穗闪动
+const feColorMatrix = document.querySelector("#filter0_d_926_1806 feColorMatrix[type='matrix']");
+function animateGlowAlpha() {
+  const baseAlpha = 1.2; // 基础透明度（建议 0 ~ 1）
+  const amplitude = 0.5; // 振幅（建议 0 ~ 1）
+  const speed = 0.002; // 闪烁速度（值越小越慢）
+
+  let alpha = baseAlpha + Math.sin(Date.now() * speed) * amplitude;
+  alpha = Math.max(0, Math.min(1, alpha)); // 限制在 0 ~ 1 之间
+
+  const values = `0 0 0 0 1 0 0 0 0 0.946047 0 0 0 0 0.838141 0 0 0 ${alpha} 0`;
+  feColorMatrix.setAttribute('values', values);
+
+  requestAnimationFrame(animateGlowAlpha);
+}
+animateGlowAlpha();
+// 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
   const accordionItems = document.querySelectorAll('.accordion-item');
   const contentData = [
@@ -109,11 +177,9 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 
   // 观察所有 chunk 元素
-  document
-    .querySelectorAll('.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5')
-    .forEach((chunk) => {
-      observer.observe(chunk);
-    });
+  document.querySelectorAll('.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5').forEach((chunk) => {
+    observer.observe(chunk);
+  });
 
   // 创建星星
   function createStars() {
@@ -142,45 +208,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   createStars();
 
-  // 添加24节气麦穗摆动动画
-  function animateSvgSwing() {
-    const svg1 = document.querySelectorAll('.wheatear-1 svg');
-    const svg2 = document.querySelectorAll('.wheatear-2 svg');
-    if (!svg1) return;
-
-    gsap.to(svg1[0], {
-      rotation: 2,
-      duration: 2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
-    gsap.to(svg1[1], {
-      rotation: 2,
-      duration: 2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
-    gsap.to(svg2[0], {
-      rotation: -2,
-      duration: 2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
-    gsap.to(svg2[1], {
-      rotation: -2,
-      duration: 2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
-  }
-
   // 在页面加载完成后初始化动画
   window.addEventListener('load', () => {
     animateSvgSwing();
+    animateSvg();
   });
 
   // 创建 Intersection Observer
@@ -1185,9 +1216,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 处理text-3的样式
-        document
-          .querySelectorAll('.text-3')
-          .forEach((el) => el.classList.remove('text-6'));
+        document.querySelectorAll('.text-3').forEach((el) => el.classList.remove('text-6'));
         this.classList.add('text-6');
 
         // 初始化状态管理
@@ -1272,9 +1301,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const parentElement = this.closest('.text-2');
       if (parentElement) {
         // 获取对应的 text-3 元素
-        const index = Array.from(document.querySelectorAll('.text-2')).indexOf(
-          parentElement
-        );
+        const index = Array.from(document.querySelectorAll('.text-2')).indexOf(parentElement);
         const text3Element = document.querySelectorAll('.text-3')[index];
 
         if (text3Element) {
@@ -1302,31 +1329,44 @@ document.addEventListener('DOMContentLoaded', function () {
           circle.setAttribute('fill', 'white');
         });
       }
-
-      // 更新text-1样式
-      // const text1Element = document.querySelector('.text-1');
-      // if (text1Element) {
-      //   text1Element.classList.add('text-6');
-      // }
     }
   }
+  // 当鼠标位于top-container区域时，滚轮滚动一次的高度为屏幕的高度
+  const topContainer = document.querySelector('.top-container');
+  const memoryContainer=document.querySelector('.memory-container');
+  // 当鼠标位于memory-container区域时，滚轮滚动一次的高度为屏幕的高度
+  // 防止滚轮事件过于频繁触发导致页面滚动过快
+  // 使用防抖处理，避免滚轮事件过于频繁触发
+  let wheelTimeout = null;
+  if (topContainer) {
+    topContainer.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      if (wheelTimeout) return;
+      wheelTimeout = setTimeout(() => {
+        wheelTimeout = null;
+      }, 600); // 600ms防抖
+
+      if (e.deltaY > 0) {
+        window.scrollBy({ top: window.innerHeight, left: 0, behavior: 'smooth' });
+      } else if (e.deltaY < 0) {
+        window.scrollBy({ top: -window.innerHeight, left: 0, behavior: 'smooth' });
+      }
+    }, { passive: false });
+  }
+  if (memoryContainer) {
+    memoryContainer.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      if (wheelTimeout) return;
+      wheelTimeout = setTimeout(() => {
+        wheelTimeout = null;
+      }, 600); // 600ms防抖
+
+      // if (e.deltaY > 0) {
+      //   window.scrollBy({ top: window.innerHeight, left: 0, behavior: 'smooth' });
+      // } 
+       if (e.deltaY < 0) {
+        window.scrollBy({ top: -window.innerHeight, left: 0, behavior: 'smooth' });
+      }
+    }, { passive: false });
+  }
 });
-const feColorMatrix = document.querySelector(
-  "#filter0_d_926_1806 feColorMatrix[type='matrix']"
-);
-
-function animateGlowAlpha() {
-  const baseAlpha = 1.2; // 基础透明度（建议 0 ~ 1）
-  const amplitude = 0.5; // 振幅（建议 0 ~ 1）
-  const speed = 0.002; // 闪烁速度（值越小越慢）
-
-  let alpha = baseAlpha + Math.sin(Date.now() * speed) * amplitude;
-  alpha = Math.max(0, Math.min(1, alpha)); // 限制在 0 ~ 1 之间
-
-  const values = `0 0 0 0 1 0 0 0 0 0.946047 0 0 0 0 0.838141 0 0 0 ${alpha} 0`;
-  feColorMatrix.setAttribute('values', values);
-
-  requestAnimationFrame(animateGlowAlpha);
-}
-
-animateGlowAlpha();

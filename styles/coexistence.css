@@ -33,6 +33,7 @@
 .tv-container {
   position: relative;
   z-index: 10;
+  scale: 0.9;
 }
 .tv-container img {
   position: relative;
@@ -54,15 +55,22 @@ video {
 }
 .tv-bottom {
   position: absolute;
-  bottom: -10rem;
+  bottom: 0rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
   width: 90%;
 }
+
 .tv-bottom svg:nth-child(2) {
-  transform: translateY(10rem);
+  transform: translateY(6rem);
+}
+.tv-bottom svg:nth-child(3) {
+  transform: translateY(4rem);
+}
+.tv-bottom svg:nth-child(4) {
+  transform: translateY(6rem);
 }
 .middle-container {
   width: 100%;
@@ -73,11 +81,12 @@ video {
   background-position: center;
   position: relative;
 }
-.top-svg svg {
+
+/* .top-svg svg {
   width: 100%;
   position: relative;
   top: -5rem;
-}
+} */
 .accordion {
   width: 100%;
   padding: 1.5rem;
@@ -151,7 +160,7 @@ video {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  transform: translateY(-25%);
+  /* transform: translateY(-25%); */
 }
 .scroll-flat {
   font-family: fangfang;
@@ -572,7 +581,7 @@ video {
 }
 .title-text {
   font-family: PingFang-SC-Medium;
-  font-size:1.5rem;
+  font-size: 1.5rem;
   line-height: 150%;
   letter-spacing: 0%;
   color: rgba(255, 255, 255, 0.8);
@@ -590,12 +599,83 @@ video {
 }
 .constellation {
   scale: 0.8;
-  width:230px;
-  height:150px;
+  width: 230px;
+  height: 150px;
 }
-.constellation svg{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    top: -0.5rem;
+.constellation svg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: -0.5rem;
+}
+.land-title-1,
+.land-title-2 {
+  color: #fbf1d7;
+  font-weight: 400;
+}
+.land-green-title {
+  margin-top: 0rem;
+  padding-top: 1rem;
+  font-family: 'fangfang';
+  line-height: 150%;
+  font-size: 4rem;
+  letter-spacing: -1.1%;
+  margin-left: 8rem;
+  position: absolute;
+}
+.land-green-title h6 {
+  font-size: 2rem;
+  padding: 0;
+  opacity: 0.7;
+  transform: translateY(-2rem);
+}
+.land-green-title > div,
+h5 + span {
+  display: flex;
+  align-items: center;
+}
+.land-green-title img {
+  scale: 0.8;
+}
+.memory-container {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #1e1e1e;
+  position: relative;
+}
+.modal-container {
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  position: absolute;
+  z-index: 20;
+}
+.bg-text {
+  width: 100%;
+  font-family: 'Ajia';
+  font-weight: 400;
+  font-size: 23rem;
+  line-height: 150%;
+  letter-spacing: 29%;
+  color: #faf2d5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  opacity: 0.1;
+  z-index: 0;
+  text-align: center;
+}
+.bottom-text {
+  width: 100%;
+  font-family: 'PingFang-SC-Medium';
+  font-size: 2rem;
+  line-height: 150%;
+  letter-spacing: -1.1%;
+  text-align: center;
+  color: #d9d9d9;
+  position: absolute;
+  bottom: 6rem;
+  z-index: 30;
 }
