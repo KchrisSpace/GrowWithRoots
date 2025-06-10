@@ -1,0 +1,15 @@
+body{
+  background-color: #1E1E1E;
+  overflow: hidden;
+  position: absolute;
+}
+.waterfall-container {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+.waterfall-img {
+  position: absolute;
+  width: 252px;
+  height: 150px;
+  transform-style: preserve-3d;
+}

@@ -20,8 +20,10 @@ const modelGroup = new THREE.Group(); // 存储所有模型
 // 加载字体文件（Three.js 自带的示例字体）
 const FontLoader = new THREE.FontLoader();
 
+// 记录文字 mesh，便于后续操作
+let textMeshes = [];
 FontLoader.load(
-  '../assets/fonts/AaJiJiaHei_Regular.json', // 字体文件路径
+  '../assets/fonts/AaJiJiaHei_Regular.json',
   function (font) {
     // 拆分文字
     const text = '你还记得粮荒的味道吗';
@@ -75,6 +77,8 @@ FontLoader.load(
       mesh.position.x -= totalWidth / 2;
       scene.add(mesh);
     });
+    // 记录所有文字 mesh
+    textMeshes = meshes.map((m) => m.mesh);
   },
   undefined,
   function (error) {
@@ -105,7 +109,7 @@ scene.add(mainDirLight);
   { intensity: 1.2, position: [5, -2, -5] },
   { intensity: 1.0, position: [0, 5, 0] },
   { intensity: 1.0, position: [0, -5, 0] },
-].forEach(cfg => {
+].forEach((cfg) => {
   const light = new THREE.DirectionalLight(0xffffff, cfg.intensity);
   light.position.set(...cfg.position);
   scene.add(light);
@@ -281,3 +285,52 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+// 点击事件处理
+const bgText = document.querySelector('.bg-text');
+const bottomText = document.querySelector('.bottom-text');
+const memoryContainer = document.querySelector('.memory-container');
+document.querySelector('.clickable-glass').addEventListener('click', () => {
+  // 1. 移除所有文字 mesh
+  textMeshes.forEach((mesh) => scene.remove(mesh));
+  textMeshes = [];
+
+  // 2. 玻璃弹开动画
+  modelGroup.children.forEach((obj, idx) => {
+    const dir = idx % 2 === 0 ? -1 : 1;
+    gsap.to(obj.position, {
+      x: obj.position.x + dir * 5,
+      y: obj.position.y + (Math.random() - 0.5) * 4,
+      z: obj.position.z + (Math.random() - 0.5) * 2,
+      duration: 1.2,
+      ease: 'power2.out',
+    });
+    
+    gsap.to(obj.rotation, {
+      y: obj.rotation.y + dir * Math.PI * 0.5,
+      x: obj.rotation.x + (Math.random() - 0.5) * Math.PI * 0.2,
+      duration: 1.2,
+      ease: 'power2.out',
+      onComplete: () => {
+        window.location.href = '../pages/disaster/index.html';
+      },
+    });
+  });
+// 4.让bgText文字变亮
+  gsap.to(bgText, {
+    // filter: 'brightness(2)', // 变亮，数值可调整
+    textShadow: '0px 0px 4px 0px rgba(168, 168, 168, 1)', // 变亮
+    opacity: 1, // 变为不透明
+    duration: 1,
+    ease: 'power1.inOut'
+  });
+  // 5.让bottomText文字消失
+  gsap.to(bottomText, {
+    opacity: 0, // 变为透明
+    duration: 1,
+    ease: 'power1.inOut',
+    onComplete: () => {
+      bottomText.style.display = 'none'; // 完成后隐藏元素
+    }
+  });
+  
+});

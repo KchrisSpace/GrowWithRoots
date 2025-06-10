@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster</title>
+  <link rel="stylesheet" href="../../styles/reset.css"></link>
+  <link rel="stylesheet" href="../../styles/disaster.css"></link>
+  <script src="../../scripts/gsap.min.js"></script>
+</head>
+<body>
+  <div class="waterfall-container">
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+   <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+  </div>
+<script>
+  const images = document.querySelectorAll('.waterfall-img');
+  const positions = [];
+  images.forEach(img => {
+    const randomX = Math.random() * (window.innerWidth - img.width);
+    const y = window.innerHeight + 50;
+    img.style.position = 'absolute';
+    img.style.left = `${randomX}px`;
+    img.style.top = `${y}px`;
+    positions.push({ x: randomX, y: y });
+  });
+
+  function animateImage(img, i) {
+    // 先把图片放到底部
+    img.style.top = `${positions[i].y}px`;
+    gsap.to(img, {
+      top: -img.height, // 向上移出
+      duration: 2,
+      delay: i * 0.2,
+      ease: "none",
+      onComplete: () => {
+        // 直接重置到底部，不做动画
+        img.style.top = `${positions[i].y}px`;
+        animateImage(img, i);
+      }
+    });
+  }
+
+  images.forEach((img, i) => {
+    animateImage(img, i);
+  });
+</script>
+</body>
+</html>

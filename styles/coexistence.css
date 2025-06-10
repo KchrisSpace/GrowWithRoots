@@ -679,3 +679,26 @@ h5 + span {
   bottom: 6rem;
   z-index: 30;
 }
+.clickable-glass {
+  position: absolute;
+  bottom: 4rem;
+  right: 8rem;
+  scale: 0.8;
+  animation: rotate-glass 6s linear infinite;
+  cursor: pointer;
+  z-index: 40;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clickable-glass:hover {
+  transform: scale(1.15);
+}
+
+@keyframes rotate-glass {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
