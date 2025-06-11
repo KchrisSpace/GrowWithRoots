@@ -26,15 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
     { passive: false }
   );
   circleItems[0].addEventListener('click', () => {
-   window.location.href = '../disaster/children-pages/pest.html';
+    window.location.href = '../disaster/children-pages/pest.html';
   });
   circleItems[1].addEventListener('click', () => {
     window.location.href = '../disaster/children-pages/famine.html';
-   });
-   circleItems[2].addEventListener('click', () => {
+  });
+  circleItems[2].addEventListener('click', () => {
     window.location.href = '../disaster/children-pages/drought.html';
-   });
-   circleItems[3].addEventListener('click', () => {
+  });
+  circleItems[3].addEventListener('click', () => {
     window.location.href = '../disaster/children-pages/deluge.html';
-   });
+  });
+  // 返回
+  document.querySelector('.back-btn').addEventListener('click', () => {
+    window.history.back();
+  });
 });
+

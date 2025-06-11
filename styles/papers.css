@@ -166,7 +166,7 @@ h1 {
   display: flex;
   margin-bottom: 8rem;
 }
-.no-margin{
+.no-margin {
   margin-bottom: 0rem;
 }
 .display-imgs > img {
@@ -189,7 +189,6 @@ h1 {
   display: flex;
   position: absolute;
   bottom: 0;
-
 }
 .weathear > img {
   position: relative;
@@ -197,25 +196,25 @@ h1 {
   bottom: -3rem;
   scale: 0.8;
 }
-.weathear > img:nth-child(1){
+.weathear > img:nth-child(1) {
   left: -6rem;
 }
-.weathear > img:nth-child(2){
+.weathear > img:nth-child(2) {
   left: -20rem;
 }
-.weathear > img:nth-child(3){
+.weathear > img:nth-child(3) {
   left: -34rem;
 }
-.back-btn{
+.back-btn {
   position: absolute;
   top: 8rem;
   left: 6rem;
   z-index: 10;
 }
-.back-btn img{
+.back-btn img {
   scale: 0.8;
 }
-.back-btn:hover{
+.back-btn:hover {
   cursor: pointer;
   opacity: 0.7;
 }
