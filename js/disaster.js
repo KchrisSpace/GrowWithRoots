@@ -48,22 +48,50 @@ document.addEventListener('DOMContentLoaded', () => {
   function render() {
     for (x = 0; x < 20; x++) {
       container.innerHTML += `
-      <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-      <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />`;
+      <img src="../../assets/imgs/coexistence/disater/stream/01.jpg" class="waterfall-img" alt="waterfall" />
+       <img src="../../assets/imgs/coexistence/disater/stream/02.jpg" class="waterfall-img" alt="waterfall" />
+        <img src="../../assets/imgs/coexistence/disater/stream/03.jpg" class="waterfall-img" alt="waterfall" />
+         <img src="../../assets/imgs/coexistence/disater/stream/04.jpg" class="waterfall-img" alt="waterfall" />
+          <img src="../../assets/imgs/coexistence/disater/stream/05.jpg" class="waterfall-img" alt="waterfall" />
+           <img src="../../assets/imgs/coexistence/disater/stream/06.jpg" class="waterfall-img" alt="waterfall" />
+            <img src="../../assets/imgs/coexistence/disater/stream/07.jpg" class="waterfall-img" alt="waterfall" />
+             <img src="../../assets/imgs/coexistence/disater/stream/08.jpg" class="waterfall-img" alt="waterfall" />
+              <img src="../../assets/imgs/coexistence/disater/stream/09.jpg" class="waterfall-img" alt="waterfall" />
+               <img src="../../assets/imgs/coexistence/disater/stream/10.jpg" class="waterfall-img" alt="waterfall" />
+                <img src="../../assets/imgs/coexistence/disater/stream/11.jpg" class="waterfall-img" alt="waterfall" />
+                 <img src="../../assets/imgs/coexistence/disater/stream/12.jpg" class="waterfall-img" alt="waterfall" />
+                  <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
+                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
+                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
+                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
+                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
+                       <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
+                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
+                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
+                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
+                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
+                       <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
+                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
+                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
+                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
+                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
+                       <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
+                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
+                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
+                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
+                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
+                       <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
+                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
+                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
+                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
+                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
+                       <img src="../../assets/imgs/coexistence/disater/stream/18.jpg" class="waterfall-img" alt="waterfall" />
+                   <img src="../../assets/imgs/coexistence/disater/stream/19.jpg" class="waterfall-img" alt="waterfall" />
+                    <img src="../../assets/imgs/coexistence/disater/stream/20.jpg" class="waterfall-img" alt="waterfall" />
+                     <img src="../../assets/imgs/coexistence/disater/stream/21.jpg" class="waterfall-img" alt="waterfall" />
+                      <img src="../../assets/imgs/coexistence/disater/stream/22.jpg" class="waterfall-img" alt="waterfall" />
+
+      `;
     }
   }
   render();

@@ -52,7 +52,10 @@ function animateSvgSwing() {
 const feColorMatrix = document.querySelector(
   "#filter0_d_926_1806 feColorMatrix[type='matrix']"
 );
+
 function animateGlowAlpha() {
+  if (!feColorMatrix) return; // 如果元素不存在，直接返回
+
   const baseAlpha = 1.2; // 基础透明度（建议 0 ~ 1）
   const amplitude = 0.5; // 振幅（建议 0 ~ 1）
   const speed = 0.002; // 闪烁速度（值越小越慢）
@@ -65,10 +68,14 @@ function animateGlowAlpha() {
 
   requestAnimationFrame(animateGlowAlpha);
 }
-animateGlowAlpha();
+
+// 只有在找到feColorMatrix元素时才启动动画
+if (feColorMatrix) {
+  animateGlowAlpha();
+}
+
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
-  const accordionItems = document.querySelectorAll('.accordion-item');
   const contentData = [
     {
       title: '一粒低镉稻种的十年攻坚',
@@ -106,83 +113,137 @@ document.addEventListener('DOMContentLoaded', function () {
         '年6月份，他接受《烟台新闻》的采访时曾这样说："我现在74岁，我们还必须在科研的一线当中去。才知道我们品种应该选育什么。在不同的生产区、不同的气候条件下，如何拿出高产？那么还是需要我们这一代老年人，继续在田野间当中奋斗，更需要年轻人赶快进行交班。"',
       ],
     },
+    {
+      title: '饥荒年代',
+      content: [
+        '1959-1961年，中国经历了严重的自然灾害，粮食产量大幅下降，导致全国性饥荒。',
+        '这段历史提醒我们粮食安全的重要性，也让我们更加珍惜今天的幸福生活。',
+      ],
+    },
+    {
+      title: '粮食危机',
+      content: [
+        '当时全国粮食供应严重不足，许多地区出现粮食短缺，人民生活陷入困境。',
+        '在极端困难的情况下，人们互相帮助，共同度过难关，展现了中华民族的坚韧精神。',
+      ],
+    },
+    {
+      title: '农业改革',
+      content: [
+        '改革开放后，中国农业发生了翻天覆地的变化，粮食产量逐年提高。',
+        '农业科技的进步为粮食增产提供了重要支撑，杂交水稻等技术的应用改变了中国农业的面貌。',
+      ],
+    },
+    {
+      title: '科技兴农',
+      content: [
+        '农业科技的进步为粮食增产提供了重要支撑，杂交水稻等技术的应用改变了中国农业的面貌。',
+        '现代农业的发展不仅解决了温饱问题，还为农民增收致富提供了新途径。',
+      ],
+    },
+    {
+      title: '粮食安全',
+      content: [
+        '保障粮食安全始终是国家的头等大事，也是实现国家长治久安的重要基础。',
+        '完善的粮食储备体系，为应对各种风险挑战提供了重要保障。',
+      ],
+    },
+    {
+      title: '农业发展',
+      content: [
+        '现代农业的发展不仅解决了温饱问题，还为农民增收致富提供了新途径。',
+        '乡村振兴战略的实施，为农业发展注入了新的活力，农村面貌焕然一新。',
+      ],
+    },
+    {
+      title: '乡村振兴',
+      content: [
+        '乡村振兴战略的实施，为农业发展注入了新的活力，农村面貌焕然一新。',
+        '农业现代化进程不断加快，机械化、智能化水平显著提升。',
+      ],
+    },
+    {
+      title: '农业现代化',
+      content: [
+        '农业现代化进程不断加快，机械化、智能化水平显著提升。',
+        '农业科技创新不断取得突破，为农业发展提供了强大动力。',
+      ],
+    },
+    {
+      title: '粮食储备',
+      content: [
+        '完善的粮食储备体系，为应对各种风险挑战提供了重要保障。',
+        '展望未来，中国农业将继续朝着现代化、智能化、绿色化方向发展。',
+      ],
+    },
+    {
+      title: '农业创新',
+      content: [
+        '农业科技创新不断取得突破，为农业发展提供了强大动力。',
+        '展望未来，中国农业将继续朝着现代化、智能化、绿色化方向发展。',
+      ],
+    },
+    {
+      title: '未来展望',
+      content: [
+        '展望未来，中国农业将继续朝着现代化、智能化、绿色化方向发展。',
+        '通过科技创新和可持续发展，我们将建设更加美好的农业未来。',
+      ],
+    },
   ];
 
-  // 创建内容容器
-  const contentContainer = document.createElement('div');
-  contentContainer.className = 'accordion-content';
-  document.querySelector('.accordion-text').appendChild(contentContainer);
+  // 获取所有方块元素和内容容器
+  const items = document.querySelectorAll('.item');
+  const accordionContent = document.querySelector('.accordion-content');
 
-  // 初始化显示第三个内容
-  updateContent(2);
-  accordionItems[2].classList.add('active');
-
-  // 设置定时器，实现自动循环
-  let currentIndex = 2;
-  setInterval(() => {
-    // 移除所有项的active类
-    accordionItems.forEach((i) => i.classList.remove('active'));
-    // 更新索引
-    currentIndex = (currentIndex + 1) % accordionItems.length;
-    // 为当前项添加active类
-    accordionItems[currentIndex].classList.add('active');
-    // 更新内容
-    updateContent(currentIndex);
-  }, 5000); // 每5秒切换一次
-
-  // 点击事件处理
-  accordionItems.forEach((item, index) => {
+  // 为每个方块添加点击事件
+  items.forEach((item, index) => {
     item.addEventListener('click', function () {
-      // 移除所有项的active类
-      accordionItems.forEach((i) => i.classList.remove('active'));
-      // 为当前点击的项添加active类
+      // 获取对应的内容数据
+      const data = contentData[index];
+
+      // 更新 accordion-content 的内容
+      accordionContent.innerHTML = `
+        <h6>${data.title}</h6>
+        ${data.content.map((text) => `<p>${text}</p>`).join('')}
+      `;
+
+      // 移除所有方块的 active 类
+      items.forEach((i) => i.classList.remove('active'));
+      // 为当前点击的方块添加 active 类
       this.classList.add('active');
-      // 更新内容
-      updateContent(index);
-      // 更新当前索引
-      currentIndex = index;
     });
   });
-
-  function updateContent(index) {
-    const data = contentData[index];
-    contentContainer.innerHTML = `
-      <h6>${data.title}</h6>
-      ${data.content.map((text) => `<p>${text}</p>`).join('')}
-    `;
-  }
 
   // 等待所有资源加载完成
   window.addEventListener('load', () => {
     const loadingOverlay = document.querySelector('.loading-overlay');
-    // 添加淡出类
-    loadingOverlay.classList.add('fade-out');
-    // 动画结束后移除元素
-    setTimeout(() => {
-      loadingOverlay.remove();
-    }, 1000);
+    if (loadingOverlay) {
+      // 添加淡出类
+      loadingOverlay.classList.add('fade-out');
+      // 动画结束后移除元素
+      setTimeout(() => {
+        loadingOverlay.remove();
+      }, 1000);
+    }
   });
   // 24节气
-  // 添加 Intersection Observer 来检测 chunk 元素
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    {
-      threshold: 0.1, // 当元素有 10% 进入视图时触发
-    }
-  );
-
-  // 观察所有 chunk 元素
-  document
-    .querySelectorAll('.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5')
-    .forEach((chunk) => {
-      observer.observe(chunk);
+  // 监听滚动事件
+  window.addEventListener('scroll', () => {
+    const chunks = document.querySelectorAll(
+      '.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5'
+    );
+    const offset = 100; // 提前200像素触发
+    chunks.forEach((chunk) => {
+      const rect = chunk.getBoundingClientRect();
+      // 当元素接近视口时添加 visible 类，完全离开视口时移除
+      if (rect.top < window.innerHeight + offset && rect.bottom > -offset) {
+        chunk.classList.add('visible');
+      } else {
+        chunk.classList.remove('visible');
+      }
     });
+  });
 
   // 创建星星
   function createStars() {
@@ -1400,4 +1461,27 @@ document.addEventListener('DOMContentLoaded', function () {
       { passive: false }
     );
   }
+  // 处理视频元素
+  const videoItems = document.querySelectorAll('.item[style*=".mp4"]');
+  videoItems.forEach((item) => {
+    const videoUrl = item.style.backgroundImage.slice(4, -1).replace(/"/g, '');
+    const video = document.createElement('video');
+    video.src = videoUrl;
+    video.loop = true;
+    video.muted = true;
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.objectFit = 'cover';
+    item.appendChild(video);
+
+    // 当item被点击或获得焦点时播放视频
+    item.addEventListener('focus', () => {
+      video.play();
+    });
+
+    // 当item失去焦点时暂停视频
+    item.addEventListener('blur', () => {
+      video.pause();
+    });
+  });
 });

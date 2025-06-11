@@ -18,13 +18,13 @@
     <script defer src="../js/glasses.js"></script>
   </head>
   <body>
-    <div class="loading-overlay">
-      <div class="loading-content">
-        <div class="loading-img"><img src="../assets/imgs/coexistence/sizhi.gif" alt=""></div>
-      </div>
-    </div>
     <navbar-component></navbar-component>
     <div class="top-container">
+      <div class="loading-overlay">
+        <div class="loading-content">
+          <div class="loading-img"><img src="../assets/imgs/coexistence/sizhi.gif" alt=""></div>
+        </div>
+      </div>
         <div class="top-box"><p>见天地之广阔，解民生之多艰</p></div>
         <!-- 电视机 -->
         <div class="tv-container">
@@ -85,11 +85,6 @@
           </div>
     </div>
     <div class="middle-container">
-        <!-- <div class="top-svg">
-            <svg width="1920" height="267" viewBox="0 0 1920 267" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1084 147.252C1402.4 82.9014 1779.33 162.695 1928 210.636V0H-9V186.199C557 349.622 686 227.691 1084 147.252Z" fill="#1E1E1E"/>
-                </svg>          
-        </div> -->
         <!-- 见天地之广阔，解民生之多艰。 -->
         <div class="scroll-container"> <div class="scroll-flat">
             <span>见天地之广阔，解民生之多艰。</span>
@@ -97,59 +92,37 @@
         </div>
     </div>
       <!-- 耕路人 -->
-      <title-component
+      <!-- 手风琴效果 -->
+      <div class="Plowman">
+        <title-component
         main-title="耕路人"
         sub-title="Plowman"></title-component>
-      <!-- 手风琴效果 -->
-      <div class="accordion">
-        <!-- 1 -->
-        <div class="accordion-item">
-          <div class="card-media">
-            <img
-              src="../assets/imgs/coexistence/01.png"
-              alt="袁隆平"
-              class="accordion-image" />
-          </div>
+        <div class="wrapper">
+            <div class="items">
+                <div class="item" tabindex="0" style="background-image: url(../assets/imgs/coexistence/disater/famine/01.png)"></div>
+                <div class="item" tabindex="0" style="background-image: url(../assets/imgs/coexistence/disater/famine/02.png)"></div>
+                <div class="item" tabindex="0" style="background-image: url(../assets/imgs/coexistence/disater/famine/03.png)"></div>
+                <div class="item" tabindex="0" style="background-image: url(../assets/video/origin-1.mp4)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/8Oipim)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/BWYQgv)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/KzNDfr)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/ne5nuX)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/cwZrVj)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/Xvf2a1)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/pCrIJq)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/mSLCrl)"></div>
+                <div class="item" tabindex="0" style="background-image: url(https://e22u.short.gy/EwQcy5)"></div>
+            </div>
         </div>
-        <!-- 2 -->
-        <div class="accordion-item">
-          <div class="card-media">
-            <img
-              src="../assets/imgs/coexistence/01.png"
-              alt="袁隆平"
-              class="accordion-image" />
-          </div>
+        <div class="accordion-content">
+          <h6>一粒低镉稻种的十年攻坚</h6>
+          <p>
+            “0.031！”——2023年，湖南株洲一块稻田边，检测仪上的数值让科研团队热泪盈眶。
+          </p>
+          <p>
+            “臻两优8612”成功了，一粒真正低镉、稳产的水稻种子终于诞生。它的主创者，是湖南省农科院水稻所研究员赵炳然。十年来，他带领团队走了一条最艰难却最干净的路：不用转基因，通过物理、化学、空间诱变等手段，从30万株材料中一一筛选。失败过无数次，终于培育出既低镉又高产的种子
+          </p>
         </div>
-        <!-- 3 -->
-        <div class="accordion-item">
-          <div class="card-media">
-            <img
-              src="../assets/imgs/coexistence/02.png"
-              alt="杨华德"
-              class="accordion-image" />
-          </div>
-        </div>
-        <!-- 4 -->
-        <div class="accordion-item">
-          <div class="card-media">
-            <img
-              src="../assets/imgs/coexistence/01.png"
-              alt="袁隆平"
-              class="accordion-image" />
-          </div>
-        </div>
-        <!-- 5 -->
-        <div class="accordion-item">
-          <div class="card-media">
-            <img
-              src="../assets/imgs/coexistence/01.png"
-              alt="袁隆平"
-              class="accordion-image" />
-          </div>
-        </div>
-      </div>
-      <div class="accordion-text">
-
       </div>
       <!-- <div class="accordion-content">
         <h6>一粒低镉稻种的十年攻坚</h6>
