@@ -12,16 +12,16 @@ class NavbarComponent extends HTMLElement {
     // this.updateContent(); // 确保首次加载时更新内容
     // 添加如下代码
     const links = this.shadowRoot.querySelectorAll('li');
-  // 自动高亮当前页面
-  const path = window.location.pathname;
-  links.forEach(link => {
-    const a = link.querySelector('a');
-    if (a && path.endsWith(a.getAttribute('href').split('/').pop())) {
-      link.classList.add('active');
-    }
-  });
+    // 自动高亮当前页面
+    const path = window.location.pathname;
+    links.forEach((link) => {
+      const a = link.querySelector('a');
+      if (a && path.endsWith(a.getAttribute('href').split('/').pop())) {
+        link.classList.add('active');
+      }
+    });
   }
-  
+
   setupScrollListener() {
     window.addEventListener('scroll', () => {
       if (!this.ticking) {
@@ -274,12 +274,7 @@ class AgriculturalChangeComponent extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.currentIndex = 0;
-    this.isScrolling = false;
     this.throttleTimeout = 300;
-    this.expanded = {
-      profile: false,
-      method: false,
-    };
     // 添加颜色配置
     this.colors = {
       0: {
@@ -356,20 +351,80 @@ class AgriculturalChangeComponent extends HTMLElement {
   }
 
   addEventListeners() {
-    const content = this.shadowRoot.querySelector('.content-container');
-    content.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      this.throttle(() => {
-        const delta = e.deltaY;
-        if (delta > 0 && this.currentIndex < this.changeContent.length - 1) {
-          this.currentIndex++;
-        } else if (delta < 0 && this.currentIndex > 0) {
-          this.currentIndex--;
-        }
-        this.updateContent();
-      }, this.throttleTimeout);
-    });
+    // const scrollBar = this.shadowRoot.querySelector('.scroll-bar');
+    // const scrollContainer = this.shadowRoot.querySelector('.scroll-container');
+    // const textContainer = this.shadowRoot.querySelector(
+    //   '.agricultural-change-content-text'
+    // );
 
+    // // 检查内容是否需要滚动条
+    // const checkScrollNeeded = () => {
+    //   if (textContainer.scrollHeight > textContainer.clientHeight) {
+    //     scrollContainer.style.display = 'block';
+    //     // 设置滚动条高度比例
+    //     const ratio = textContainer.clientHeight / textContainer.scrollHeight;
+    //     scrollBar.style.height = `${ratio * 100}%`;
+    //   } else {
+    //     scrollContainer.style.display = 'none';
+    //   }
+    // };
+
+    // // 初始检查
+    // checkScrollNeeded();
+
+    // // 监听窗口大小变化
+    // window.addEventListener('resize', checkScrollNeeded);
+
+    // // 拖动滚动条
+    // let isDragging = false;
+    // let startY = 0;
+    // let startTop = 0;
+
+    // scrollBar.addEventListener('mousedown', (e) => {
+    //   isDragging = true;
+    //   startY = e.clientY;
+    //   startTop =
+    //     parseFloat(scrollBar.style.transform.replace(/[^-?\d.]/g, '')) || 0;
+    //   document.body.style.userSelect = 'none';
+    // });
+
+    // window.addEventListener('mousemove', (e) => {
+    //   if (!isDragging) return;
+
+    //   const deltaY = e.clientY - startY;
+    //   const containerHeight = scrollContainer.offsetHeight;
+    //   const barHeight = scrollBar.offsetHeight;
+    //   const maxTop = containerHeight - barHeight;
+
+    //   let newTop = startTop + deltaY;
+    //   newTop = Math.max(0, Math.min(maxTop, newTop));
+
+    //   // 计算滚动比例
+    //   const scrollRatio = newTop / maxTop;
+    //   const maxScroll = textContainer.scrollHeight - textContainer.clientHeight;
+
+    //   // 更新文本容器的滚动位置
+    //   textContainer.scrollTop = scrollRatio * maxScroll;
+
+    //   // 更新滚动条位置
+    //   scrollBar.style.transform = `translateY(${newTop}px)`;
+    // });
+
+    // window.addEventListener('mouseup', () => {
+    //   isDragging = false;
+    //   document.body.style.userSelect = '';
+    // });
+
+    // // 文本容器滚动时更新滚动条位置
+    // textContainer.addEventListener('scroll', () => {
+    //   if (!isDragging) {
+    //     const scrollRatio =
+    //       textContainer.scrollTop /
+    //       (textContainer.scrollHeight - textContainer.clientHeight);
+    //     const maxTop = scrollContainer.offsetHeight - scrollBar.offsetHeight;
+    //     scrollBar.style.transform = `translateY(${scrollRatio * maxTop}px)`;
+    //   }
+    // });
     // 添加 flat-text span 元素的点击事件监听
     const flatTextSpans = this.shadowRoot.querySelectorAll('.flat-text span');
     flatTextSpans.forEach((span, index) => {
@@ -384,48 +439,30 @@ class AgriculturalChangeComponent extends HTMLElement {
 
   updateContent() {
     const item = this.changeContent[this.currentIndex];
-    const content = this.shadowRoot.querySelector('.content-container');
-    const scrollBar = this.shadowRoot.querySelector('.scroll-bar');
     const svgPaths = this.shadowRoot.querySelectorAll('svg path');
+    const content = this.shadowRoot.querySelector('.content-container');
     console.log(svgPaths);
 
     // 更新内容
     content.innerHTML = `
-      <div>
-        <img src="${item.imgs}" alt="agricultural-change-${
+     <div>
+       <img src="${item.imgs}" alt="agricultural-change-${
       this.currentIndex + 1
     }" />
-      </div>
-      <div class="agricultural-change-content-text-container">
-        <div class="agricultural-change-content-text">
-          <h6>简介</h6>
-          <div class="text-wrapper">
-            <p class="paragraph-1 ${this.expanded.profile ? 'expanded' : ''}">${
-      item.profile
-    }</p>
-            <button class="expand-btn ${
-              this.expanded.profile ? 'expanded' : ''
-            }" data-type="profile">
-              ${this.expanded.profile ? '收起' : '点击更多'}
-            </button>
-          </div>
-          <h6>种植方式</h6>
-          <div class="text-wrapper">
-            <p class="paragraph-2 ${this.expanded.method ? 'expanded' : ''}">${
-      item.method
-    }</p>
-            <button class="expand-btn ${
-              this.expanded.method ? 'expanded' : ''
-            }" data-type="method">
-              ${this.expanded.method ? '收起' : '点击更多'}
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // 更新滚动条位置
-    scrollBar.style.transform = `translateY(${this.currentIndex * 100}%)`;
+     </div>
+     <div class="agricultural-change-content-text-container">
+       <div class="agricultural-change-content-text">
+         <h6>简介</h6>
+         <div class="text-wrapper">
+           <p class="paragraph-1 expanded">${item.profile}</p>
+         </div>
+         <h6>种植方式</h6>
+         <div class="text-wrapper">
+           <p class="paragraph-2 expanded">${item.method}</p>
+         </div>
+       </div>
+     </div>
+   `;
 
     // 更新特定 SVG 路径颜色
     const group1 = [5, 6, 7];
@@ -473,25 +510,6 @@ class AgriculturalChangeComponent extends HTMLElement {
       }
     });
 
-    // 添加展开/收起按钮事件监听
-    const expandBtns = content.querySelectorAll('.expand-btn');
-    expandBtns.forEach((btn) => {
-      const type = btn.dataset.type;
-      const textElement = btn.previousElementSibling;
-
-      if (
-        textElement.scrollHeight > textElement.clientHeight ||
-        this.expanded[type]
-      ) {
-        btn.classList.add('visible');
-      }
-
-      btn.addEventListener('click', (e) => {
-        this.expanded[type] = !this.expanded[type];
-        this.updateContent();
-      });
-    });
-
     // 获取所有 <circle> 元素
     const circles = this.shadowRoot.querySelectorAll('circle');
 
@@ -528,13 +546,11 @@ class AgriculturalChangeComponent extends HTMLElement {
           box-sizing: border-box;
           transition: all 0.3s;
         }
-.agricultural-change-content {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  min-height: 60%;
-  overflow-y: auto;
-}
+        .agricultural-change-content {
+          position: relative;
+          z-index: 10;
+          width: 100%;
+        }
         .content-container {
           display: grid;
           grid-template-columns: 50% 50%;
@@ -543,11 +559,11 @@ class AgriculturalChangeComponent extends HTMLElement {
         }
 
         .content-container img {
-          min-width: 45rem;
-          max-width: 50rem;
+          width: 45rem;
           border-radius: 14rem;
           cursor:pointer;
-          max-height: 30rem;
+          height: 30rem;
+          object-fit: cover;
         }
 
         .agricultural-change-content-text-container {
@@ -565,8 +581,15 @@ class AgriculturalChangeComponent extends HTMLElement {
           gap: 1rem;
           justify-content:flex-start;
           cursor:pointer;
+            height: 36rem;
+            overflow-y: auto;
+            padding-right: 1rem;
         }
-
+        circle { 
+        cursor:pointer;
+        position: relative;
+        z-index: 10;
+        }
         .agricultural-change-content-text h6 {
           font-size: 2rem;
           font-family: 'PingFang-SC-Semibold';
@@ -580,20 +603,31 @@ class AgriculturalChangeComponent extends HTMLElement {
           line-height: 144%;
           letter-spacing: -1.1%;
         }
-      .scroll-container {
-  width: 1rem;
-  height: 400px;
-  background-color: #137c41;
-  border-radius: 8px;
-  position: absolute;
-  right: 5%;
-  top: 0;
-  transform: translateY(50%);
+//       .scroll-container {
+//   width: 1rem;
+//   height: 400px;
+//   background-color: #137c41;
+//   border-radius: 8px;
+//   position: absolute;
+//   right: 5%;
+//   top: 0;
+//   transform: translateY(50%);
+// }
+// .scroll-bar {
+//   width: 100%;
+//   height: 25%;
+//   background-color: #f3e46c;
+//   border-radius: 8px;
+// }
+.agricultural-change-content-text::-webkit-scrollbar {
+  width: 12px;
 }
-.scroll-bar {
-  width: 100%;
-  height: 25%;
-  background-color: #f3e46c;
+.agricultural-change-content-text::-webkit-scrollbar-track {
+  background: #137c41;
+  border-radius: 8px;
+}
+.agricultural-change-content-text::-webkit-scrollbar-thumb {
+  background: #f3e46c;
   border-radius: 8px;
 }
   .scroll-flat {
@@ -614,53 +648,7 @@ class AgriculturalChangeComponent extends HTMLElement {
           width: 100%;
         }
 
-        .paragraph-1,
-        .paragraph-2 {
-          overflow: hidden;
-          transition: height 0.3s ease;
-        }
 
-        .paragraph-1 {
-          height: 130px;
-        }
-
-        .paragraph-2 {
-          height: 160px;
-        }
-
-        .paragraph-1.expanded,
-        .paragraph-2.expanded {
-          height: auto;
-        }
-
-        .expand-btn {
-          display: none;
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(90deg, transparent, #fff 20%);
-          border: none;
-          padding: 0.5rem 1rem;
-          color: #137C41;
-          cursor: pointer;
-          font-size: 1.2rem;
-          font-family: 'PingFang-SC-Regular';
-          transition: opacity 0.3s ease;
-        }
-
-        .expand-btn.visible {
-          display: block;
-        }
-
-        .expand-btn:hover {
-          opacity: 0.8;
-        }
-
-        .expanded + .expand-btn {
-          position: relative;
-          background: none;
-          margin-top: 1rem;
-        }
           .flat {
   width: 100%;
   margin-top: 1rem;
@@ -689,33 +677,17 @@ class AgriculturalChangeComponent extends HTMLElement {
     <div class="agricultural-change-content">
       <div class="content-container">
         <div>
-          <img src="${
-            this.changeContent[0].imgs
-          }" alt="agricultural-change-1" />
+          <img src="${this.changeContent[0].imgs}" alt="agricultural-change-1" />
         </div>
         <div class="agricultural-change-content-text-container">
           <div class="agricultural-change-content-text">
             <h6>简介</h6>
             <div class="text-wrapper">
-              <p class="paragraph-1 ${
-                this.expanded.profile ? 'expanded' : ''
-              }">${this.changeContent[0].profile}</p>
-              <button class="expand-btn ${
-                this.expanded.profile ? 'expanded' : ''
-              }" data-type="profile">
-                ${this.expanded.profile ? '收起' : '点击更多'}
-              </button>
+              <p>${this.changeContent[0].profile}</p>
             </div>
             <h6>种植方式</h6>
             <div class="text-wrapper">
-              <p class="paragraph-2 ${
-                this.expanded.method ? 'expanded' : ''
-              }">${this.changeContent[0].method}</p>
-              <button class="expand-btn ${
-                this.expanded.method ? 'expanded' : ''
-              }" data-type="method">
-                ${this.expanded.method ? '收起' : '点击更多'}
-              </button>
+              <p>${this.changeContent[0].method}</p>
             </div>
           </div>
         </div>
