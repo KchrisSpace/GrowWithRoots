@@ -6,69 +6,20 @@
   <title>Disaster</title>
   <link rel="stylesheet" href="../../styles/reset.css"></link>
   <link rel="stylesheet" href="../../styles/disaster.css"></link>
-  <script src="../../scripts/gsap.min.js"></script>
+  <script defer src="../../scripts/gsap.min.js"></script>
+  <script defer src="../../js/disaster.js"></script>
 </head>
 <body>
-  <div class="waterfall-container">
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
-   <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
-    <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+  <!-- 返回 -->
+  <div class="back-btn">
+    <img src="../../assets/imgs/back-btn.svg" alt="back-btn">
   </div>
-<script>
-  const images = document.querySelectorAll('.waterfall-img');
-  const positions = [];
-  images.forEach(img => {
-    const randomX = Math.random() * (window.innerWidth - img.width);
-    const y = window.innerHeight + 50;
-    img.style.position = 'absolute';
-    img.style.left = `${randomX}px`;
-    img.style.top = `${y}px`;
-    positions.push({ x: randomX, y: y });
-  });
+<div class="circle-container">
+  <img src="../../assets/imgs/coexistence/disater/pest.svg" class="circle-item" alt="病害" >
+  <img src="../../assets/imgs/coexistence/disater/famine.svg" class="circle-item" alt="病害" >
+  <img src="../../assets/imgs/coexistence/disater/drought.svg" class="circle-item" alt="病害" >
+  <img src="../../assets/imgs/coexistence/disater/deluge.svg" class="circle-item" alt="病害" >
+  </div>
 
-  // 直接启动所有图片的动画，不循环
-  images.forEach((img, i) => {
-    gsap.to(img, {
-      top: -img.height, // 向上移出
-      duration: 2,
-      delay: i * 0.2,
-      ease: "none"
-    });
-  });
-</script>
 </body>
 </html>

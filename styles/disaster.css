@@ -1,15 +1,65 @@
-body{
-  background-color: #1E1E1E;
-  overflow: hidden;
-  position: absolute;
+/* Chrome、Safari隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
 }
-.waterfall-container {
-  perspective: 1200px;
-  perspective-origin: 50% 50%;
+
+/* 兼容 Edge 和 Firefox */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.waterfall-img {
+
+body {
+  background-color: #1e1e1e;
+}
+
+.circle-container {
+  position: fixed;
+  width: 600px;
+  min-width: 250vw; /*屏幕宽度 */
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 5.5%);
+  /* background-color: #5faa17; */
+}
+
+.circle-item {
   position: absolute;
-  width: 252px;
-  height: 150px;
-  transform-style: preserve-3d;
+  width: 350px; /* 图片大小 */
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  object-fit: cover;
+  cursor: pointer;
+}
+.circle-item:hover {
+  opacity: 0.7;
+}
+/* 为每个图片设置位置 - 示例为8张图片 */
+.circle-item:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(345deg) translateY(-140vw);
+}
+.circle-item:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(0deg) translateY(-140vw);
+}
+.circle-item:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(15deg) translateY(-140vw);
+}
+.circle-item:nth-child(4) {
+  transform: translate(-50%, -50%) rotate(30deg) translateY(-140vw);
+}
+.back-btn{
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+  z-index: 10;
+}
+.back-btn img{
+  scale: 0.8;
+}
+.back-btn:hover{
+  cursor: pointer;
+  opacity: 0.7;
 }

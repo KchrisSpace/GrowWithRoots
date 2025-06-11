@@ -1,3 +1,13 @@
+/* Chrome、Safari隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 兼容 Edge 和 Firefox */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 .detail-container {
   width: 100%;
   min-height: 100vh;
