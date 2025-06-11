@@ -60,24 +60,14 @@
     positions.push({ x: randomX, y: y });
   });
 
-  function animateImage(img, i) {
-    // 先把图片放到底部
-    img.style.top = `${positions[i].y}px`;
+  // 直接启动所有图片的动画，不循环
+  images.forEach((img, i) => {
     gsap.to(img, {
       top: -img.height, // 向上移出
       duration: 2,
       delay: i * 0.2,
-      ease: "none",
-      onComplete: () => {
-        // 直接重置到底部，不做动画
-        img.style.top = `${positions[i].y}px`;
-        animateImage(img, i);
-      }
+      ease: "none"
     });
-  }
-
-  images.forEach((img, i) => {
-    animateImage(img, i);
   });
 </script>
 </body>
