@@ -3,7 +3,12 @@ const scene = new THREE.Scene();
 // scene.background = new THREE.Color(0x000000, 0); // 这种写法不会让背景透明
 scene.background = null; // 让场景背景透明（无颜色）
 // 创建透视相机并设置其属性
-const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+  40,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
 // 设置相机的位置并使其看向指定坐标点
 camera.position.set(0, 0, 5);
 // camera.lookAt(0, 0, 0);
@@ -16,6 +21,7 @@ if (!container) {
 container.appendChild(renderer.domElement);
 // 创建OrbitControls实例以允许用户通过鼠标控制相机
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableZoom = false; // 禁用滚轮缩放
 const modelGroup = new THREE.Group(); // 存储所有模型
 // 加载字体文件（Three.js 自带的示例字体）
 const FontLoader = new THREE.FontLoader();
@@ -30,7 +36,9 @@ FontLoader.load(
     // 需要放大的字索引（第五和第六个字，索引从0开始）
     const bigIndexes = [4, 5];
     // 每个字的大小
-    const sizes = text.split('').map((_, i) => (bigIndexes.includes(i) ? 1.3 : 0.4));
+    const sizes = text
+      .split('')
+      .map((_, i) => (bigIndexes.includes(i) ? 1.1 : 0.4));
     // 每个字的mesh
     const meshes = [];
     let offsetX = 0;
@@ -72,7 +80,8 @@ FontLoader.load(
     }
 
     // 居中整体
-    const totalWidth = meshes.reduce((sum, m) => sum + m.width, 0) + (meshes.length - 1) * 0.08;
+    const totalWidth =
+      meshes.reduce((sum, m) => sum + m.width, 0) + (meshes.length - 1) * 0.08;
     meshes.forEach(({ mesh, width }) => {
       mesh.position.x -= totalWidth / 2;
       scene.add(mesh);
@@ -90,7 +99,7 @@ FontLoader.load(
 scene.add(new THREE.AmbientLight(0xffffff, 2.5));
 
 // 主平行光（投射阴影）
-const mainDirLight = new THREE.DirectionalLight(0xffffff, 1);
+const mainDirLight = new THREE.DirectionalLight(0xffffff, 2);
 mainDirLight.position.set(0, -1, 10);
 mainDirLight.castShadow = true;
 mainDirLight.shadow.mapSize.width = 2048;
@@ -126,7 +135,7 @@ const groundMat = new THREE.MeshStandardMaterial({
 });
 const ground = new THREE.Mesh(groundGeo, groundMat);
 ground.rotation.x = -Math.PI / 2;
-ground.position.y = -30;
+ground.position.y = -35;
 ground.receiveShadow = true;
 scene.add(ground);
 
@@ -253,11 +262,15 @@ let mouseX = 0,
 const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 
-document.addEventListener('mousemove', (event) => {
-  // 计算鼠标偏移量（标准化到 [-1, 1]）
-  mouseX = (event.clientX - windowHalfX) / windowHalfX;
-  mouseY = (event.clientY - windowHalfY) / windowHalfY;
-});
+document.addEventListener(
+  'mousemove',
+  (event) => {
+    // 计算鼠标偏移量（标准化到 [-1, 1]）
+    mouseX = (event.clientX - windowHalfX) / windowHalfX;
+    mouseY = (event.clientY - windowHalfY) / windowHalfY;
+  },
+  { passive: true }
+); // 添加 passive: true 以不阻止默认行为
 // 窗口大小变化时更新相机和渲染器
 // 响应式布局（不做高DPI适配）
 function resizeRenderer() {
@@ -304,7 +317,7 @@ document.querySelector('.clickable-glass').addEventListener('click', () => {
       duration: 1.2,
       ease: 'power2.out',
     });
-    
+
     gsap.to(obj.rotation, {
       y: obj.rotation.y + dir * Math.PI * 0.5,
       x: obj.rotation.x + (Math.random() - 0.5) * Math.PI * 0.2,
@@ -315,13 +328,13 @@ document.querySelector('.clickable-glass').addEventListener('click', () => {
       },
     });
   });
-// 4.让bgText文字变亮
+  // 4.让bgText文字变亮
   gsap.to(bgText, {
     // filter: 'brightness(2)', // 变亮，数值可调整
     textShadow: '0px 0px 4px 0px rgba(168, 168, 168, 1)', // 变亮
     opacity: 1, // 变为不透明
     duration: 1,
-    ease: 'power1.inOut'
+    ease: 'power1.inOut',
   });
   // 5.让bottomText文字消失
   gsap.to(bottomText, {
@@ -330,7 +343,6 @@ document.querySelector('.clickable-glass').addEventListener('click', () => {
     ease: 'power1.inOut',
     onComplete: () => {
       bottomText.style.display = 'none'; // 完成后隐藏元素
-    }
+    },
   });
-  
 });

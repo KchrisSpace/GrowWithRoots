@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const chunks = document.querySelectorAll(
       '.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5'
     );
-    const offset = 100; // 提前200像素触发
+    const offset = 50; // 提前50像素触发
     chunks.forEach((chunk) => {
       const rect = chunk.getBoundingClientRect();
       // 当元素接近视口时添加 visible 类，完全离开视口时移除
@@ -1400,67 +1400,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   // 当鼠标位于top-container区域时，滚轮滚动一次的高度为屏幕的高度
-  const topContainer = document.querySelector('.top-container');
-  const memoryContainer = document.querySelector('.memory-container');
-  // 当鼠标位于memory-container区域时，滚轮滚动一次的高度为屏幕的高度
-  // 防止滚轮事件过于频繁触发导致页面滚动过快
-  // 使用防抖处理，避免滚轮事件过于频繁触发
-  let wheelTimeout = null;
-  if (topContainer) {
-    topContainer.addEventListener(
-      'wheel',
-      function (e) {
-        e.preventDefault();
-        if (wheelTimeout) return;
-        wheelTimeout = setTimeout(() => {
-          wheelTimeout = null;
-        }, 600); // 600ms防抖
+  // const topContainer = document.querySelector('.top-container');
+  // const memoryContainer = document.querySelector('.memory-container');
+  // // 防止滚轮事件过于频繁触发导致页面滚动过快
+  // // 使用防抖处理，避免滚轮事件过于频繁触发
+  // let wheelTimeout = null;
+  // if (topContainer) {
+  //   topContainer.addEventListener(
+  //     'wheel',
+  //     function (e) {
+  //       e.preventDefault();
+  //       if (wheelTimeout) return;
+  //       wheelTimeout = setTimeout(() => {
+  //         wheelTimeout = null;
+  //       }, 600); // 600ms防抖
 
-        if (e.deltaY > 0) {
-          window.scrollBy({
-            top: window.innerHeight,
-            left: 0,
-            behavior: 'smooth',
-          });
-        } else if (e.deltaY < 0) {
-          window.scrollBy({
-            top: -window.innerHeight,
-            left: 0,
-            behavior: 'smooth',
-          });
-        }
-      },
-      { passive: false }
-    );
-  }
-  if (memoryContainer) {
-    memoryContainer.addEventListener(
-      'wheel',
-      function (e) {
-        e.preventDefault();
-        if (wheelTimeout) return;
-        wheelTimeout = setTimeout(() => {
-          wheelTimeout = null;
-        }, 600); // 600ms防抖
+  //       if (e.deltaY > 0) {
+  //         window.scrollBy({
+  //           top: window.innerHeight,
+  //           left: 0,
+  //           behavior: 'smooth',
+  //         });
+  //       } else if (e.deltaY < 0) {
+  //         window.scrollBy({
+  //           top: -window.innerHeight,
+  //           left: 0,
+  //           behavior: 'smooth',
+  //         });
+  //       }
+  //     },
+  //     { passive: false }
+  //   );
+  // }
 
-        if (e.deltaY > 0) {
-          window.scrollBy({
-            top: window.innerHeight,
-            left: 0,
-            behavior: 'smooth',
-          });
-        }
-        if (e.deltaY < 0) {
-          window.scrollBy({
-            top: -window.innerHeight,
-            left: 0,
-            behavior: 'smooth',
-          });
-        }
-      },
-      { passive: false }
-    );
-  }
+  // if (memoryContainer) {
+  //   memoryContainer.addEventListener(
+  //     'wheel',
+  //     function (e) {
+  //       // 移除 preventDefault()，允许默认滚动行为
+  //       if (wheelTimeout) return;
+  //       wheelTimeout = setTimeout(() => {
+  //         wheelTimeout = null;
+  //       }, 600); // 600ms防抖
+  //     },
+  //     { passive: true }
+  //   ); // 使用 passive: true 提高性能
+  // }
   // 处理视频元素
   const videoItems = document.querySelectorAll('.item[style*=".mp4"]');
   videoItems.forEach((item) => {
