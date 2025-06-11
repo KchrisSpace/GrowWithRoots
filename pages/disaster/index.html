@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disaster</title>
-  <link rel="stylesheet" href="../../styles/reset.css"></link>
-  <link rel="stylesheet" href="../../styles/disaster.css"></link>
+  <link rel="stylesheet" href="../../styles/reset.css">
+  </link>
+  <link rel="stylesheet" href="../../styles/disaster.css">
+  </link>
   <script defer src="../../scripts/gsap.min.js"></script>
+  <style>
+    .waterfall-container {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+
+      img {
+        transition: all 3s ease-in-out;
+      }
+    }
+  </style>
   <script defer src="../../js/disaster.js"></script>
 </head>
+
 <body>
   <!-- 返回 -->
   <div class="back-btn">
@@ -22,4 +40,5 @@
   </div>
 
 </body>
+
 </html>

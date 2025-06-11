@@ -9,8 +9,27 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
-
+.scrolling {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  width: 100vw;
+  height: 95vh;
+  z-index: -1;
+  overflow: hidden;
+  animation: all 1s;
+}
+.scrolling_item {
+  font-weight: 700;
+  position: absolute;
+  white-space: nowrap;
+  color: #00451e98;
+  font-family: "shangshouxingyu";
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+}
 a {
   text-decoration: none;
   color: #000;
@@ -55,15 +74,43 @@ a:hover {
   right: -20%;
   transform: rotate(45deg);
 }
-.role {
+.roll {
+  width: 1700px;
+  height: 1800px;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) scale(1.3);
+  top: 40vh;
+  /* border: 1px solid #000; */
+  transform-origin: center calc(50% + 50px);
+ rotate: 100deg;
+  /* animation: roll 6s linear forwards 1s; */
 }
-.tabs .tab {
-  width: 270px;
-  height: 120px;
+.roll-animate {
+  animation: roll 4s ease-in-out forwards ;
+}
+@keyframes roll {
+0% {
+  transform: rotate(0deg);
+}
+80% {
+  transform: rotate(-120deg);
+}
+100% {
+  transform: rotate(-100deg);
+}
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/imgs/home/roll.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.bg .tab {
+  width: 14%;
+  height: 6%;
   background-image: url(../assets/imgs/home/btn.png);
   background-size: 100% 100%;
   object-fit: cover;
@@ -72,52 +119,42 @@ a:hover {
   justify-content: center;
   pointer-events: auto;
 }
-.tabs .tab a {
+.bg.tab a {
   transition: 0.5s;
+  font-size: 2rem;
 }
 
-.tabs .tab:hover a {
+.bg .tab:hover a {
   color: #ffd700;
-  font-size: 50px;
+  font-size: 2.8rem;
 }
 
-.tabs {
-  position: absolute;
-  left: 50%;
-  bottom: 30%;
-
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
-  width: 70%;
-  pointer-events: none;
-}
-.tabs a {
+.bg a {
   font-family: "PingFang-SC-Regular";
-  font-size: 40px;
+
   font-weight: 600;
   color: #f7e8c7;
 }
-.tabs .origin {
+.bg .origin {
   position: absolute;
-  left: 10px;
-  bottom: 15px;
-  transform: rotate(-30deg);
+  top: 4.5%;
+  left: 15%;
+
+  transform: rotate(-33deg);
 }
 
-.tabs .coexistence {
+.bg .coexistence {
   position: absolute;
-  left: 50%;
-  bottom: 120px;
+  top: -3%;
+  left: 51.5%;
   transform: translateX(-50%);
   z-index: 2;
 }
 
-.tabs .wish {
+.bg .wish {
+  background-image: url(../assets/imgs/home/btn.png);
   position: absolute;
-  right: -15px;
-  bottom: 0px;
+  top: 4.5%;
+  right: 12%;
   transform: rotate(34deg);
 }

@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.bg {
+  background-image: url("../assets/imgs/background.png");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -2;
+}
+
+.bg-top {
+  width: 70%;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.title {
+  margin-top: 10vh;
+  width: 40vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #000; */
+}
+
+.title .t1 {
+  margin: 0;
+  color: #2f5327;
+  font-family: "fangfang";
+  font-size: 5.5rem;
+  font-weight: 500;
+}
+
+.title .t2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #0000005e;
+  font-family: "fangfang";
+  font-weight: 500;
+  text-align: center;
+}
+
+.scroll-area {
+  /* border: 1px solid #000; */
+  display: flex;
+  height: 55vh;
+  width: 100vw;
+  position: relative;
+  overflow-x: auto;
+}
+
+.scroll-area::-webkit-scrollbar {
+  height: 12px;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+  background: #137c41;
+  margin: 25vw;
+  border-radius: 8px;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+  background: #e6be50;
+  border-radius: 8px;
+}
+
+.scroll-content {
+  width: 100%;
+  display: flex;
+  padding-right: 10vw;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  z-index: 3;
+}
+
+.scroll-area .bg-line img {
+  position: fixed;
+  width: 100%;
+  bottom: 7vh;
+  z-index: 1;
+}
+
+.node {
+  width: 50vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 40vw;
+    height: 46vh;
+  }
+}
+
+.node p {
+  font-family: "fangfang";
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.673);
+  opacity: 0.8;
+  line-height: 1.5;
+  width: 30vw;
+  margin: 50px;
+}
+
+.back-button {
+  position: fixed;
+  top: 120px;
+  left: 100px;
+  width: 60px;
+  height: 60px;
+  background-color: #3f9542;
+  color: #f3e66e;
+  font-size: 46px;
+  padding: 5px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 20px;
+  z-index: 20;
+}

@@ -13,7 +13,8 @@ function animateTitle() {
 function disappear() {
   const clouds = document.querySelectorAll(".clouds>img");
   const car = document.querySelector(".car");
-  const rice=document.querySelector(".rice");
+  const rice = document.querySelector(".rice");
+  
   clouds.forEach((cloud, index) => {
     cloud.classList.add("disappear");
   });
@@ -24,6 +25,7 @@ function disappear() {
 document
   .querySelector(".start-bg-container")
   .addEventListener("click", function () {
+    this.classList.add("disappear");
     disappear();
     animateTitle();
     scaleSvg();
