@@ -7,6 +7,9 @@
     <title>home</title>
     <link rel="stylesheet" href="../styles/home.css">
     <link rel="stylesheet" href="../styles/reset.css">
+    <style>
+        
+    </style>
 </head>
 
 <body>
@@ -16,19 +19,29 @@
         <img src="../assets/imgs/home/tree.png" alt="" class="tree2">
         <img src="../assets/imgs/home/tree.png" alt="" class="tree3">
         <img src="../assets/imgs/home/tree.png" alt="" class="tree4">
-        <img src="../assets/imgs/home/role.png" alt="" class="role">
+
     </div>
-    <div class="tabs">
-        <div class="origin tab">
-            <a href="./origin.html">根·起源</a>
-        </div>
-        <div class="coexistence tab">
-            <a href="./coexistence.html">苦·共生</a>
-        </div>
-        <div class="wish tab">
-            <a href="./wish.html">新·生长</a>
+    <div class="roll">
+        <div class="bg">
+            <div class="origin tab">
+                <a href="./origin.html">根·起源</a>
+            </div>
+            <div class="coexistence tab">
+                <a href="./coexistence.html">苦·共生</a>
+            </div>
+            <div class="wish tab">
+                <a href="./wish.html">新·生长</a>
+            </div>
         </div>
         <script src="../js/home-danmu.js"></script>
+        <script>
+            const roll = document.querySelector('.roll');
+            window.addEventListener('load', () => {
+                roll.classList.add('roll-animate');
+            });
+
+            
+        </script>
 
 </body>
 

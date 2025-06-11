@@ -362,12 +362,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 根据索性渲染intro
     const title = document.querySelector(".target");
     const subtitle = document.querySelector(".subtitle");
-    const titles = ["勤者阿尾", "十个勤天", "田下一米"];
+    const titles = ["新农人-陈雨佳", "十个勤天", "新农人-汤鑫晨"];
     const subtitles = [
-      "来自祖祖辈辈辛勤耕作的家庭，从小在田野里长大。阿尾，以田为伴，耕作技艺精湛，作为一名农耕师，开展多种作物种植实验。",
+      "从都市白领到新农人，她扎根乡野，用生态种植和电商创新重塑传统农业。以匠心种好米，以热忱带共富，陈雨佳用青春证明：土地也能长出年轻的梦想。  ",
       "十位朝气蓬勃的年轻人走进乡村，用两年多的时间进行播种灌溉、施肥、收获、用汗水与努力见证一粒粒种子要成美田，一片农野的荒野变成田园。",
-
-      "自从阿米来到农场，田里多了欢声笑语。她每日认真除草施肥、精心照料庄稼，与禾苗一同生长、一同成熟。",
+      "汤鑫晨——科技赋能农业的“新农人先锋”从IT产品经理到扎根乡野的“新农人”，汤鑫晨用数字化思维重塑传统农业。他引入AI分选机、无人车植保等黑科技，打造标准化果园，创立“就就就”水果品牌，带动村民增收。成为乡村振兴的年轻力量。",
     ];
     function updateContent() {
       title.textContent = titles[currentIndex];

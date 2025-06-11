@@ -18,7 +18,7 @@ const createDanmu = () => {
   danmu.classList.add("scrolling_item");
   danmu.style.zIndex = -10;
   danmu.textContent = sentens[Math.floor(Math.random() * sentens.length)];
-  danmu.style.fontSize = `${Math.floor(Math.random() * 6 + 2)}vh`;
+  danmu.style.fontSize = `${Math.floor(Math.random() * 3 + 5)}vh`;
   danmu.style.left = `${window.innerWidth}px`;
   const scrollingContainer = document.querySelector(".scrolling");
   let randomNum = Math.floor(Math.random() * 9) - 1;
@@ -44,7 +44,7 @@ const createDanmu = () => {
 // 启动弹幕循环
 let createDame;
 const startDanmuLoop = () => {
-    createDame = setInterval(createDanmu, 750);
+    createDame = setInterval(createDanmu, 1050);
 };
 
 // 停止弹幕循环

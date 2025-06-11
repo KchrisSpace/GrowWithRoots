@@ -841,7 +841,7 @@ body::-webkit-scrollbar {
   font-family: "fangfang";
 
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #3f271c;
   line-height: 2; /* Added line height for more spacing between lines */
 }

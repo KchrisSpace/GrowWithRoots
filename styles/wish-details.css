@@ -25,6 +25,9 @@
   color: #f3e66e;
   font-size: 3rem;
 }
+.details .close-bt svg{
+  scale: 0.8;
+}
 .details .today,
 .details .past {
   display: flex;
