@@ -81,22 +81,22 @@ a:hover {
   top: 40vh;
   /* border: 1px solid #000; */
   transform-origin: center calc(50% + 50px);
-  rotate: 0deg;
+ rotate: 100deg;
   /* animation: roll 6s linear forwards 1s; */
-
- 
 }
-.roll-animate{
-  animation: roll 4s  forwards 0s;
+.roll-animate {
+  animation: roll 4s ease-in-out forwards ;
 }
 @keyframes roll {
-  from {
-    transform: rotate(100deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
+0% {
+  transform: rotate(0deg);
+}
+80% {
+  transform: rotate(-120deg);
+}
+100% {
+  transform: rotate(-100deg);
+}
 }
 .bg {
   width: 100%;
@@ -106,7 +106,6 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
 }
 
 .bg .tab {
