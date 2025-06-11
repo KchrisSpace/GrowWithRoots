@@ -41,5 +41,63 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.back-btn').addEventListener('click', () => {
     window.history.back();
   });
-});
+  // 照片垂直无限滚动
+  const container = document.querySelector('.waterfall-container');
 
+  // 立即开始动态加载
+  function render() {
+    for (x = 0; x < 20; x++) {
+      container.innerHTML += `
+      <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn1-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn1-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn2-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn2-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn3-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn3-2.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn4-1.png" class="waterfall-img" alt="waterfall" />
+      <img src="../../assets/imgs/coexistence/solar-term/autumn4-2.png" class="waterfall-img" alt="waterfall" />`;
+    }
+  }
+  render();
+
+  // 为动态加载的图片设置动画
+  const images = document.querySelectorAll('.waterfall-img');
+  images.forEach((img, index) => {
+    const randomX = Math.random() * (window.innerWidth - img.width);
+    const y = 1.78 * window.innerHeight;
+    const randomZ = -500 - Math.random() * 1000;
+    img.style.position = 'absolute';
+    img.style.left = `${randomX}px`;
+    img.style.top = `${y}px`;
+    img.style.transform = `translateZ(${randomZ}px)`;
+
+    if (img.complete) {
+      startAnimation(img, randomZ, index);
+    } else {
+      img.addEventListener('load', () => {
+        startAnimation(img, randomZ, index);
+      });
+    }
+  });
+
+  // 动态加载图片的动画函数
+  function startAnimation(img, depth, index) {
+    const duration = 4 + Math.abs(depth) / 200; // 基础4秒，每200单位深度增加1秒
+
+    gsap.to(img, {
+      top: -window.innerHeight,
+      duration: duration,
+      delay: index * 0.2,
+      ease: 'none',
+      transform: `translateZ(${depth}px)`,
+    });
+  }
+});

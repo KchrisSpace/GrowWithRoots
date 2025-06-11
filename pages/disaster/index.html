@@ -10,20 +10,6 @@
   <link rel="stylesheet" href="../../styles/disaster.css">
   </link>
   <script defer src="../../scripts/gsap.min.js"></script>
-  <style>
-    .waterfall-container {
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-
-      img {
-        transition: all 3s ease-in-out;
-      }
-    }
-  </style>
   <script defer src="../../js/disaster.js"></script>
 </head>
 
@@ -38,7 +24,10 @@
   <img src="../../assets/imgs/coexistence/disater/drought.svg" class="circle-item" alt="病害" >
   <img src="../../assets/imgs/coexistence/disater/deluge.svg" class="circle-item" alt="病害" >
   </div>
-
+  <!-- 蒙层-->
+   <div class="mask-bg"></div>
+  <div class="waterfall-container">
+  </div>
 </body>
 
 </html>

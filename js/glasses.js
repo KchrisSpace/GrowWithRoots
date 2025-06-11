@@ -87,7 +87,7 @@ FontLoader.load(
 );
 // 添加环境光
 // 环境光
-scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+scene.add(new THREE.AmbientLight(0xffffff, 2.5));
 
 // 主平行光（投射阴影）
 const mainDirLight = new THREE.DirectionalLight(0xffffff, 1);

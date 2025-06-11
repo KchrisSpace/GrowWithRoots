@@ -10,7 +10,6 @@ function animateSvg() {
       yoyo: true,
       delay: Math.random() * 4, // 随机延迟让动画错开
     });
-   
   });
 }
 
@@ -50,7 +49,9 @@ function animateSvgSwing() {
   });
 }
 // 控制麦穗闪动
-const feColorMatrix = document.querySelector("#filter0_d_926_1806 feColorMatrix[type='matrix']");
+const feColorMatrix = document.querySelector(
+  "#filter0_d_926_1806 feColorMatrix[type='matrix']"
+);
 function animateGlowAlpha() {
   const baseAlpha = 1.2; // 基础透明度（建议 0 ~ 1）
   const amplitude = 0.5; // 振幅（建议 0 ~ 1）
@@ -177,9 +178,11 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 
   // 观察所有 chunk 元素
-  document.querySelectorAll('.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5').forEach((chunk) => {
-    observer.observe(chunk);
-  });
+  document
+    .querySelectorAll('.chunk-1, .chunk-2, .chunk-3, .chunk-4, .chunk-5')
+    .forEach((chunk) => {
+      observer.observe(chunk);
+    });
 
   // 创建星星
   function createStars() {
@@ -1216,7 +1219,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 处理text-3的样式
-        document.querySelectorAll('.text-3').forEach((el) => el.classList.remove('text-6'));
+        document
+          .querySelectorAll('.text-3')
+          .forEach((el) => el.classList.remove('text-6'));
         this.classList.add('text-6');
 
         // 初始化状态管理
@@ -1301,7 +1306,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const parentElement = this.closest('.text-2');
       if (parentElement) {
         // 获取对应的 text-3 元素
-        const index = Array.from(document.querySelectorAll('.text-2')).indexOf(parentElement);
+        const index = Array.from(document.querySelectorAll('.text-2')).indexOf(
+          parentElement
+        );
         const text3Element = document.querySelectorAll('.text-3')[index];
 
         if (text3Element) {
@@ -1333,40 +1340,64 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // 当鼠标位于top-container区域时，滚轮滚动一次的高度为屏幕的高度
   const topContainer = document.querySelector('.top-container');
-  const memoryContainer=document.querySelector('.memory-container');
+  const memoryContainer = document.querySelector('.memory-container');
   // 当鼠标位于memory-container区域时，滚轮滚动一次的高度为屏幕的高度
   // 防止滚轮事件过于频繁触发导致页面滚动过快
   // 使用防抖处理，避免滚轮事件过于频繁触发
   let wheelTimeout = null;
   if (topContainer) {
-    topContainer.addEventListener('wheel', function (e) {
-      e.preventDefault();
-      if (wheelTimeout) return;
-      wheelTimeout = setTimeout(() => {
-        wheelTimeout = null;
-      }, 600); // 600ms防抖
+    topContainer.addEventListener(
+      'wheel',
+      function (e) {
+        e.preventDefault();
+        if (wheelTimeout) return;
+        wheelTimeout = setTimeout(() => {
+          wheelTimeout = null;
+        }, 600); // 600ms防抖
 
-      if (e.deltaY > 0) {
-        window.scrollBy({ top: window.innerHeight, left: 0, behavior: 'smooth' });
-      } else if (e.deltaY < 0) {
-        window.scrollBy({ top: -window.innerHeight, left: 0, behavior: 'smooth' });
-      }
-    }, { passive: false });
+        if (e.deltaY > 0) {
+          window.scrollBy({
+            top: window.innerHeight,
+            left: 0,
+            behavior: 'smooth',
+          });
+        } else if (e.deltaY < 0) {
+          window.scrollBy({
+            top: -window.innerHeight,
+            left: 0,
+            behavior: 'smooth',
+          });
+        }
+      },
+      { passive: false }
+    );
   }
   if (memoryContainer) {
-    memoryContainer.addEventListener('wheel', function (e) {
-      e.preventDefault();
-      if (wheelTimeout) return;
-      wheelTimeout = setTimeout(() => {
-        wheelTimeout = null;
-      }, 600); // 600ms防抖
+    memoryContainer.addEventListener(
+      'wheel',
+      function (e) {
+        e.preventDefault();
+        if (wheelTimeout) return;
+        wheelTimeout = setTimeout(() => {
+          wheelTimeout = null;
+        }, 600); // 600ms防抖
 
-      // if (e.deltaY > 0) {
-      //   window.scrollBy({ top: window.innerHeight, left: 0, behavior: 'smooth' });
-      // } 
-       if (e.deltaY < 0) {
-        window.scrollBy({ top: -window.innerHeight, left: 0, behavior: 'smooth' });
-      }
-    }, { passive: false });
+        if (e.deltaY > 0) {
+          window.scrollBy({
+            top: window.innerHeight,
+            left: 0,
+            behavior: 'smooth',
+          });
+        }
+        if (e.deltaY < 0) {
+          window.scrollBy({
+            top: -window.innerHeight,
+            left: 0,
+            behavior: 'smooth',
+          });
+        }
+      },
+      { passive: false }
+    );
   }
 });
