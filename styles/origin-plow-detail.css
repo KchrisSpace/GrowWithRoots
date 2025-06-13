@@ -39,33 +39,20 @@
   right: 5%;
   top: 30%;
 }
-.line-svg {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-70%);
-  scale: 0.75;
-}
 
-.move-svg {
-  position: absolute;
-  left: 5%;
-  top: 7%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  z-index: 100;
-  scale: 0.75;
-}
-.move-svg:hover {
-  scale: 0.9;
-}
 .detail-container-inner {
   width: 100%;
   position: absolute;
-  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  bottom: 3rem;
+  height: 30vh;
 }
 .plow-container {
   position: relative;
   z-index: 10;
+  height: 65vh;
 }
 
 footer {
@@ -119,5 +106,4 @@ footer img {
   height: 12px;
   border-radius: 8px;
   background-color: #e6be50;
-  cursor: pointer;
 }

@@ -96,11 +96,11 @@ FontLoader.load(
 );
 // 添加环境光
 // 环境光
-scene.add(new THREE.AmbientLight(0xffffff, 2.5));
+scene.add(new THREE.AmbientLight(0xffffff, 0.2));
 
 // 主平行光（投射阴影）
-const mainDirLight = new THREE.DirectionalLight(0xffffff, 2);
-mainDirLight.position.set(0, -1, 10);
+const mainDirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+mainDirLight.position.set(-5, -6, 10);
 mainDirLight.castShadow = true;
 mainDirLight.shadow.mapSize.width = 2048;
 mainDirLight.shadow.mapSize.height = 2048;
@@ -114,9 +114,10 @@ scene.add(mainDirLight);
 
 // 辅助平行光
 [
-  { intensity: 1.5, position: [-5, 2, 5] },
-  { intensity: 1.2, position: [5, -2, -5] },
-  { intensity: 1.0, position: [0, 5, 0] },
+  { intensity: 0.6, position: [5, 2, 5] },
+  { intensity: 0.3, position: [-10, 2, 10] },
+  { intensity: 0.2, position: [5, -2, -5] },
+  { intensity: 0.6, position: [0, -10, 0] },
   { intensity: 1.0, position: [0, -5, 0] },
 ].forEach((cfg) => {
   const light = new THREE.DirectionalLight(0xffffff, cfg.intensity);
@@ -153,23 +154,23 @@ loader.load(
         child.material = new THREE.MeshPhysicalMaterial({
           color: 0xffffff,
           metalness: 0.8, // 反射强度，0-1，越高越像金属
-          roughness: 0.05, // 粗糙度，0为光滑镜面
-          transmission: 1, // 玻璃透明度
-          thickness: 10, // 玻璃厚度
+          roughness: 0.5, // 粗糙度，0为光滑镜面
+          transmission: 0.6, // 玻璃透明度
+          // thickness: 20, // 玻璃厚度
           ior: 1.6, // 折射率，玻璃常用1.5-1.8
           transparent: true,
-          opacity: 0.7, // 透明度
-          // envMap: envMap, // 环境贴图用于反射
+          opacity: 1, // 透明度
+          envMap: envMap, // 环境贴图用于反射
           envMapIntensity: 1.2, // 反射环境贴图强度
-          clearcoat: 1, // 清漆层，增强高光
-          clearcoatRoughness: 0, // 清漆层粗糙度
+          clearcoat: 0.6, // 清漆层，增强高光
+          clearcoatRoughness: 1, // 清漆层粗糙度
         });
       }
     });
     // 文字的z轴位置-1
     // 复用模型：创建多个副本并设置不同的位置/旋转/缩放
     const positions = [
-      { x: 1.5, y: 0, z: 1, rx: 2, ry: 1.5, rz: 0, scale: 20 },
+      { x: 1.5, y: 0, z: 1, rx: 1.5, ry: 2, rz: 0, scale: 20 },
       { x: 2.5, y: -2, z: -4, rx: 1, ry: -3.2, rz: 0, scale: 50 },
       { x: 0, y: -1, z: -0.5, rx: 1, ry: 1, rz: 0, scale: 10 },
       { x: -1, y: 1.5, z: -3.5, rx: -2, ry: 0.5, rz: 0, scale: 5 },
@@ -201,15 +202,15 @@ loader.load(
         child.material = new THREE.MeshPhysicalMaterial({
           color: 0xffffff,
           metalness: 0.8, // 反射强度，0-1，越高越像金属
-          roughness: 0.1, // 粗糙度，0为光滑镜面
-          transmission: 1, // 玻璃透明度
-          thickness: 10, // 玻璃厚度
+          roughness: 0.5, // 粗糙度，0为光滑镜面
+          transmission: 0.6, // 玻璃透明度
+          // thickness: 10, // 玻璃厚度
           ior: 1.6, // 折射率，玻璃常用1.5-1.8
           transparent: true,
           opacity: 0.7, // 透明度
-          // envMap: envMap, // 环境贴图用于反射
+          envMap: envMap, // 环境贴图用于反射
           envMapIntensity: 1.2, // 反射环境贴图强度
-          clearcoat: 1, // 清漆层，增强高光
+          clearcoat: 0.6, // 清漆层，增强高光
           clearcoatRoughness: 0, // 清漆层粗糙度
         });
       }
@@ -217,8 +218,8 @@ loader.load(
     // 文字的z轴位置-1
     // 复用模型：创建多个副本并设置不同的位置/旋转/缩放
     const positions = [
-      { x: -1, y: 2, z: -0.5, rx: 1, ry: 1, rz: 0, scale: 20 },
-      { x: -1, y: 0, z: -1.5, rx: 1, ry: -1.2, rz: 0, scale: 35 },
+      { x: -1, y: 1.5, z: 0.5, rx: 1, ry: 1, rz: 0, scale: 20 },
+      { x: -1, y: -0.5, z: -2.5, rx: 1, ry: -1.2, rz: 0, scale: 35 },
       { x: 0, y: 1, z: -2.5, rx: 1, ry: 1, rz: 0, scale: 5 },
       { x: 0, y: 2.5, z: -4.5, rx: 1, ry: 1, rz: 0, scale: 5 },
       { x: -1, y: 2, z: -1.5, rx: 2, ry: 1, rz: 1, scale: 10 },

@@ -4,18 +4,19 @@ const scrollBar = document.querySelector('.scroll-bar');
 const moveSvg = document.querySelector('.move-svg');
 const footer = document.querySelector('footer');
 
-footer.addEventListener('wheel', function (event) {
-  event.preventDefault();
-  this.scrollLeft += event.deltaY;
+footer.addEventListener(
+  'wheel',
+  function (event) {
+    event.preventDefault();
+    this.scrollLeft += event.deltaY;
 
-  // 计算scrollBar的位置
-  const scrollPercentage =
-    this.scrollLeft / (this.scrollWidth - this.clientWidth);
-  scrollBar.style.transform = `translateX(${scrollPercentage * 133}%)`;
-});
-moveSvg.addEventListener('click', () => {
-  window.history.back();
-});
+    // 计算scrollBar的位置
+    const scrollPercentage =
+      this.scrollLeft / (this.scrollWidth - this.clientWidth);
+    scrollBar.style.transform = `translateX(${scrollPercentage * 133}%)`;
+  },
+  { passive: false }
+);
 
 document.addEventListener('DOMContentLoaded', () => {
   const plowDetail = document.getElementById('plowDetail');

@@ -64,19 +64,7 @@ body {
 .circle-item:nth-child(4) {
   transform: translate(-50%, -50%) rotate(30deg) translateY(-140vw);
 }
-.back-btn {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-  z-index: 20;
-}
-.back-btn img {
-  scale: 0.8;
-}
-.back-btn:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
+
 .mask-bg {
   position: absolute;
   width: 100%;
