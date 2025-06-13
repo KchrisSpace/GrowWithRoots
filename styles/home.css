@@ -121,7 +121,6 @@ a:hover {
 }
 .bg.tab a {
   transition: 0.5s;
-  font-size: 2rem;
 }
 
 .bg .tab:hover a {
@@ -130,9 +129,9 @@ a:hover {
 }
 
 .bg a {
-  font-family: "PingFang-SC-Regular";
-
-  font-weight: 600;
+  font-family: "fangfang";
+  font-size: 2.5rem;
+  font-weight: 500;
   color: #f7e8c7;
 }
 .bg .origin {

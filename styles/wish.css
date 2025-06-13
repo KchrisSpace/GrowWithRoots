@@ -314,7 +314,7 @@ body::-webkit-scrollbar {
   top: 3%;
   left: 4%;
   font-family: "fangfang";
-  font-size: 5rem;
+  font-size: 4rem;
   color: #3f271c;
   letter-spacing: 1rem;
   display: flex;
@@ -333,7 +333,7 @@ body::-webkit-scrollbar {
   }
   .en-text {
     font-family: "fangfang";
-    font-size: 3rem;
+    font-size: 2rem;
     color: #3f271c;
     opacity: 0.8;
     letter-spacing: 0.2rem;
@@ -364,14 +364,15 @@ body::-webkit-scrollbar {
     top: -30px;
   }
   button {
-    width: 60px;
+    width: 80px;
     height: 40px;
     background-color: #f6eac9;
     border: none;
     border-radius: 20px;
     color: #137c41;
-    font-family: "PingFang-SC-Medium";
-    font-size: 1.2rem;
+    font-family: "fangfang";
+    letter-spacing: 4px;
+    font-size: 1.4rem;
     cursor: pointer;
     position: relative;
     top: -20px;
@@ -379,7 +380,7 @@ body::-webkit-scrollbar {
 }
 .page-3 {
   .card-1 {
-    top: 18%;
+    top: 25%;
     left: 10%;
     rotate: 5deg;
     z-index: -1;
@@ -387,7 +388,7 @@ body::-webkit-scrollbar {
   .card-2 {
     /* width: 70%; */
     scale: 0.8;
-    top: 24%;
+    top: 30%;
     left: 40%;
     z-index: -1;
 
@@ -399,7 +400,7 @@ body::-webkit-scrollbar {
     }
   }
   .card-3 {
-    top: 23%;
+    top: 30%;
     right: 8%;
     rotate: -2deg;
     z-index: -3;
@@ -486,7 +487,7 @@ body::-webkit-scrollbar {
   top: 3%;
   left: 4%;
   font-family: "fangfang";
-  font-size: 5rem;
+  font-size: 4rem;
   color: #3f271c;
   letter-spacing: 1rem;
   display: flex;
@@ -505,7 +506,7 @@ body::-webkit-scrollbar {
   }
   .en-text {
     font-family: "fangfang";
-    font-size: 3rem;
+    font-size: 2rem;
     color: #3f271c;
     opacity: 0.8;
     letter-spacing: 0.2rem;
@@ -752,19 +753,30 @@ body::-webkit-scrollbar {
 }
 
 .page-7 .photos .photo {
+  position: relative;
   width: 15%;
   height: 40%;
-  scale: 1.4;
+  scale: 1.2;
   z-index: 100;
-  background-image: url(../assets/imgs/wish/page-7/photo-bg-noshadow.png);
-  background-size: contain;
+  /* background-image: url(../assets/imgs/wish/page-7/shadow.png); */
+  background-size: 90% 100%;
   /* border: 1px solid #000; */
-  background-position: center;
+  background-position: 30px;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 1s;
+}
+.page-7 .photos .photo .white-bg {
+  width: 90%;
+  height: 100%;
+  position: absolute;
+}
+.page-7 .photos .photo img {
+  position: relative;
+  width: 78%;
+  height: 90%;
 }
 .page-7 .photos .photo::after {
   content: "点击查看";
@@ -788,8 +800,8 @@ body::-webkit-scrollbar {
 
 .page-7 .photos .photo.active {
   position: relative;
-  transform: translateY(-10px) scale(1.2);
-  background-image: url(../assets/imgs/wish/page-7/photo-bg.png);
+  background-image: url(../assets/imgs/wish/page-7/shadow.png);
+  transform: scale(1.2);
   cursor: pointer;
 }
 
@@ -798,28 +810,22 @@ body::-webkit-scrollbar {
 }
 .page-7 .photos .photo:hover {
   position: relative;
-  transform: translateY(-10px) scale(1.2);
-  background-image: url(../assets/imgs/wish/page-7/photo-bg.png);
+  background-image: url(../assets/imgs/wish/page-7/shadow.png);
+  transform: scale(1.2);
   cursor: pointer;
 }
 .page-7 .photos .photo:hover::after {
   opacity: 1;
 }
-.page-7 .photos .photo img {
-  position: relative;
-  top: -5px;
-  left: -5px;
-  width: 75%;
-  height: 88%;
-}
+
 .page-7 .photos .photo:nth-child(1) {
   position: relative;
-  top: 25vh;
+  top: 21vh;
   left: -1vw;
 }
 .page-7 .photos .photo:nth-child(3) {
   position: relative;
-  top: -25vh;
+  top: -21vh;
   left: 1vw;
 }
 
