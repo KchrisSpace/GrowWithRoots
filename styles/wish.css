@@ -25,7 +25,10 @@ body::-webkit-scrollbar {
   top: 0;
   margin-top: 2rem;
   z-index: 100;
+  opacity: 0;
+  transition: opacity; /* 添加过渡效果 */
 }
+
 .navbar:hover {
   opacity: 1;
 }
