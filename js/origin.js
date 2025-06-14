@@ -60,8 +60,8 @@ observer.observe(plowContainer);
 
 jigsawSvgs[1].addEventListener('mouseenter', () => {
   gsap.to(jigsawSvgs[1], {
-    rotation: 25,
-    duration: 0.1,
+    rotation: 16,
+    duration: 0.2,
     ease: 'power1.inOut',
     yoyo: true,
     repeat: 1,
@@ -83,7 +83,7 @@ jigsawSvgs[1].addEventListener('click', () => {
     onComplete: () => {
       setTimeout(() => {
         window.location.href = '../pages/origin-jigsaw-foodcoupon.html';
-      }, 500);
+      }, 300);
     },
   });
 });
@@ -91,8 +91,8 @@ jigsawSvgs[2].addEventListener('mouseenter', () => {
   // jigsawSvgs[2].style.translate = '-10rem 4rem';
   // jigsawSvgs[2].style.rotate = '-15.5deg';
   gsap.to(jigsawSvgs[2], {
-    rotation: 25,
-    duration: 0.1,
+    rotation: 16,
+    duration: 0.2,
     ease: 'power1.inOut',
     yoyo: true,
     repeat: 1,
@@ -114,7 +114,7 @@ jigsawSvgs[2].addEventListener('click', () => {
     onComplete: () => {
       setTimeout(() => {
         window.location.href = '../pages/origin-jigsaw-farmtool.html';
-      }, 500);
+      }, 300);
     },
   });
 });
@@ -141,7 +141,7 @@ enter.addEventListener('click', (e) => {
       // 当前页面平移出去
       gsap.to(plowContainer, {
         x: -window.innerWidth,
-        duration: 0.4,
+        duration: 0.8,
         ease: 'power2.inOut',
       });
 
