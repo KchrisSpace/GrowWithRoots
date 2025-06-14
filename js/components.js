@@ -2,17 +2,13 @@ class NavbarComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.lastScrollY = window.scrollY;
-    this.ticking = false;
   }
 
   connectedCallback() {
     this.render();
-    this.setupScrollListener();
-    // this.updateContent(); // 确保首次加载时更新内容
-    // 添加如下代码
+    this.setupDropdowns();
+    this.setupNavbarHover();
     const links = this.shadowRoot.querySelectorAll('li');
-    // 自动高亮当前页面
     const path = window.location.pathname;
     links.forEach((link) => {
       const a = link.querySelector('a');
@@ -22,104 +18,183 @@ class NavbarComponent extends HTMLElement {
     });
   }
 
-  setupScrollListener() {
-    window.addEventListener('scroll', () => {
-      if (!this.ticking) {
-        window.requestAnimationFrame(() => this.handleScroll());
-        this.ticking = true;
-      }
+  setupDropdowns() {
+    const dropdowns = this.shadowRoot.querySelectorAll('.dropdown');
+    dropdowns.forEach((dropdown) => {
+      const content = dropdown.querySelector('.dropdown-content');
+      let timeoutId;
+
+      dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutId);
+        content.style.display = 'block';
+      });
+
+      dropdown.addEventListener('mouseleave', () => {
+        timeoutId = setTimeout(() => {
+          content.style.display = 'none';
+        }, 100); // 300ms 延迟
+      });
     });
   }
 
-  handleScroll() {
+  setupNavbarHover() {
     const navbar = this.shadowRoot.querySelector('.navbar');
-    if (window.scrollY === 0) {
-      navbar.style.transform = 'translateY(0)';
-      navbar.style.opacity = '1';
-    } else if (window.scrollY > this.lastScrollY) {
-      // 向下滚动，隐藏navbar
-      navbar.style.transform = 'translateY(-100%)';
-      navbar.style.opacity = '0';
-    } else {
-      // 向上滚动，显示navbar
-      navbar.style.transform = 'translateY(0)';
-      navbar.style.opacity = '1';
-    }
-    this.lastScrollY = window.scrollY;
-    this.ticking = false;
+    let navbarTimeoutId;
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = navbar.getBoundingClientRect();
+      const isHovering = e.clientY <= rect.bottom && e.clientY >= rect.top;
+
+      // 检查是否在页面顶部区域
+      const topContainer = document.querySelector('.top-container');
+      const header = document.querySelector('header');
+      const isInTopArea =
+        (topContainer &&
+          e.clientY <= topContainer.getBoundingClientRect().bottom) ||
+        (header && e.clientY <= header.getBoundingClientRect().bottom);
+
+      clearTimeout(navbarTimeoutId);
+
+      if (isHovering || isInTopArea) {
+        navbar.style.opacity = '1';
+      } else {
+        navbarTimeoutId = setTimeout(() => {
+          navbar.style.opacity = '0';
+        }, 500);
+      }
+    });
   }
 
   render() {
     this.shadowRoot.innerHTML = `
     <style>
     * {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-      transition: all 0.3s ease;
-}
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
 
-html{
-  font-size: 12px;
-}
+    html{
+      font-size: 12px;
+    }
 
-@font-face {
-  font-family: 'fangfang';
-  src: url('/assets/fonts/字魂100号-方方先锋体.ttf') format('truetype');
-  font-weight: 400;
-}
+    @font-face {
+      font-family: 'fangfang';
+      src: url('/assets/fonts/字魂100号-方方先锋体.ttf') format('truetype');
+      font-weight: 400;
+    }
 
-      .navbar {
- width: 100%;
-position: fixed;
-top: 0;
-      margin-top: 2rem;
-z-index: 100;
-  opacity: 1;
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      margin-top: 1.5rem;
+      z-index: 100;
+      opacity: 0;
       transform: translateY(0);
-}
+    }
 
-.navbar ul{
-  width: 70%;
-  height: 84px;
-  margin: 0 auto;
-  border-radius: 200px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0px 8px 24px -5px rgba(0, 0, 0, 0.15); 
-  display: flex;
-  justify-content:space-evenly;
-  align-items: center;
-}
+  
+    .navbar ul{
+      width: 60%;
+      height: 60px;
+      margin: 0 auto;
+      border-radius: 200px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0px 8px 24px -5px rgba(0, 0, 0, 0.15); 
+      display: flex;
+      justify-content:space-evenly;
+      align-items: center;
+    }
 
-.navbar ul li{
-  padding: 15px;
-  font-family: 'fangfang';
-  border-radius: 50px;
-  font-size: 2rem;
-}
+    .navbar ul li{
+      padding: 0.8rem;
+      font-family: 'fangfang';
+      border-radius: 50px;
+      font-size: 1.8rem;
+      position: relative;
+    }
 
-.navbar ul li a{
-  color: #462204;
-}
+    .navbar ul li a{
+      color: #462204;
+    }
 
-.navbar ul li:hover,
+    .navbar ul li:hover,
     .navbar ul li.active{
       background-color: #137C41;
     }
 
-    .navbar ul li:hover a,
-    .navbar ul li.active a{
+    .navbar ul li:hover>a,
+    .navbar ul li.active>a{
       color: #F9F1D4;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 160px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 24px -5px rgba(0, 0, 0, 0.15);
+      padding: 0.5rem 0;
+      margin-top: 0.6rem;
+      background: linear-gradient(172.42deg, #FFFFFF 25.07%, #E6C375 210.14%, #765610 262.98%);
+      transition: opacity 0.5s ease;
+    }
+
+    .dropdown-content a {
+      color: #462204;
+      padding: 0.8rem 1.5rem;
+      display: block;
+      font-size: 1.4rem;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(235, 235, 235, 1);
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      color: #137C41;
     }
     </style>
       <nav class="navbar">
         <ul>
-          <li><a href="../pages/start.html">首页</a></li>
-          <li><a href="../pages/origin.html">根·起源</a></li>
-          <li><a href="../pages/coexistence.html">苦·共生</a></li>
-          <li><a href="../pages/wish.html">新·生长</a></li>
+          <li class="dropdown">
+            <a href="../pages/start.html" class="dropdown-trigger">首页</a>
+            </li>
+          <li class="dropdown">
+            <a href="../pages/origin.html" class="dropdown-trigger">根·起源</a>
+            <div class="dropdown-content">
+              <a href="../pages/origin.html#change">农业变迁</a>
+              <a href="../pages/origin.html#landMemory">土地记忆拼图</a>
+              <a href="../pages/origin.html#plow">耕织图</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="../pages/coexistence.html" class="dropdown-trigger">苦·共生</a>
+            <div class="dropdown-content">
+              <a href="../pages/coexistence.html#disater">灾年记忆</a>
+              <a href="../pages/coexistence.html#plowMan">耕路人</a>
+              <a href="../pages/coexistence.html#heart">农民心声</a>
+              <a href="../pages/coexistence.html#season">二十四节气</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="../pages/wish.html" class="dropdown-trigger">新·生长</a>
+            <div class="dropdown-content">
+              <a href="../pages/wish.html#future">耕今与昔</a>
+              <a href="../pages/wish.html#development">政策树</a>
+              <a href="../pages/wish.html#new">新农人</a>
+            </div>
+          </li>
         </ul>
       </nav>
     `;
@@ -1543,7 +1618,7 @@ class RotatingBoxes extends HTMLElement {
                   fill="#137C41" />
         <circle cx="32" cy="485" r="32" fill="#137C41" fill-opacity="0" />
                 <path
-          d="M61.0089 496.126C60.8388 496.144 60.6679 496.101 60.5263 496.005C60.3299 495.947 60.1475 495.849 59.9905 495.717C59.8335 495.585 59.7052 495.423 59.6135 495.24C59.5219 495.056 59.4689 494.856 59.4578 494.652C59.4467 494.447 59.4777 494.242 59.549 494.05C61.2448 488.957 61.4801 483.491 60.2283 478.27C58.9765 473.05 56.2877 468.285 52.4663 464.514C47.5275 459.66 41.0269 456.714 34.1205 456.202C27.2142 455.689 20.3499 457.643 14.7486 461.715C14.5939 461.867 14.4079 461.984 14.2035 462.057C13.9992 462.13 13.7814 462.158 13.5652 462.139C13.3491 462.119 13.1397 462.053 12.9517 461.945C12.7637 461.836 12.6015 461.688 12.4765 461.511C12.3514 461.333 12.2664 461.131 12.2275 460.917C12.1885 460.704 12.1964 460.485 12.2507 460.274C12.305 460.064 12.4044 459.868 12.542 459.701C12.6795 459.533 12.8519 459.397 13.0473 459.302C19.1953 454.732 26.7824 452.525 34.4228 453.086C42.0632 453.646 49.2471 456.936 54.6623 462.355C58.8512 466.558 61.7894 471.842 63.1487 477.618C64.5081 483.394 64.2351 489.434 62.3603 495.064C62.2998 495.373 62.1301 495.651 61.882 495.846C61.634 496.041 61.3241 496.14 61.0089 496.126Z"
+          d="M61.0089 496.126C60.8388 496.144 60.6679 496.101 60.5263 496.005C60.3299 495.947 60.1475 495.849 59.9905 495.717C59.8335 495.585 59.7052 495.423 59.6135 495.24C59.5219 495.056 59.4689 494.856 59.4578 494.652C59.4467 494.447 59.4777 494.242 59.549 494.05C61.2448 488.957 61.4801 483.491 60.2283 478.27C58.9765 473.05 56.2877 468.285 52.4663 464.514C47.5275 459.66 41.0269 456.714 34.1205 456.202C27.2142 455.689 20.3499 457.643 14.7486 461.715C14.5939 461.867 14.4079 461.984 14.2035 462.057C13.9992 462.13 13.7814 462.158 13.5652 462.139C13.3491 462.119 13.1397 462.053 12.9517 462.045C12.7637 461.936 12.6015 461.827 12.4765 461.718C12.3514 461.609 12.2664 461.5 12.2275 461.391C12.1885 461.282 12.1964 461.173 12.2507 461.064C12.305 460.955 12.4044 460.846 12.542 460.737C12.6795 460.628 12.8519 460.519 13.0473 460.41C19.1953 455.84 26.7824 453.633 34.4228 454.194C42.0632 454.755 49.2471 458.045 54.6623 463.464C58.8512 467.667 61.7894 472.951 63.1487 478.727C64.5081 484.503 64.2351 490.543 62.3603 496.173C62.2998 496.482 62.1301 496.76 61.882 496.955C61.634 497.15 61.3241 497.25 61.0089 497.236Z"
           fill="#137C41" />
         <path
           d="M31.9657 517.119C31.2316 517.14 30.4971 517.099 29.7698 516.999C22.0813 516.446 14.8461 513.154 9.37853 507.72C3.88674 502.303 0.583481 495.053 0.0999172 487.354C-0.506457 479.732 1.66177 472.148 6.20522 465.998C6.2998 465.803 6.43574 465.631 6.60363 465.493C6.77152 465.356 6.96733 465.256 7.17746 465.202C7.3876 465.148 7.60705 465.14 7.82056 465.179C8.03407 465.218 8.23652 465.303 8.41391 465.428C8.5913 465.553 8.73937 465.715 8.84782 465.903C8.95627 466.091 9.02253 466.3 9.04198 466.516C9.06143 466.732 9.0336 466.95 8.96046 467.155C8.88731 467.359 8.7706 467.545 8.61838 467.7C4.46164 473.276 2.45081 480.162 2.95354 487.099C3.45628 494.035 6.439 500.559 11.3563 505.478C16.2737 510.397 22.7971 513.381 29.734 513.886C36.6709 514.391 43.5577 512.382 49.1354 508.227C49.2926 508.096 49.475 508 49.6714 507.943C49.8677 507.886 50.0738 507.87 50.2765 507.897C50.4792 507.923 50.6742 507.991 50.8494 508.096C51.0246 508.202 51.1761 508.342 51.2945 508.509C51.4128 508.676 51.4954 508.865 51.5372 509.065C51.5789 509.265 51.5789 509.472 51.537 509.672C51.4952 509.872 51.4124 510.061 51.294 510.228C51.1755 510.395 51.024 510.535 50.8487 510.64C45.4644 514.866 38.8103 517.149 31.9657 517.119Z"
@@ -1567,7 +1642,7 @@ class RotatingBoxes extends HTMLElement {
           d="M28.9183 482.829C31.0725 485.109 32.2539 488.139 32.2123 491.275C32.1959 492.085 32.1152 492.892 31.971 493.688C30.0362 494.052 28.0414 493.929 26.1657 493.331C24.29 492.733 22.5922 491.679 21.2249 490.263C19.8575 488.846 18.8635 487.112 18.332 485.217C17.8005 483.321 17.7482 481.324 18.1798 479.403C21.3261 478.925 24.5383 479.621 27.205 481.357C27.857 481.745 28.4368 482.243 28.9183 482.829Z"
                   fill="#137C41" />
         <circle cx="32" cy="710" r="32" fill="#137C41" fill-opacity="0" />
-        <path
+                <path
           d="M61.0089 721.126C60.8388 721.144 60.6679 721.101 60.5263 721.005C60.3299 720.947 60.1475 720.849 59.9905 720.717C59.8335 720.585 59.7052 720.423 59.6135 720.24C59.5219 720.056 59.4689 719.856 59.4578 719.652C59.4467 719.447 59.4777 719.242 59.549 719.05C61.2448 713.957 61.4801 708.491 60.2283 703.27C58.9765 698.05 56.2877 693.285 52.4663 689.514C47.5275 684.66 41.0269 681.714 34.1205 681.202C27.2142 680.689 20.3499 682.643 14.7486 686.715C14.5939 686.867 14.4079 686.984 14.2035 687.057C13.9992 687.13 13.7814 687.158 13.5652 687.139C13.3491 687.119 13.1397 687.053 12.9517 686.945C12.7637 686.836 12.6015 686.688 12.4765 686.511C12.3514 686.333 12.2664 686.131 12.2275 685.917C12.1885 685.704 12.1964 685.485 12.2507 685.274C12.305 685.064 12.4044 684.868 12.542 684.701C12.6795 684.533 12.8519 684.397 13.0473 684.302C19.1953 679.732 26.7824 677.525 34.4228 678.086C42.0632 678.646 49.2471 681.936 54.6623 687.355C58.8512 691.558 61.7894 696.842 63.1487 702.618C64.5081 708.394 64.2351 714.434 62.3603 720.064C62.2998 720.373 62.1301 720.651 61.882 720.846C61.634 721.041 61.3241 721.14 61.0089 721.126Z"
           fill="#137C41" />
         <path
@@ -1585,12 +1660,12 @@ class RotatingBoxes extends HTMLElement {
         <path
           d="M35.743 707.83C33.5889 710.11 32.4074 713.139 32.4491 716.276H32.2077C32.2494 713.139 31.0679 710.11 28.9137 707.83C28.3328 707.265 27.7205 706.733 27.0798 706.237C26.591 704.908 26.3419 703.503 26.3438 702.087C26.3986 700.02 26.9355 697.995 27.9117 696.172C28.8879 694.35 30.2764 692.781 31.9664 691.59C33.6639 692.772 35.0572 694.34 36.0324 696.164C37.0076 697.989 37.5369 700.018 37.577 702.087C37.5959 703.465 37.3459 704.834 36.841 706.117L37.0944 706.358C36.5997 706.973 36.117 707.335 35.743 707.83Z"
           fill="#137C41" />
-        <path
+                <path
           d="M45.632 704.283C46.0637 706.203 46.0114 708.201 45.4799 710.097C44.9484 711.992 43.9543 713.726 42.5869 715.142C41.2196 716.559 39.5219 717.613 37.6462 718.211C35.7705 718.809 33.7756 718.932 31.8408 718.568C31.6986 717.771 31.6139 716.964 31.5874 716.155C31.5381 713.017 32.7207 709.985 34.8814 707.709C35.3021 707.275 35.7537 706.872 36.2328 706.503C39.0015 704.667 42.3345 703.88 45.632 704.283Z"
           fill="#137C41" />
-        <path
+                <path
           d="M28.9183 707.829C31.0725 710.109 32.2539 713.139 32.2123 716.275C32.1959 717.085 32.1152 717.892 31.971 718.688C30.0362 719.052 28.0414 718.929 26.1657 718.331C24.29 717.733 22.5922 716.679 21.2249 715.263C19.8575 713.846 18.8635 712.112 18.332 710.217C17.8005 708.321 17.7482 706.324 18.1798 704.403C21.3261 703.925 24.5383 704.621 27.205 706.357C27.857 706.745 28.4368 707.243 28.9183 707.829Z"
-          fill="#137C41" />
+                  fill="#137C41" />
       </svg>
 
       </div>

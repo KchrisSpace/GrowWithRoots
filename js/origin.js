@@ -60,7 +60,7 @@ observer.observe(plowContainer);
 
 jigsawSvgs[1].addEventListener('mouseenter', () => {
   gsap.to(jigsawSvgs[1], {
-    rotation: 16,
+    rotation: 13,
     duration: 0.2,
     ease: 'power1.inOut',
     yoyo: true,
@@ -91,7 +91,7 @@ jigsawSvgs[2].addEventListener('mouseenter', () => {
   // jigsawSvgs[2].style.translate = '-10rem 4rem';
   // jigsawSvgs[2].style.rotate = '-15.5deg';
   gsap.to(jigsawSvgs[2], {
-    rotation: 16,
+    rotation: 13,
     duration: 0.2,
     ease: 'power1.inOut',
     yoyo: true,
