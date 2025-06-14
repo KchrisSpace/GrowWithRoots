@@ -1,19 +1,4 @@
-// 立即执行动画
-const topContainer = document.querySelector('.top-container');
-const loadingOverlay = document.querySelector('.loading-overlay');
 
-if (topContainer && loadingOverlay) {
-  // 添加淡出类到 loading-overlay
-  // loadingOverlay.classList.add('fade-out');
-
-  // 添加入场动画类到 top-container
-  // topContainer.classList.add('fade-in');
-
-  // 动画结束后移除 loading-overlay
-  setTimeout(() => {
-    loadingOverlay.remove();
-  }, 1000);
-}
 
 // 添加TV底部动画
 function animateSvg() {
@@ -1446,6 +1431,22 @@ document.addEventListener('DOMContentLoaded', function () {
   //   ); // 使用 passive: true 提高性能
   // }
 
+  // 立即执行动画
+const topContainer = document.querySelector('.top-container');
+const loadingOverlay = document.querySelector('.loading-overlay');
+
+if (topContainer && loadingOverlay) {
+  // 添加淡出类到 loading-overlay
+  // loadingOverlay.classList.add('fade-out');
+
+  // 添加入场动画类到 top-container
+  // topContainer.classList.add('fade-in');
+
+  // 动画结束后移除 loading-overlay
+  setTimeout(() => {
+    loadingOverlay.remove();
+  }, 1000);
+}
   // 翻页
   $(window).ready(function () {
     $('#pages').turn({

@@ -72,3 +72,28 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 5;
 }
+.img-pre {
+  position: relative;
+  object-fit: cover;
+}
+.img-pre:nth-child(1){
+}
+.img-pre:nth-child(2) {
+  top: 20rem;
+  left: 10rem;
+}
+.img-pre:nth-child(3) {
+  top: 10rem;
+  left: 30rem;
+}
+.img-pre:nth-child(4) {
+  top: 45rem;
+  left: 40rem;
+}
+.img-pre:nth-child(5) {
+  left: 40rem;
+}
+.img-pre:nth-child(6) {
+  top: 30rem;
+
+}
