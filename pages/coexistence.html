@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/coexistence.css" />
     <link rel="stylesheet" href="../styles/loading.css" />
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.js"></script>
-    <script src="../scripts/turn.min.js"></script>
+    <script defer src="../scripts/jquery.js"></script>
+    <script defer src="../scripts/turn.min.js"></script>
     <script defer src="../scripts/gsap.min.js"></script>
     <script defer src="../scripts/three_r145.js"></script>
     <script defer src="../scripts/three_glbloader.js"></script>
@@ -18,6 +18,7 @@
     <script defer src="../js/glasses.js"></script>
     <script defer src="../js/components.js"></script>
     <script defer src="../js/coexistence.js"></script>
+    <script defer src="../js/rain.js"></script>
   </head>
 
   <body>
@@ -72,6 +73,7 @@
     </div>
         <!-- 灾年记忆 -->
     <div class="memory-container">
+      <div class="rain" id="rain"></div>
             <div class="land-green-title">
                 <div>
                   <h5 class="land-title-1">灾年记忆</h5>
@@ -91,6 +93,7 @@
            <div class="bottom-text"><p>他们吃过的苦，地都记得。那一年，雨没来，地裂了，粮断了......</p></div>
     <!-- 点击玻璃弹开 -->
            <div class="clickable-glass"><img src="../assets/imgs/coexistence/enter-btn.svg" alt=""></div>
+          
           </div>
     </div>
     <div class="middle-container">
@@ -1146,8 +1149,5 @@
     </div>
       </div>
     </div>
-    <script type="text/javascript">
-
-    </script>
   </body>
 </html>

@@ -90,9 +90,9 @@ video {
 .plowman {
   height: 100vh;
   padding-top: 6rem;
-  position:relative;
+  position: relative;
 }
-.plow-container{
+.plow-container {
   width: 100%;
   position: absolute;
   top: 50%;
@@ -608,9 +608,37 @@ h5 + span {
   min-height: 100vh;
   background-color: #1e1e1e;
   position: relative;
-  overflow-y: auto; /* 允许垂直滚动 */
-  overflow-x: hidden; /* 禁止水平滚动 */
+  overflow: hidden;
 }
+
+/* 雨滴效果 */
+.rain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.raindrop {
+  position: absolute;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.5));
+  animation: rain 3s linear infinite;
+  z-index: 30;
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
 .modal-container {
   width: 100%;
   height: 100vh;
