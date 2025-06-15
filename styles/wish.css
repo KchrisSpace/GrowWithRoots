@@ -350,7 +350,7 @@ body::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   position: absolute;
- 
+
   transition: all 0.5s ease-in-out;
   display: flex; /* 新增 */
   flex-direction: column; /* 新增 */
@@ -393,7 +393,7 @@ body::-webkit-scrollbar {
   .card-2 {
     /* width: 70%; */
     scale: 0.8;
-    top: 40vh
+    top: 40vh;
     left: 40%;
     z-index: -1;
 
@@ -406,12 +406,11 @@ body::-webkit-scrollbar {
   }
   .card-3 {
     top: 35vh;
-    right: 8%;
+    right: 8vw;
     rotate: -2deg;
     z-index: -3;
   }
 }
-
 .page-3 .card button {
   z-index: 100;
 }
@@ -531,26 +530,27 @@ body::-webkit-scrollbar {
 .page-4 .buttons {
   position: absolute;
   display: flex;
+
   /* gap: 20px; */
   .btn-1 {
     position: relative;
-    left: -10vw;
-    top: -38vh;
+    left: -11vw;
+    top: -20vw;
   }
   .btn-2 {
     position: relative;
     left: -2vw;
-    top: -76vh;
+    top: -36vw;
   }
   .btn-3 {
     position: relative;
     left: 5vw;
-    top: -55vh;
+    top: -26vw;
   }
   .btn-4 {
     position: relative;
     left: 2vw;
-    top: -26vh;
+    top: -13vw;
   }
 }
 
