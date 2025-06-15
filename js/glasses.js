@@ -353,3 +353,35 @@ document.querySelector('.clickable-glass').addEventListener('click', () => {
     },
   });
 });
+
+// 创建bottom文字的 Observer
+const bottomObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // 保存原始文本
+      const originalText = entry.target.textContent;
+      // 清空文本
+      entry.target.textContent = '';
+      
+      // 创建逐字动画
+      let currentText = '';
+      const chars = originalText.split('');
+      
+      chars.forEach((char, i) => {
+        setTimeout(() => {
+          currentText += char;
+          entry.target.textContent = currentText;
+        }, i * 100); // 每个字符间隔100ms
+      });
+      
+      // 一旦动画开始，就停止观察该元素
+      bottomObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 1, // 当元素100%进入视窗时触发
+  rootMargin: '0px' // 确保元素真正进入视窗才触发
+});
+
+// 开始观察bottom文字
+bottomObserver.observe(bottomText);

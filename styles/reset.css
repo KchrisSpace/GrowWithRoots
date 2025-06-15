@@ -49,6 +49,10 @@ html {
   font-family:'Ajia';
   src: url('../assets/fonts/AaJiJiaHei-2.ttf') format('truetype');
 }
+@font-face{
+  font-family:'FZ';
+  src: url('../assets/fonts/FZJZJW.TTF') format('truetype');
+}
 a {
   color: #000000;
 }

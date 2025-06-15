@@ -93,18 +93,23 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 20rem;
+  min-width: 31rem;
 }
 .cloud-1 {
   width: 100%;
   margin: 0 auto;
-  transform: translateX(-20rem);
+  position: relative;
+ right:20rem;
 }
 .cloud-2 {
-  transform: translateY(-3rem);
+  position: relative;
+  top: -3rem;
   margin: 0 20rem 0 0;
 }
 .cloud-3 {
-  transform: translateY(-4rem);
+  position: relative;
+  top: -4rem;
   margin: 0 0 0 10rem;
 }
 .marquee-section {
@@ -317,8 +322,12 @@ h5 + span {
   letter-spacing: -1.1%;
   text-align: center;
 }
+.mask-sub img{
+  scale:0.9;
+  margin-left: 0.5rem;
+}
 .mask-title {
-  font-family: fangfang;
+  font-family: FZ;
   font-weight: 400;
   font-size: 46px;
   color: #137c41;
@@ -326,7 +335,7 @@ h5 + span {
 }
 .mask-sub {
   font-family: 'PingFang-SC-Medium';
-  font-size: 20px;
+  font-size: 1.5rem;
   width: 100%;
   color: #ffffff;
   display: flex;

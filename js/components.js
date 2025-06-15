@@ -1788,7 +1788,7 @@ class RotatingBoxes extends HTMLElement {
     });
   }
 }
-// 返回按钮
+// 返回按钮1
 class BackButton extends HTMLElement {
   constructor() {
     super();
@@ -1830,9 +1830,50 @@ class BackButton extends HTMLElement {
     });
   }
 }
+// 返回按钮2
+class BackBtn extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
 
+  connectedCallback() {
+    this.render();
+    this.addEventListeners();
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        .back-btn {
+            position: absolute;
+            top: 4rem;
+            left: 4rem;
+            z-index: 20;
+          }
+        .back-btn img {
+          scale: 0.8;
+        }
+        .back-btn:hover {
+          cursor: pointer;
+          opacity: 0.7;
+        }
+      </style>
+      <div class="back-btn">
+        <img src="../../assets/imgs/back-btn.svg" alt="back-btn">
+      </div>
+    `;
+  }
+
+  addEventListeners() {
+    const backBtn = this.shadowRoot.querySelector('.back-btn');
+    backBtn.addEventListener('click', () => {
+      window.history.back();
+    });
+  }
+}
 customElements.define('back-button', BackButton);
-
+customElements.define('back-btn', BackBtn);
 customElements.define('navbar-component', NavbarComponent);
 customElements.define('title-component', TitleComponent);
 customElements.define(

@@ -167,6 +167,7 @@ g {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 20%;
+  cursor: pointer;
   /* scale: 1.1; */
 }
 .start-text {
@@ -176,6 +177,7 @@ g {
   transform: translate(-50%, -50%);
   z-index: 100;
   color: #f5f5dc;
+  cursor: pointer;
   /* scale: 1.1; */
 }
 /* 动画 */

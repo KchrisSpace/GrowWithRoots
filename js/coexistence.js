@@ -1488,7 +1488,27 @@ document.addEventListener('DOMContentLoaded', function () {
       elevation: 500,
       when: {
         turned: function (e, page) {
-          /*console.log('Current view: ', $(this).turn('view'));*/
+          const totalPages = $(this).turn('pages');
+          const preBtn = document.querySelector('.pre-btn');
+          const nextBtn = document.querySelector('.next-btn');
+
+          // 第一页时隐藏左箭头
+          if (page === 1) {
+            preBtn.style.opacity = '0';
+            preBtn.style.pointerEvents = 'none';
+          } else {
+            preBtn.style.opacity = '1';
+            preBtn.style.pointerEvents = 'auto';
+          }
+
+          // 最后一页时隐藏右箭头
+          if (page === totalPages) {
+            nextBtn.style.opacity = '0';
+            nextBtn.style.pointerEvents = 'none';
+          } else {
+            nextBtn.style.opacity = '1';
+            nextBtn.style.pointerEvents = 'auto';
+          }
         },
       },
     });

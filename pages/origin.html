@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/origin.css" />
     <title>根·起源</title>
-    <script defer src="../js/origin.js"></script>
     <script defer src="../js/components.js"></script>
     <script defer src="../scripts/gsap.min.js"></script>
+    <script defer src="../js/origin.js"></script>
+    <script defer src="../js/animation.js"></script>
   </head>
   <body>
     <div>
@@ -176,21 +177,23 @@
             class="img-bg-1"
             src="../assets/imgs/origin/bg-1.png"
             alt="bg-1.png" /> -->
-            <img src="../assets/imgs/origin/sun-1.svg" alt=""><img src="../assets/imgs/origin/sun-2.svg" alt="">
+          <img src="../assets/imgs/origin/sun-1.svg" alt="" /><img
+            src="../assets/imgs/origin/sun-2.svg"
+            alt="" />
           <video
             src="../assets/video/origin.mp4"
             autoplay
-            muted
             loop
-            playsinline
-            preload="auto" />
+            muted
+            preload="auto" 
+            poster="../assets/imgs/origin/bg-1.png" />
         </header>
         <!-- main -->
         <div class="main-bg">
           <!-- 诗文 -->
           <div class="poem">
-            <img class="bg-svg" src="../assets/imgs/origin/bg-2.svg" alt="">
-              
+            <img class="bg-svg" src="../assets/imgs/origin/bg-2.svg" alt="" />
+
             <svg
               class="cloud-1"
               width="313"
@@ -1534,15 +1537,15 @@
                           alt="01" />
                       </span>
                       <span
-                      ><img
-                        src="../assets/imgs/origin/plow-detail/09.png"
-                        alt="01" />
-                    </span>
-                    <span
-                    ><img
-                      src="../assets/imgs/origin/plow-detail/10.png"
-                      alt="01" />
-                  </span>
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/09.png"
+                          alt="01" />
+                      </span>
+                      <span
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/10.png"
+                          alt="01" />
+                      </span>
                     </div>
                     <div>
                       <span
@@ -1586,15 +1589,15 @@
                           alt="01" />
                       </span>
                       <span
-                      ><img
-                        src="../assets/imgs/origin/plow-detail/09.png"
-                        alt="01" />
-                    </span>
-                    <span
-                    ><img
-                      src="../assets/imgs/origin/plow-detail/10.png"
-                      alt="01" />
-                  </span>
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/09.png"
+                          alt="01" />
+                      </span>
+                      <span
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/10.png"
+                          alt="01" />
+                      </span>
                     </div>
                     <div>
                       <span
@@ -1638,15 +1641,15 @@
                           alt="01" />
                       </span>
                       <span
-                      ><img
-                        src="../assets/imgs/origin/plow-detail/09.png"
-                        alt="01" />
-                    </span>
-                    <span
-                    ><img
-                      src="../assets/imgs/origin/plow-detail/10.png"
-                      alt="01" />
-                  </span>
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/09.png"
+                          alt="01" />
+                      </span>
+                      <span
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/10.png"
+                          alt="01" />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -1694,15 +1697,15 @@
                           alt="01" />
                       </span>
                       <span
-                      ><img
-                        src="../assets/imgs/origin/plow-detail/19.png"
-                        alt="01" />
-                    </span>
-                    <span
-                    ><img
-                      src="../assets/imgs/origin/plow-detail/20.png"
-                      alt="01" />
-                  </span>
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/19.png"
+                          alt="01" />
+                      </span>
+                      <span
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/20.png"
+                          alt="01" />
+                      </span>
                     </div>
                     <div>
                       <span
@@ -1746,15 +1749,15 @@
                           alt="01" />
                       </span>
                       <span
-                      ><img
-                        src="../assets/imgs/origin/plow-detail/19.png"
-                        alt="01" />
-                    </span>
-                    <span
-                    ><img
-                      src="../assets/imgs/origin/plow-detail/20.png"
-                      alt="01" />
-                  </span>
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/19.png"
+                          alt="01" />
+                      </span>
+                      <span
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/20.png"
+                          alt="01" />
+                      </span>
                     </div>
                     <div>
                       <span
@@ -1798,35 +1801,48 @@
                           alt="01" />
                       </span>
                       <span
-                      ><img
-                        src="../assets/imgs/origin/plow-detail/19.png"
-                        alt="01" />
-                    </span>
-                    <span
-                    ><img
-                      src="../assets/imgs/origin/plow-detail/20.png"
-                      alt="01" />
-                  </span>
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/19.png"
+                          alt="01" />
+                      </span>
+                      <span
+                        ><img
+                          src="../assets/imgs/origin/plow-detail/20.png"
+                          alt="01" />
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-               <!-- 蒙层 -->
+              <!-- 蒙层 -->
               <div class="plow-mask1">
                 <h3 class="mask-title">走进《耕织图》穿越千年农桑画卷</h3>
-               <a class="mask-sub">查看详情<img src="../assets/imgs/origin/arrow.svg" alt="arrow"></a>
+                <a class="mask-sub"
+                  >查看详情<img
+                    src="../assets/imgs/origin/arrow.svg"
+                    alt="arrow"
+                /></a>
               </div>
             </div>
             <!-- 说明文字 -->
-             <div class="plow-text-container">
+            <div class="plow-text-container">
               <div class="plow-text">
-                <p>《耕织图》是南宋绍兴年间画家楼璹所作的 <span class="text-color">世界上第一部农业科普画册</span>。</p>
+                <p>
+                  《耕织图》是南宋绍兴年间画家楼璹所作的
+                  <span class="text-color">世界上第一部农业科普画册</span>。
+                </p>
                 <p>《耕织图》描述了天子三推，皇后亲蚕，男耕女织 。</p>
-                <p>清朝康熙南巡，见《耕织图诗》后，感慨于织女之寒、农夫之苦，传命内廷供奉焦秉贞在楼绘基础上，重新绘制，</p>
+                <p>
+                  清朝康熙南巡，见《耕织图诗》后，感慨于织女之寒、农夫之苦，传命内廷供奉焦秉贞在楼绘基础上，重新绘制，
+                </p>
                 <p>计有耕图和织图各23幅，并每幅制诗一章。</p>
-                <p> 改图被誉为“<span class="text-color">中国最早完整记录男耕女织的画卷</span>”“<span class="text-color">最早的农业技术挂图</span>”。</p>
-               </div>
-             </div>
+                <p>
+                  改图被誉为“<span class="text-color"
+                    >中国最早完整记录男耕女织的画卷</span
+                  >”“<span class="text-color">最早的农业技术挂图</span>”。
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

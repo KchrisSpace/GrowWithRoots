@@ -1,4 +1,3 @@
-
 // 卡片相关代码
 const cardCount = 30;
 const cardPerRow = 5; // 每行卡片数量
@@ -78,15 +77,31 @@ function initCards() {
   const totalHeight = cardRows * 110 + 40;
   cardContainer.style.height = totalHeight + 'px';
 
-  // 自动发牌
-  setTimeout(() => {
-    dealCards();
+  // 创建 Intersection Observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 当容器进入视图时开始发牌
+          dealCards();
 
-    // 发牌完成后添加鼠标悬停动画
-    setTimeout(() => {
-      addHoverAnimation();
-    }, cardCount * 100 + 500); // 等待所有卡片发牌完成
-  }, 100);
+          // 发牌完成后添加鼠标悬停动画
+          setTimeout(() => {
+            addHoverAnimation();
+          }, cardCount * 100 + 500); // 等待所有卡片发牌完成
+
+          // 停止观察，因为我们只需要触发一次
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.8, // 当容器80%进入视图时触发
+    }
+  );
+
+  // 开始观察卡片容器
+  observer.observe(cardContainer);
 }
 
 // 页面加载完成后初始化
