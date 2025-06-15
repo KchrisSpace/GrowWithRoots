@@ -1,29 +1,38 @@
 // 导航栏
 const navbar = document.querySelector(".navbar");
-let lastScrollY = window.scrollY;
-let ticking = false;
+// navbar.addEventListener("mouseenter", () => {
+//   navbar.style.display = "block";
+//  });
 
-function handleScroll() {
-  if (window.scrollY === 0) {
-    navbar.style.top = "0";
-    navbar.style.transition = "top 0.3s";
-  } else if (window.scrollY > lastScrollY) {
-    // 向下滚动，隐藏navbar
-    navbar.style.top = "-100px"; // 假设navbar高度为60px
-  } else {
-    // 向上滚动，显示navbar
-    navbar.style.top = "0";
-  }
-  lastScrollY = window.scrollY;
-  ticking = false;
-}
+// navbar.addEventListener("mouseleave", () => {
+// navbar.style.display = "none";
+// });
 
-window.addEventListener("scroll", function () {
-  if (!ticking) {
-    window.requestAnimationFrame(handleScroll);
-    ticking = true;
-  }
-});
+// 上下滑动控制显示
+// let lastScrollY = window.scrollY;
+// let ticking = false;
+
+// function handleScroll() {
+//   if (window.scrollY === 0) {
+//     navbar.style.top = "0";
+//     navbar.style.transition = "top 0.3s";
+//   } else if (window.scrollY > lastScrollY) {
+//     // 向下滚动，隐藏navbar
+//     navbar.style.top = "-100px"; // 假设navbar高度为60px
+//   } else {
+//     // 向上滚动，显示navbar
+//     navbar.style.top = "0";
+//   }
+//   lastScrollY = window.scrollY;
+//   ticking = false;
+// }
+
+// window.addEventListener("scroll", function () {
+//   if (!ticking) {
+//     window.requestAnimationFrame(handleScroll);
+//     ticking = true;
+//   }
+// });
 // picture进入
 window.addEventListener("DOMContentLoaded", () => {});
 
@@ -81,8 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const car = document.querySelector(".car");
-  if (!car) return; 
- 
+  if (!car) return;
 
   // 初始状态
   car.style.transition = "transform 10s linear";
@@ -111,7 +119,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const cards = page3.querySelectorAll(".cards .card");
   cards.forEach((card) => {
     card.style.transform = "translateY(80px)";
-    card.style.transition = "transform 1s  opacity 0.6s";
   });
 
   function animateCards(entries) {
@@ -151,7 +158,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ".left-hand",
         {
           x: 520,
-          y:150,
+          y: 150,
           ease: "none",
         },
         "<"
@@ -160,7 +167,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ".right-hand",
         {
           x: -520,
-          y:150,
+          y: 150,
           ease: "none",
         },
         "<"
