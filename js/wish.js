@@ -90,8 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const car = document.querySelector(".car");
-  if (!car) return; 
- 
+  if (!car) return;
 
   // 初始状态
   car.style.transition = "transform 10s linear";
@@ -120,7 +119,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const cards = page3.querySelectorAll(".cards .card");
   cards.forEach((card) => {
     card.style.transform = "translateY(80px)";
-    card.style.transition = "transform 1s  opacity 0.6s";
   });
 
   function animateCards(entries) {
@@ -160,7 +158,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ".left-hand",
         {
           x: 520,
-          y:150,
+          y: 150,
           ease: "none",
         },
         "<"
@@ -169,7 +167,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ".right-hand",
         {
           x: -520,
-          y:150,
+          y: 150,
           ease: "none",
         },
         "<"

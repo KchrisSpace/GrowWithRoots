@@ -350,6 +350,8 @@ body::-webkit-scrollbar {
   background-size: cover;
   background-position: center;
   position: absolute;
+ 
+  transition: all 0.5s ease-in-out;
   display: flex; /* 新增 */
   flex-direction: column; /* 新增 */
   gap: 10px; /* 新增 */
@@ -383,7 +385,7 @@ body::-webkit-scrollbar {
 }
 .page-3 {
   .card-1 {
-    top: 25%;
+    top: 35vh;
     left: 10%;
     rotate: 5deg;
     z-index: -1;
@@ -391,7 +393,7 @@ body::-webkit-scrollbar {
   .card-2 {
     /* width: 70%; */
     scale: 0.8;
-    top: 30%;
+    top: 40vh
     left: 40%;
     z-index: -1;
 
@@ -403,19 +405,13 @@ body::-webkit-scrollbar {
     }
   }
   .card-3 {
-    top: 30%;
+    top: 35vh;
     right: 8%;
     rotate: -2deg;
     z-index: -3;
   }
 }
-.page-3 .card {
-  transform: translateY(30px);
-  transition: transform 1s box-shadow 1s;
-  cursor: pointer;
-  z-index: -1; /* 保证卡片在底层但可被hover */
-  pointer-events: auto; /* 确保可以响应鼠标事件 */
-}
+
 .page-3 .card button {
   z-index: 100;
 }
