@@ -4,7 +4,7 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
 html {

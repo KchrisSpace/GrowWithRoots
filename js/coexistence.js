@@ -76,20 +76,37 @@ if (feColorMatrix) {
 
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
+  // 视窗的80%位于 top-container容器的时候，视频播放有声音
+  const video = document.querySelector('.tv-video video');
+  // 创建 Intersection Observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 当视频80%进入视窗时播放声音
+          if (entry.intersectionRatio >= 0.8) {
+            video.muted = false;
+          } else {
+            video.muted = true;
+          }
+        } else {
+          video.muted = true;
+        }
+      });
+    },
+    {
+      threshold: [0.8], // 设置阈值为0.8，即80%
+    }
+  );
+
+  // 开始观察视频元素
+  observer.observe(video);
   const contentData = [
     {
       title: '一粒低镉稻种的十年攻坚',
       content: [
         '"0.031！"——2023年，湖南株洲一块稻田边，检测仪上的数值让科研团队热泪盈眶。',
         '"臻两优8612"成功了，一粒真正低镉、稳产的水稻种子终于诞生。它的主创者，是湖南省农科院水稻所研究员赵炳然。十年来，他带领团队走了一条最艰难却最干净的路：不用转基因，通过物理、化学、空间诱变等手段，从30万株材料中一一筛选。失败过无数次，终于培育出既低镉又高产的种子',
-      ],
-    },
-    {
-      title: '禾下乘凉梦·"杂交水稻之父"',
-      content: [
-        '他首创成功培育出世界上第一代杂交水稻，大幅提高水稻产量，使中国用不到全球9%的耕地养活了近20%的人口。自1973年三系杂交水稻问世以来，袁隆平带领团队不断攻关"两系法""超级稻"，推动水稻亩产一再突破纪录。',
-        '他的研究成果广泛推广至亚洲、非洲、美洲等地，帮助多个国家缓解粮食危机。',
-        '他一生心系"禾下乘凉梦"，致力于"让人类远离饥饿"，被誉为"把饭碗牢牢端在中国人自己手里"的种业英雄。',
       ],
     },
     {
@@ -114,83 +131,75 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
     },
     {
-      title: '饥荒年代',
+      title: '小麦抗病守护者——李振声',
       content: [
-        '1959-1961年，中国经历了严重的自然灾害，粮食产量大幅下降，导致全国性饥荒。',
-        '这段历史提醒我们粮食安全的重要性，也让我们更加珍惜今天的幸福生活。',
+        '说到让中国人都能吃饱，很多人想起的是"杂交水稻之父"袁隆平，其实中国还有一位与袁老齐名、',
+        '并称"南袁北李"的农业科学家，他就是"中国小麦远缘杂交之父"李振声。',
       ],
     },
     {
-      title: '粮食危机',
+      title: '黄瓜抗病育种先驱——侯锋',
       content: [
-        '当时全国粮食供应严重不足，许多地区出现粮食短缺，人民生活陷入困境。',
-        '在极端困难的情况下，人们互相帮助，共同度过难关，展现了中华民族的坚韧精神。',
+        '被誉为中国"黄瓜王"，自1957年起致力抗病黄瓜研发，他培育的系列新品种让我国露地黄瓜亩产突破5000公斤，占据80%种植面积',
       ],
     },
     {
-      title: '农业改革',
+      title: '禾下乘凉梦·"杂交水稻之父"——袁隆平',
       content: [
-        '改革开放后，中国农业发生了翻天覆地的变化，粮食产量逐年提高。',
-        '农业科技的进步为粮食增产提供了重要支撑，杂交水稻等技术的应用改变了中国农业的面貌。',
+        '他首创成功培育出世界上第一代杂交水稻，大幅提高水稻产量，使中国用不到全球9%的耕地养活了近20%的人口。自1973年三系杂交水稻问世以来，袁隆平带领团队不断攻关"两系法""超级稻"，推动水稻亩产一再突破纪录。',
+        '他的研究成果广泛推广至亚洲、非洲、美洲等地，帮助多个国家缓解粮食危机。他一生心系"禾下乘凉梦"，致力于"让人类远离饥饿"，被誉为"把饭碗牢牢端在中国人自己手里"的种业英雄。',
       ],
     },
     {
-      title: '科技兴农',
+      title: '种业改革实践者——程顺和',
       content: [
-        '农业科技的进步为粮食增产提供了重要支撑，杂交水稻等技术的应用改变了中国农业的面貌。',
-        '现代农业的发展不仅解决了温饱问题，还为农民增收致富提供了新途径。',
+        '1936年出生，1963年起扎根河南基层，57年如一日专注玉米育种，培育39个新品种，推广5亿亩，获国家科技进步一等奖和"最美科技工作者"称号',
       ],
     },
     {
-      title: '粮食安全',
+      title: '作物资源保护倡导者——谢华安',
       content: [
-        '保障粮食安全始终是国家的头等大事，也是实现国家长治久安的重要基础。',
-        '完善的粮食储备体系，为应对各种风险挑战提供了重要保障。',
+        '福建人，参与育成"汕优63"等超级杂交稻品种，长期从事种质资源保护与杂交稻科研，为农业生物多样性提供稳定品种支撑。',
+        '他常说："一粒种子，承载着一个国家的希望。"他用一生诠释了这句话。',
       ],
     },
     {
-      title: '农业发展',
+      title: '育种创新推动者——傅廷栋 ',
       content: [
-        '现代农业的发展不仅解决了温饱问题，还为农民增收致富提供了新途径。',
-        '乡村振兴战略的实施，为农业发展注入了新的活力，农村面貌焕然一新。',
+        '生于1938年，中农大教授，中国工程院院士，发现油菜雄性不育类型并培育多个高产杂交品系，促进6000万亩推广成果与农业增产发展。',
+        '从田野到实验室，从油菜田到国际讲坛，他致力于推动杂交油菜突破，创造万亩高产纪录。他将科研成果写在了祖国大地上，也写进了千千万万农民的饭碗里。',
       ],
     },
     {
-      title: '乡村振兴',
+      title: '种业发展设计师——方智远',
       content: [
-        '乡村振兴战略的实施，为农业发展注入了新的活力，农村面貌焕然一新。',
-        '农业现代化进程不断加快，机械化、智能化水平显著提升。',
+        '1964年毕业于武汉大学生物系，蔬菜遗传育种专家，作为中国种业十大功勋人物之一，推动中国种业向强国方向发展，具有重大产业设计能力。他是中国蔬菜育种的奠基人之一。',
+        '几十年里，他用选育、改良与推广，为中国人"菜篮子"的丰富与安全保驾护航。他不只是科研专家，更是国家农业未来的设计者。',
       ],
     },
     {
-      title: '农业现代化',
+      title: '粮农振兴先行者——郭三堆',
       content: [
-        '农业现代化进程不断加快，机械化、智能化水平显著提升。',
-        '农业科技创新不断取得突破，为农业发展提供了强大动力。',
+        '作为中国种业十大功勋人物，此人长期深耕农业政策推广与技术普及，通过推动基层项目促进农民增收、粮食稳定，为乡村振兴提供实践样本 。他走进最偏远的乡村，推行最前沿的政策。',
+        '他既是农业技术推广者，也是农民致富的"引路人"。他相信："把科技送进农田，就是给乡村点灯。"他的脚步，照亮了一条又一条通向振兴的田埂路。',
       ],
     },
     {
-      title: '粮食储备',
+      title: '地方种业开发者——程相文',
       content: [
-        '完善的粮食储备体系，为应对各种风险挑战提供了重要保障。',
-        '展望未来，中国农业将继续朝着现代化、智能化、绿色化方向发展。',
-      ],
-    },
-    {
-      title: '农业创新',
-      content: [
-        '农业科技创新不断取得突破，为农业发展提供了强大动力。',
-        '展望未来，中国农业将继续朝着现代化、智能化、绿色化方向发展。',
-      ],
-    },
-    {
-      title: '未来展望',
-      content: [
-        '展望未来，中国农业将继续朝着现代化、智能化、绿色化方向发展。',
-        '通过科技创新和可持续发展，我们将建设更加美好的农业未来。',
+        '1963年起扎根河南基层，57年如一日专注玉米育种，培育39个新品种，推广5亿亩，获国家科技进步一等奖和"最美科技工作者"称号。他走遍河南的田间地头，只为找到一粒适合大地的种子。',
+        '从地方科研起步，到培育出39个优良玉米品种，他用一生的默默耕耘，为亿万农民带来希望的收成。他不是明星，却是田野里最耀眼的光。',
       ],
     },
   ];
+
+  // 页面加载时的处理
+  window.addEventListener('load', () => {
+    // 如果是直接访问（没有hash），滚动到顶部
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
 
   // 获取所有方块元素和内容容器
   const items = document.querySelectorAll('.item');
@@ -215,18 +224,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 等待所有资源加载完成
-  window.addEventListener('load', () => {
-    const loadingOverlay = document.querySelector('.loading-overlay');
-    if (loadingOverlay) {
-      // 添加淡出类
-      loadingOverlay.classList.add('fade-out');
-      // 动画结束后移除元素
-      setTimeout(() => {
-        loadingOverlay.remove();
-      }, 1000);
-    }
-  });
+  // 默认展开第七个盒子
+  const seventhItem = document.querySelector('.item:nth-child(7)');
+  if (seventhItem) {
+    const index = Array.from(items).indexOf(seventhItem);
+    const data = contentData[index];
+
+    // 更新内容
+    accordionContent.innerHTML = `
+      <h6>${data.title}</h6>
+      ${data.content.map((text) => `<p>${text}</p>`).join('')}
+    `;
+
+    // 添加 active 类
+    seventhItem.classList.add('active');
+    // 设置 focus 状态
+    seventhItem.focus();
+  }
+
   // 24节气
   // 监听滚动事件
   window.addEventListener('scroll', () => {
@@ -1446,27 +1461,49 @@ document.addEventListener('DOMContentLoaded', function () {
   //     { passive: true }
   //   ); // 使用 passive: true 提高性能
   // }
-  // 处理视频元素
-  const videoItems = document.querySelectorAll('.item[style*=".mp4"]');
-  videoItems.forEach((item) => {
-    const videoUrl = item.style.backgroundImage.slice(4, -1).replace(/"/g, '');
-    const video = document.createElement('video');
-    video.src = videoUrl;
-    video.loop = true;
-    video.muted = true;
-    video.style.width = '100%';
-    video.style.height = '100%';
-    video.style.objectFit = 'cover';
-    item.appendChild(video);
 
-    // 当item被点击或获得焦点时播放视频
-    item.addEventListener('focus', () => {
-      video.play();
-    });
+  // 立即执行动画
+  const topContainer = document.querySelector('.top-container');
+  const loadingOverlay = document.querySelector('.loading-overlay');
 
-    // 当item失去焦点时暂停视频
-    item.addEventListener('blur', () => {
-      video.pause();
+  if (topContainer && loadingOverlay) {
+    // 添加淡出类到 loading-overlay
+    // loadingOverlay.classList.add('fade-out');
+
+    // 添加入场动画类到 top-container
+    // topContainer.classList.add('fade-in');
+
+    // 动画结束后移除 loading-overlay
+    setTimeout(() => {
+      loadingOverlay.remove();
+    }, 1000);
+  }
+  // 翻页
+  $(window).ready(function () {
+    $('#pages').turn({
+      display: 'single',
+      acceleration: true,
+      gradients: true,
+      duration: 1000,
+      elevation: 500,
+      when: {
+        turned: function (e, page) {
+          /*console.log('Current view: ', $(this).turn('view'));*/
+        },
+      },
     });
   });
+
+  const preBtn = document.querySelector('.pre-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  if (preBtn) {
+    preBtn.addEventListener('click', function () {
+      $('#pages').turn('previous');
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      $('#pages').turn('next');
+    });
+  }
 });

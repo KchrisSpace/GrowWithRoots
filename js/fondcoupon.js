@@ -1,7 +1,3 @@
-const backBtn = document.querySelector('.back-btn');
-backBtn.addEventListener('click', () => {
-  window.history.back();
-});
 
 // 卡片相关代码
 const cardCount = 30;
@@ -16,6 +12,7 @@ function createCards() {
     const card = document.createElement('div');
     card.className = 'card';
     card.style.zIndex = cardCount - i;
+
     // 图片路径可根据实际情况调整
     const img = document.createElement('img');
     img.src = `../assets/imgs/origin/foodcoupon/${i + 1}.png`;
@@ -38,7 +35,7 @@ function dealCards() {
       const row = Math.floor(i / cardPerRow);
       const col = i % cardPerRow;
       // 计算目标位置
-      const x = (col - (cardPerRow - 1) / 2) * 300;
+      const x = (col - (cardPerRow - 1) / 2) * 315;
       const y = row * 120;
 
       // 设置初始位置（底部中间）
@@ -58,15 +55,16 @@ function addHoverAnimation() {
   cards.forEach((card) => {
     card.addEventListener('mouseenter', () => {
       gsap.to(card, {
-        rotation: 'random(-5, 5)',
-        duration: 0.1,
+        rotation: 8,
+        duration: 0.01,
+        ease: 'power1.inOut',
       });
     });
 
     card.addEventListener('mouseleave', () => {
       gsap.to(card, {
         rotation: 0,
-        duration: 0.1,
+        duration: 0.01,
       });
     });
   });

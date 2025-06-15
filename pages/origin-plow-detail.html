@@ -8,10 +8,16 @@
     <title>耕织图</title>
     <script defer src="../js/components.js"></script>
     <script defer src="../js/origin-plow-detail.js"></script>
+    <script>
+      // 确保页面加载时滚动到顶部
+      window.onload = function () {
+        window.scrollTo(0, 0);
+      };
+    </script>
   </head>
   <body>
     <div class="detail-container">
-      <svg
+      <!-- <svg
         class="move-svg"
         width="80"
         height="80"
@@ -35,8 +41,8 @@
           rx="3.61321"
           transform="rotate(-45 21 38.6855)"
           fill="#F3E66E" />
-      </svg>
-
+      </svg> -->
+      <back-button></back-button>
       <div class="svg-1">
         <svg
           width="1817"
@@ -83,71 +89,6 @@
         <path
           d="M263.495 70.2614C275.501 68.121 283.026 54.7802 278.826 44.2799C274.626 33.7796 260.508 27.9371 248.794 31.1411C237.08 34.345 228.96 45.4915 229.076 56.7187C237.022 40.2548 231.772 19.0253 216.312 7.9327C200.853 -3.15993 176.48 -2.66184 162.176 9.69621C147.872 22.0543 146.145 44.9126 159.037 58.5091C155.537 43.1087 139.121 31.0603 121.935 31.3026C104.749 31.5449 88.7418 44.0914 85.7666 59.5726C74.6243 46.7704 55.4315 40.3355 37.8721 43.5126C20.3128 46.6896 4.95862 59.2765 0 75L263.495 70.2614Z"
           fill="white" />
-      </svg>
-      <!-- 线条 -->
-      <svg
-        class="line-svg"
-        width="811"
-        height="552"
-        viewBox="0 0 811 552"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <line
-          y1="-2"
-          x2="46.1351"
-          y2="-2"
-          transform="matrix(0.794768 -0.606914 0.321388 0.946948 720 32)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="46.1351"
-          y2="-2"
-          transform="matrix(0.794768 0.606914 0.321388 -0.946948 730 231)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="86.0646"
-          y2="-2"
-          transform="matrix(0.937281 -0.348575 0.163077 0.986613 720 62)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="86.0646"
-          y2="-2"
-          transform="matrix(0.937281 0.348575 0.163077 -0.986613 730 201)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="46.1351"
-          y2="-2"
-          transform="matrix(-0.794768 -0.606914 -0.321388 0.946948 86 153)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="46.1351"
-          y2="-2"
-          transform="matrix(-0.794768 0.606914 -0.321388 -0.946948 80.6641 520)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="86.0646"
-          y2="-2"
-          transform="matrix(-0.937281 -0.348575 -0.163077 0.986613 86 183)"
-          stroke="#137C41"
-          stroke-width="4" />
-        <line
-          y1="-2"
-          x2="86.0646"
-          y2="-2"
-          transform="matrix(-0.937281 0.348575 -0.163077 -0.986613 80.6641 490)"
-          stroke="#137C41"
-          stroke-width="4" />
       </svg>
       <div class="plow-container">
         <plow-detail-item id="plowDetail"></plow-detail-item>

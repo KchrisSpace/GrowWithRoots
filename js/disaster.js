@@ -37,10 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   circleItems[3].addEventListener('click', () => {
     window.location.href = '../disaster/children-pages/deluge.html';
   });
-  // 返回
-  document.querySelector('.back-btn').addEventListener('click', () => {
-    window.history.back();
-  });
   // 照片垂直无限滚动
   const container = document.querySelector('.waterfall-container');
 

@@ -64,23 +64,35 @@ body {
 .circle-item:nth-child(4) {
   transform: translate(-50%, -50%) rotate(30deg) translateY(-140vw);
 }
-.back-btn {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-  z-index: 20;
-}
-.back-btn img {
-  scale: 0.8;
-}
-.back-btn:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
+
 .mask-bg {
   position: absolute;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 5;
+}
+.img-pre {
+  position: relative;
+  object-fit: cover;
+}
+.img-pre:nth-child(1){
+}
+.img-pre:nth-child(2) {
+  top: 20rem;
+  left: 10rem;
+}
+.img-pre:nth-child(3) {
+  top: 10rem;
+  left: 30rem;
+}
+.img-pre:nth-child(4) {
+  top: 45rem;
+  left: 40rem;
+}
+.img-pre:nth-child(5) {
+  left: 40rem;
+}
+.img-pre:nth-child(6) {
+  top: 30rem;
 }

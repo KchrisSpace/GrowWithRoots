@@ -1,12 +1,14 @@
 .top-container {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #1e1e1e;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 1;
 }
+
 .top-box {
   height: 276px;
   border-radius: 500px;
@@ -40,37 +42,42 @@
   z-index: 10;
 }
 .tv-video {
-  width: 46rem;
+  width: 42rem;
   height: 36rem;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-60%, -50%);
+  transform: translate(-60%, -52%);
   z-index: 5;
 }
 video {
+  scale: 1.15;
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 .tv-bottom {
   position: absolute;
-  bottom: 0rem;
+  bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
   width: 90%;
 }
-
+.tv-bottom > svg {
+  position: relative;
+  scale: 0.8;
+  z-index: 10;
+}
 .tv-bottom svg:nth-child(2) {
-  transform: translateY(6rem);
+  top: 3rem;
 }
 .tv-bottom svg:nth-child(3) {
-  transform: translateY(4rem);
+  top: 6rem;
 }
 .tv-bottom svg:nth-child(4) {
-  transform: translateY(6rem);
+  transform: translateY(1rem);
 }
 .middle-container {
   width: 100%;
@@ -81,8 +88,17 @@ video {
   background-position: center;
   position: relative;
 }
-.Plowman {
+.plowman {
   height: 100vh;
+  padding-top: 6rem;
+  position: relative;
+}
+.plow-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .accordion-content {
   width: 100%;
@@ -105,7 +121,7 @@ video {
   width: 70%;
 }
 .accordion-content h6 {
-  margin-bottom: 1rem;
+  /* margin-bottom: 0.5rem; */
   font-size: 2rem;
   font-family: 'PingFang-SC-Semibold';
 }
@@ -141,8 +157,8 @@ video {
 }
 .farmer-container {
   height: 100vh;
-  padding-top: 3rem;
   position: relative;
+  /* padding-top:3rem ; */
 }
 .farmers-bg {
   position: absolute;
@@ -152,9 +168,8 @@ video {
   display: flex;
   justify-content: flex-end;
 }
-.farmers-bg > svg {
+.farmers-bg > img {
   width: 70%;
-  height: fit-content;
 }
 .season-container {
   width: 100%;
@@ -203,7 +218,7 @@ video {
 .season {
   background-color: #1e1e1e;
   width: 100%;
-  height: 83.4vh;
+  height: 84vh;
   position: relative;
   overflow: hidden;
 }
@@ -594,9 +609,37 @@ h5 + span {
   min-height: 100vh;
   background-color: #1e1e1e;
   position: relative;
-  overflow-y: auto; /* 允许垂直滚动 */
-  overflow-x: hidden; /* 禁止水平滚动 */
+  overflow: hidden;
 }
+
+/* 雨滴效果 */
+.rain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.raindrop {
+  position: absolute;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.5));
+  animation: rain 3s linear infinite;
+  z-index: 30;
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
 .modal-container {
   width: 100%;
   height: 100vh;
@@ -670,8 +713,9 @@ h5 + span {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
   /* height: 80vh; */
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
 }
 
 .items {
@@ -764,4 +808,47 @@ h5 + span {
   z-index: 100;
   transform: translateZ(calc(var(--index) * 10));
   margin: 0 0.45vw;
+}
+
+.pages-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pre-btn,
+.next-btn {
+  cursor: pointer;
+  scale: 0.8;
+}
+.pre-btn:hover,
+.next-btn:hover {
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+#pages {
+  width: 50vw;
+  height: 55vh;
+  background-color: #fdf5ea;
+  margin: 0 6rem;
+}
+
+#pages .turn-page {
+  background-color: #dfd9d2;
+  background-size: 100% 100%;
+}
+
+.page-1,
+.page-2,
+.page-3,
+.page-4,
+.page-5 {
+  box-shadow: 0 80px 80px 0 rgba(0, 0, 0, 1);
+}
+.page-2 {
+  width: 60vw;
 }
