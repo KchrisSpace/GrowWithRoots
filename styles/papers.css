@@ -31,10 +31,10 @@ body {
   width: 80%;
   padding: 1rem 3rem 1rem;
 }
-.title-full{
- left:0;
- right:0;
- width: auto;
+.title-full {
+  left: 0;
+  right: 0;
+  width: auto;
 }
 .title-right {
   right: 0;
@@ -64,10 +64,9 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-.main-center{
+.main-center {
   display: flex;
   justify-content: center;
-
 }
 
 h1,
@@ -89,10 +88,10 @@ h5,
   justify-content: space-evenly;
   padding: 1rem;
 }
-.h5-size{
+.h5-size {
   font-size: 3rem;
 }
-.h1-size{
+.h1-size {
   font-size: 12rem;
 }
 h1 {
@@ -235,4 +234,19 @@ h1 {
 .back-btn:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+.point ~ p {
+  text-indent: 2em; /* 1em 等于当前字体大小，2em 约等于两个汉字宽度 */
+}
+ul {
+  list-style: disc !important;
+  list-style-position: outside !important;
+  padding-left: 2rem !important;
+  margin: 1rem 0 !important;
+}
+
+ul li {
+  margin-bottom: 0.5rem !important;
+  padding-left: 0.5rem !important;
+  list-style: inherit !important;
 }

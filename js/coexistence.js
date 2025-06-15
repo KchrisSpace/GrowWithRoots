@@ -1,5 +1,3 @@
-
-
 // 添加TV底部动画
 function animateSvg() {
   const tvSvgs = document.querySelectorAll('.tv-bottom svg');
@@ -78,6 +76,31 @@ if (feColorMatrix) {
 
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
+  // 视窗的80%位于 top-container容器的时候，视频播放有声音
+  const video = document.querySelector('.tv-video video');
+  // 创建 Intersection Observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 当视频80%进入视窗时播放声音
+          if (entry.intersectionRatio >= 0.8) {
+            video.muted = false;
+          } else {
+            video.muted = true;
+          }
+        } else {
+          video.muted = true;
+        }
+      });
+    },
+    {
+      threshold: [0.8], // 设置阈值为0.8，即80%
+    }
+  );
+
+  // 开始观察视频元素
+  observer.observe(video);
   const contentData = [
     {
       title: '一粒低镉稻种的十年攻坚',
@@ -169,6 +192,14 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
     },
   ];
+
+  // 页面加载时的处理
+  window.addEventListener('load', () => {
+    // 如果是直接访问（没有hash），滚动到顶部
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
 
   // 获取所有方块元素和内容容器
   const items = document.querySelectorAll('.item');
@@ -1432,21 +1463,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // }
 
   // 立即执行动画
-const topContainer = document.querySelector('.top-container');
-const loadingOverlay = document.querySelector('.loading-overlay');
+  const topContainer = document.querySelector('.top-container');
+  const loadingOverlay = document.querySelector('.loading-overlay');
 
-if (topContainer && loadingOverlay) {
-  // 添加淡出类到 loading-overlay
-  // loadingOverlay.classList.add('fade-out');
+  if (topContainer && loadingOverlay) {
+    // 添加淡出类到 loading-overlay
+    // loadingOverlay.classList.add('fade-out');
 
-  // 添加入场动画类到 top-container
-  // topContainer.classList.add('fade-in');
+    // 添加入场动画类到 top-container
+    // topContainer.classList.add('fade-in');
 
-  // 动画结束后移除 loading-overlay
-  setTimeout(() => {
-    loadingOverlay.remove();
-  }, 1000);
-}
+    // 动画结束后移除 loading-overlay
+    setTimeout(() => {
+      loadingOverlay.remove();
+    }, 1000);
+  }
   // 翻页
   $(window).ready(function () {
     $('#pages').turn({

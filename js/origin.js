@@ -120,40 +120,15 @@ jigsawSvgs[2].addEventListener('click', () => {
 });
 enter.addEventListener('click', (e) => {
   e.preventDefault(); // 阻止默认行为
-  // 创建并添加新页面的容器
-  const nextPage = document.createElement('div');
-  nextPage.style.position = 'fixed';
-  nextPage.style.top = '0';
-  nextPage.style.left = '0';
-  nextPage.style.width = '100%';
-  nextPage.style.height = '100%';
-  nextPage.style.opacity = '0';
-  nextPage.style.zIndex = '1';
-  nextPage.style.backgroundColor = '#fff';
-  document.body.appendChild(nextPage);
 
-  // 加载下一个页面
-  fetch('../pages/origin-plow-detail.html')
-    .then((response) => response.text())
-    .then((html) => {
-      nextPage.innerHTML = html;
-
-      // 当前页面平移出去
-      gsap.to(plowContainer, {
-        x: -window.innerWidth,
-        duration: 0.8,
-        ease: 'power2.inOut',
-      });
-
-      // 新页面淡入
-      gsap.to(nextPage, {
-        opacity: 1,
-        duration: 0.8,
-        ease: 'none',
-        onComplete: (e) => {
-          // 动画完成后跳转
-          window.location.href = '../pages/origin-plow-detail.html';
-        },
-      });
-    });
+  // 当前页面平移出去
+  gsap.to(plowContainer, {
+    x: -window.innerWidth,
+    duration: 0.8,
+    ease: 'power2.inOut',
+    onComplete: () => {
+      // 动画完成后跳转
+      window.location.href = '../pages/origin-plow-detail.html';
+    },
+  });
 });
