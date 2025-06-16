@@ -4,7 +4,7 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  /* transition: all 0.5s; */
+  transition: all 0.5s;
 }
 
 html {
@@ -55,4 +55,18 @@ html {
 }
 a {
   color: #000000;
+}
+.tooltip {
+  position: fixed;
+  display: none;
+  background-color: white;
+  color: #462204;
+  font-family: fangfang;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 1000;
+  transform: none;
+  white-space: nowrap;
 }

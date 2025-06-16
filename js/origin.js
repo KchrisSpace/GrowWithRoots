@@ -42,7 +42,7 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         gsap.to(plowContainer, {
           opacity: 1,
-          duration: 0.4,
+          duration: 1,
           ease: 'power2.Out',
         });
         // 动画触发后取消观察
