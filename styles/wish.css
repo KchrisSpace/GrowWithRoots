@@ -482,8 +482,8 @@ body::-webkit-scrollbar {
 }
 .page-4 .title {
   position: absolute;
-  top: 3%;
-  left: 4%;
+  top: 7%;
+  left: 6%;
   font-family: "fangfang";
   font-size: 4rem;
   color: #3f271c;
@@ -500,6 +500,7 @@ body::-webkit-scrollbar {
     img {
       width: 12%;
       margin-left: 10px;
+      margin-top: -5px;
     }
   }
   .en-text {
@@ -750,11 +751,12 @@ body::-webkit-scrollbar {
   flex-wrap: wrap;
   gap: 20px;
 }
+ 
 
 .page-7 .photos .photo {
   position: relative;
-  width: 15%;
-  height: 40%;
+  width: 17%;
+  height: 45%;
   scale: 1.2;
   z-index: 100;
   /* background-image: url(../assets/imgs/wish/page-7/shadow.png); */
