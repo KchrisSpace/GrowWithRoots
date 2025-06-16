@@ -1,14 +1,36 @@
 // 添加TV底部动画
 function animateSvg() {
   const tvSvgs = document.querySelectorAll('.tv-bottom svg');
-  tvSvgs.forEach((svg) => {
+  tvSvgs.forEach((svg, index) => {
+    // 设置初始状态
+    gsap.set(svg, {
+      y: -400,
+      x: -50 + Math.random() * 100, // 随机水平位置
+      opacity: 0,
+      rotation: -45 + Math.random() * 90, // 随机旋转角度
+      scale: 0.5,
+    });
+
+    // 创建倾倒动画
     gsap.to(svg, {
-      y: '-=10',
-      duration: 2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-      delay: Math.random() * 4, // 随机延迟让动画错开
+      y: 0,
+      opacity: 1,
+      rotation: 0,
+      scale: 0.8,
+      duration: 1.2,
+      ease: 'bounce.out',
+      delay: index * 0.15, // 按顺序延迟
+      onComplete: () => {
+        // 完成入场动画后，开始轻微的浮动动画
+        gsap.to(svg, {
+          y: '-=8',
+          rotation: '+=3',
+          duration: 1.5,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true,
+        });
+      },
     });
   });
 }
