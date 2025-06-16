@@ -96,6 +96,75 @@ if (feColorMatrix) {
   animateGlowAlpha();
 }
 
+//
+// 创建提示框
+function createTooltip() {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+  document.body.appendChild(tooltip);
+  return tooltip;
+}
+
+// 初始化提示框
+const tooltip = createTooltip();
+
+// 节流函数
+function throttle(func, limit) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+
+// 为text3和text-2添加鼠标悬停事件
+document.addEventListener('DOMContentLoaded', () => {
+  const text3Elements = document.querySelectorAll('.text-3');
+  const text2Elements = document.querySelectorAll('.text-2');
+
+  // 为text3添加事件
+  text3Elements.forEach((element) => {
+    element.addEventListener('mouseenter', (e) => {
+      tooltip.textContent = '点击';
+      tooltip.style.display = 'block';
+    });
+
+    // 使用节流函数包装mousemove事件处理
+    const throttledMove = throttle((e) => {
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 15}px`;
+    }, 16); // 约60fps的更新频率
+
+    element.addEventListener('mousemove', throttledMove);
+
+    element.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
+  });
+
+  // 为text-2添加事件
+  text2Elements.forEach((element) => {
+    element.addEventListener('mouseenter', (e) => {
+      tooltip.textContent = '点击';
+      tooltip.style.display = 'block';
+    });
+
+    // 使用节流函数包装mousemove事件处理
+    const throttledMove = throttle((e) => {
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 15}px`;
+    }, 16); // 约60fps的更新频率
+
+    element.addEventListener('mousemove', throttledMove);
+
+    element.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
+  });
+});
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
   // 视窗的80%位于 top-container容器的时候，视频播放有声音

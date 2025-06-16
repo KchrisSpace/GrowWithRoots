@@ -1,4 +1,4 @@
-*{
+* {
   transition: none;
 }
 .top-container {
@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
 }
-.text-scroll{
+.text-scroll {
   height: fit-content;
   width: 100%;
   display: flex;
@@ -38,7 +38,7 @@
   white-space: nowrap;
   animation: scroll 40s linear infinite;
 }
-.text-scroll p{
+.text-scroll p {
   margin-left: 10rem;
 }
 .tv-container {
@@ -124,6 +124,7 @@ video {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: translateY(6rem);
 }
 
 .accordion-content p {
@@ -132,6 +133,7 @@ video {
 .accordion-content h6 {
   /* margin-bottom: 0.5rem; */
   font-size: 2rem;
+  margin-bottom: 1rem;
   font-family: 'PingFang-SC-Semibold';
 }
 .scroll-container {
@@ -431,6 +433,7 @@ video {
   font-size: 1.2rem;
   line-height: 150%;
   letter-spacing: -1.1%;
+  z-index: 100;
 }
 .text-4 {
   font-size: 2rem;
@@ -672,7 +675,8 @@ h5 + span {
   z-index: 0;
   text-align: center;
 }
-.clickable-glass,.bottom-text {
+.clickable-glass,
+.bottom-text {
   width: 100%;
   font-family: 'PingFang-SC-Medium';
   font-size: 2rem;
@@ -696,7 +700,7 @@ h5 + span {
 }
 
 .clickable-glass:hover {
- opacity: 0.7;
+  opacity: 0.7;
 }
 
 * {
@@ -716,7 +720,6 @@ h5 + span {
   justify-content: center;
   margin-top: 2rem;
   /* height: 80vh; */
-  margin-bottom: 5rem;
 }
 
 .items {
