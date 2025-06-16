@@ -1,108 +1,136 @@
 // 卡片相关代码
 const cardCount = 30;
-const cardPerRow = 5; // 每行卡片数量
-// 计算行数
-const cardRows = Math.ceil(cardCount / cardPerRow);
+const cardPerRow = 5; // 每行5张卡片
+const cardRows = 6; // 固定6行
 const cardContainer = document.querySelector('.card-container');
+const carBoxes = document.querySelectorAll('.car-box');
 
-// 创建卡片并堆叠在底部中间
-function createCards() {
-  for (let i = 0; i < cardCount; i++) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.zIndex = cardCount - i;
+// 创建预览弹窗
+function createPreviewModal() {
+  const modal = document.createElement('div');
+  modal.className = 'preview-modal';
 
-    // 图片路径可根据实际情况调整
+  const content = document.createElement('div');
+  content.className = 'preview-content';
+
+  const closeBtn = document.createElement('div');
+  closeBtn.className = 'preview-close';
+  closeBtn.innerHTML = '×';
+  closeBtn.onclick = () => {
+    modal.classList.remove('active');
+  };
+
+  const previewImg = document.createElement('img');
+  content.appendChild(previewImg);
+  content.appendChild(closeBtn);
+  modal.appendChild(content);
+  document.body.appendChild(modal);
+
+  return { modal, previewImg };
+}
+
+// 初始化预览功能
+const { modal, previewImg } = createPreviewModal();
+
+// 创建提示框
+function createTooltip() {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+  document.body.appendChild(tooltip);
+  return tooltip;
+}
+
+// 初始化提示框
+const tooltip = createTooltip();
+
+// 初始化卡片盒子
+function initCardBoxes() {
+  carBoxes.forEach((box, index) => {
+    // 创建图片元素
     const img = document.createElement('img');
-    img.src = `../assets/imgs/origin/foodcoupon/${i + 1}.png`;
-    img.alt = `card${i + 1}`;
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'cover';
-    card.appendChild(img);
-    cardContainer.appendChild(card);
-  }
+    img.src = `../assets/imgs/origin/foodcoupon/${index + 1}.png`;
+    img.alt = `card${index + 1}`;
+
+    // 添加图片到盒子
+    box.appendChild(img);
+
+    // 添加点击事件
+    box.addEventListener('click', () => {
+      previewImg.src = img.src;
+      modal.classList.add('active');
+    });
+
+    // 设置初始z-index，使先发的牌在上面
+    if (index === 2) {
+      box.style.zIndex == 1;
+    } else {
+      box.style.zIndex = cardCount - index;
+    }
+
+    // 添加鼠标悬停事件
+    box.addEventListener('mouseenter', (e) => {
+      tooltip.textContent = `点击`;
+      tooltip.style.display = 'block';
+    });
+
+    // 添加鼠标移动事件
+    box.addEventListener('mousemove', (e) => {
+      // 更新提示框位置，跟随鼠标
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 15}px`;
+    });
+
+    // 添加鼠标离开事件
+    box.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
+  });
 }
 
 // 发牌动画
 function dealCards() {
-  const cards = document.querySelectorAll('.card');
-  cards.forEach((card, i) => {
+  carBoxes.forEach((box, index) => {
+    // 计算目标位置
+    const row = Math.floor(index / cardPerRow);
+    const col = index % cardPerRow;
+
     setTimeout(() => {
-      card.classList.add('dealt');
-      // 计算当前卡片的行和列
-      const row = Math.floor(i / cardPerRow);
-      const col = i % cardPerRow;
-      // 计算目标位置
-      const x = (col - (cardPerRow - 1) / 2) * 315;
-      const y = row * 120;
+      // 添加晃动动画
+      box.classList.add('dealing');
 
-      // 设置初始位置（底部中间）
-      card.style.transform = 'translate(-50%, 0)';
-      card.offsetWidth; // 强制重绘
-
-      // 设置目标位置
-      card.style.transform = `translate(calc(-50% + ${x}px), ${y}px)`;
-      card.style.zIndex = i + 1;
-    }, i * 100);
+      // 延迟一下再发牌
+      setTimeout(() => {
+        // 移除晃动动画
+        box.classList.remove('dealing');
+        // 添加dealt类触发发牌动画
+        box.classList.add('dealt');
+      }, 100); // 晃动0.5秒后发牌
+    }, index * 100); // 每张卡片间隔200ms
   });
 }
 
-// 添加鼠标悬停动画
-function addHoverAnimation() {
-  const cards = document.querySelectorAll('.card');
-  cards.forEach((card) => {
-    card.addEventListener('mouseenter', () => {
-      gsap.to(card, {
-        rotation: 8,
-        duration: 0.01,
-        ease: 'power1.inOut',
-      });
-    });
-
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, {
-        rotation: 0,
-        duration: 0.01,
-      });
-    });
-  });
-}
-
-// 初始化卡片
-function initCards() {
-  createCards();
-
-  // 让 card-container 高度自适应所有卡片
-  const totalHeight = cardRows * 110 + 40;
-  cardContainer.style.height = totalHeight + 'px';
+// 初始化
+function init() {
+  initCardBoxes();
 
   // 创建 Intersection Observer
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // 当容器进入视图时开始发牌
-          dealCards();
-
-          // 发牌完成后添加鼠标悬停动画
-          setTimeout(() => {
-            addHoverAnimation();
-          }, cardCount * 100 + 500); // 等待所有卡片发牌完成
-
-          // 停止观察，因为我们只需要触发一次
+          // 延迟一下再开始发牌，确保DOM已经准备好
+          setTimeout(dealCards, 100);
           observer.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.8, // 当容器80%进入视图时触发
+      threshold: 0.1,
     }
   );
 
-  // 开始观察卡片容器
   observer.observe(cardContainer);
 }
 
 // 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', initCards);
+document.addEventListener('DOMContentLoaded', init);
