@@ -672,7 +672,7 @@ h5 + span {
   z-index: 0;
   text-align: center;
 }
-.bottom-text {
+.clickable-glass,.bottom-text {
   width: 100%;
   font-family: 'PingFang-SC-Medium';
   font-size: 2rem;
@@ -685,28 +685,20 @@ h5 + span {
   z-index: 30;
 }
 .clickable-glass {
+  width: fit-content;
   position: absolute;
-  bottom: 4rem;
+  bottom: 8rem;
   right: 8rem;
   scale: 0.8;
-  animation: rotate-glass 6s linear infinite;
   cursor: pointer;
   z-index: 40;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: Ajia;
 }
 
 .clickable-glass:hover {
-  transform: scale(1.15);
+ opacity: 0.7;
 }
 
-@keyframes rotate-glass {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 * {
   margin: 0;
   padding: 0;

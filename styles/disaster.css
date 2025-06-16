@@ -38,7 +38,18 @@ body {
   /* background-color: #5faa17; */
   z-index: 10;
 }
+.paper-title {
+  font-family: PingFang-SC-Medium;
+  color:#D9D9D9;
+  font-size: 2rem;
+  line-height: 150%;
+  letter-spacing: -1.1%;
 
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 .circle-item {
   position: absolute;
   width: 350px; /* 图片大小 */
@@ -76,7 +87,7 @@ body {
   position: relative;
   object-fit: cover;
 }
-.img-pre:nth-child(1){
+.img-pre:nth-child(1) {
 }
 .img-pre:nth-child(2) {
   top: 20rem;

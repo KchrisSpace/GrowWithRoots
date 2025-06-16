@@ -1,9 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
   const circleContainer = document.querySelector('.circle-container');
   const circleItems = document.querySelectorAll('.circle-item');
+  const paperTitle = document.querySelector('.paper-title');
   let currentRotation = 0;
   const minRotation = -15;
   const maxRotation = 0;
+
+  // 文字逐字出现动画
+  const text = paperTitle.textContent;
+  paperTitle.textContent = '';
+  let currentIndex = 0;
+
+  function typeText() {
+    if (currentIndex < text.length) {
+      paperTitle.textContent += text[currentIndex];
+      currentIndex++;
+      setTimeout(typeText, 150);
+    } else {
+      // 文字完全显示后开始闪烁动画
+      gsap.to(paperTitle, {
+        opacity: 0.3,
+        duration: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+      });
+    }
+  }
+
+  typeText();
+
+  // 添加入场动画
+  gsap.fromTo(
+    circleContainer,
+    {
+      rotation: -30,
+      transformOrigin: 'center center',
+    },
+    {
+      rotation: 0,
+      duration: 4,
+      ease: 'power3.inOut',
+    }
+  );
 
   window.addEventListener(
     'wheel',
@@ -25,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     { passive: false }
   );
+
   circleItems[0].addEventListener('click', () => {
     window.location.href = '../disaster/children-pages/pest.html';
   });
@@ -42,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 立即开始动态加载
   function render() {
-    for (x = 0; x < 20; x++) {
+    for (x = 0; x < 6; x++) {
       container.innerHTML += `
       <img src="../../assets/imgs/coexistence/disater/stream/01.jpg" class="waterfall-img" alt="waterfall" />
        <img src="../../assets/imgs/coexistence/disater/stream/02.jpg" class="waterfall-img" alt="waterfall" />
@@ -57,16 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="../../assets/imgs/coexistence/disater/stream/11.jpg" class="waterfall-img" alt="waterfall" />
                  <img src="../../assets/imgs/coexistence/disater/stream/12.jpg" class="waterfall-img" alt="waterfall" />
                   <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
-                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
-                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
-                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
-                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
-                       <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
-                   <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
-                    <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
-                     <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
-                      <img src="../../assets/imgs/coexistence/disater/stream/17.jpg" class="waterfall-img" alt="waterfall" />
-                       <img src="../../assets/imgs/coexistence/disater/stream/13.jpg" class="waterfall-img" alt="waterfall" />
                    <img src="../../assets/imgs/coexistence/disater/stream/14.jpg" class="waterfall-img" alt="waterfall" />
                     <img src="../../assets/imgs/coexistence/disater/stream/15.jpg" class="waterfall-img" alt="waterfall" />
                      <img src="../../assets/imgs/coexistence/disater/stream/16.jpg" class="waterfall-img" alt="waterfall" />
