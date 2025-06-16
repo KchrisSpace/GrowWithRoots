@@ -4,6 +4,23 @@ const cardPerRow = 5; // 每行5张卡片
 const cardRows = 6; // 固定6行
 const cardContainer = document.querySelector('.card-container');
 const carBoxes = document.querySelectorAll('.car-box');
+const descriptionText = document.querySelector('.description p');
+
+// 文字逐字出现动画
+function typeWriter(element, text, speed = 10) {
+  let i = 0;
+  element.textContent = ''; // 清空原有文字
+
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+
+  type();
+}
 
 // 创建预览弹窗
 function createPreviewModal() {
@@ -104,14 +121,20 @@ function dealCards() {
         box.classList.remove('dealing');
         // 添加dealt类触发发牌动画
         box.classList.add('dealt');
-      }, 100); // 晃动0.5秒后发牌
-    }, index * 100); // 每张卡片间隔200ms
+      }, 100); // 晃动0.1秒后发牌
+    }, index * 100); // 每张卡片间隔100ms
   });
 }
 
 // 初始化
 function init() {
   initCardBoxes();
+
+  // 添加文字动画
+  if (descriptionText) {
+    const originalText = descriptionText.textContent;
+    typeWriter(descriptionText, originalText, 100);
+  }
 
   // 创建 Intersection Observer
   const observer = new IntersectionObserver(
