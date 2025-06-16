@@ -122,14 +122,20 @@ class NavbarComponent extends HTMLElement {
       color: #462204;
     }
 
-    .navbar ul li:hover,
-    .navbar ul li.active{
-      background-color: #137C41;
-    }
+    // .navbar ul li:hover,
+    // .navbar ul li.active{
+    //   background-color: #137C41;
+    // }
 
     .navbar ul li:hover>a,
     .navbar ul li.active>a{
-      color: #F9F1D4;
+      // color: #F9F1D4; 
+      color: #137C41;
+    }
+
+    .dropdown {
+      position: relative;
+
     }
 
     .dropdown-content {
@@ -143,7 +149,8 @@ class NavbarComponent extends HTMLElement {
       box-shadow: 0px 8px 24px -5px rgba(0, 0, 0, 0.15);
       padding: 0.5rem 0;
       margin-top: 0.6rem;
-      background: linear-gradient(172.42deg, #FFFFFF 25.07%, #E6C375 210.14%, #765610 262.98%);
+      // background: linear-gradient(172.42deg, #FFFFFF 25.07%,rgba(224, 189, 113, 0.59) 210.14%, #765610 262.98%);
+      background:rgba(252, 252, 251, 0.72);
       transition: opacity 0.5s ease;
     }
 
