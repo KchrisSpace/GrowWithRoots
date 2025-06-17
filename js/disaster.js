@@ -30,19 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   typeText();
 
-  // 添加入场动画
-  gsap.fromTo(
-    circleContainer,
-    {
-      rotation: -30,
-      transformOrigin: 'center center',
-    },
-    {
-      rotation: 0,
-      duration: 4,
-      ease: 'power3.inOut',
-    }
-  );
+  // 监听动画结束事件
+  circleContainer.addEventListener('animationend', () => {
+    circleContainer.classList.add('scrolling');
+  });
 
   window.addEventListener(
     'wheel',
