@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentIndex < text.length) {
       paperTitle.textContent += text[currentIndex];
       currentIndex++;
-      setTimeout(typeText, 150);
+      setTimeout(typeText, 200);
     } else {
       // 文字完全显示后开始闪烁动画
       gsap.to(paperTitle, {
@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  typeText();
+  // 添加2秒延时后开始动画
+  setTimeout(typeText, 3000);
 
   // 监听动画结束事件
   circleContainer.addEventListener('animationend', () => {

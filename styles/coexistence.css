@@ -836,7 +836,7 @@ h5 + span {
 }
 #pages {
   width: 50vw;
-  height: 55vh;
+  aspect-ratio: 2/1;
   background-color: #fdf5ea;
   margin: 0 6rem;
 }
@@ -844,15 +844,4 @@ h5 + span {
 #pages .turn-page {
   background-color: #dfd9d2;
   background-size: 100% 100%;
-}
-
-.page-1,
-.page-2,
-.page-3,
-.page-4,
-.page-5 {
-  box-shadow: 0 80px 80px 0 rgba(0, 0, 0, 1);
-}
-.page-2 {
-  width: 60vw;
 }

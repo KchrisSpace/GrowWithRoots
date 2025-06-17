@@ -138,7 +138,7 @@ const textObserver = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.5, // 当元素50%进入视窗时触发
+    threshold: 0.2, // 当元素20%进入视窗时触发
   }
 );
 
