@@ -563,11 +563,11 @@ class AgriculturalChangeComponent extends HTMLElement {
 .agricultural-change-content-text::-webkit-scrollbar-track {
   background: #137c41;
   border-radius: 8px;
+    margin: 1rem 0;
 }
 .agricultural-change-content-text::-webkit-scrollbar-thumb {
   background: #f3e46c;
   border-radius: 8px;
-
 }
   .scroll-flat {
   width: 100%;

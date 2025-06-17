@@ -108,7 +108,9 @@ const titleObserver = new IntersectionObserver(
 );
 
 // 开始观察标题文字
-titleObserver.observe(maskTitle);
+if (maskTitle) {
+  titleObserver.observe(maskTitle);
+}
 
 // 创建诗文字的 Observer
 const textObserver = new IntersectionObserver(

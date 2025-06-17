@@ -11,9 +11,9 @@ footer.addEventListener(
     this.scrollLeft += event.deltaY;
 
     // 计算scrollBar的位置
-    const scrollPercentage =
-      this.scrollLeft / (this.scrollWidth - this.clientWidth);
-    scrollBar.style.transform = `translateX(${scrollPercentage * 133}%)`;
+    // const scrollPercentage =
+    //   this.scrollLeft / (this.scrollWidth - this.clientWidth);
+    // scrollBar.style.transform = `translateX(${scrollPercentage * 133}%)`;
   },
   { passive: false }
 );

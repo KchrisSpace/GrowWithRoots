@@ -2,12 +2,27 @@
 ::-webkit-scrollbar {
   display: none;
 }
-
-/* 兼容 Edge 和 Firefox */
-* {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+/* 自定义滚动条样式 */
+footer::-webkit-scrollbar {
+  display: block;
+  height: 1rem; /* 调整滚动条高度 */
 }
+
+footer::-webkit-scrollbar-track {
+  background: #137c41;
+  border-radius: 8px;
+  margin: 0 35rem; /* 添加左右边距 调整长度 */
+}
+
+footer::-webkit-scrollbar-thumb {
+  background: #f3e46c;
+  border-radius: 8px;
+}
+
+footer::-webkit-scrollbar-thumb:hover {
+  background: #e6d45c; /* 添加悬停效果 */
+}
+
 .detail-container {
   width: 100%;
   min-height: 100vh;
@@ -48,6 +63,7 @@
   justify-content: end;
   bottom: 3rem;
   height: 30vh;
+  overflow: hidden;
 }
 .plow-container {
   position: relative;
@@ -56,11 +72,13 @@
 }
 
 footer {
-  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow-x:scroll;
   width: 100%;
   display: flex;
   position: relative;
   z-index: 20;
+  padding-bottom: 1rem;
 }
 
 footer > span {
@@ -90,7 +108,7 @@ footer img {
 .footer-img-container:hover {
   scale: 0.9;
 }
-.scroll-flat {
+/* .scroll-flat {
   width: 100%;
   margin-top: 1rem;
 }
@@ -106,4 +124,5 @@ footer img {
   height: 12px;
   border-radius: 8px;
   background-color: #e6be50;
-}
+  cursor: pointer;
+} */
