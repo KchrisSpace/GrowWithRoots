@@ -25,7 +25,7 @@ function initializeCarousel(carousel, items) {
   let position = 0;
   function animate() {
     //    速度调整
-    const direction = carousel.closest(".past") ? 0.01 : -0.01;
+    const direction = carousel.closest(".past") ? 0.005 : -0.005;
     position += direction;
     if (carousel.closest(".past")) {
       if (position >= 100) position = 0;
@@ -280,19 +280,19 @@ document.addEventListener("DOMContentLoaded", function () {
       details.style.display = "block";
       // 从右出场
       today.style.transform = "translateX(100%)";
-      today.style.transition = "transform 1s ease-out";
+      today.style.transition = "transform 2s ease-out";
       setTimeout(() => {
         today.style.transform = "translateX(0)";
       }, 0);
       // 关闭按钮也从右出场
       closeBT.style.transform = "translateX(100%)";
-      closeBT.style.transition = "transform 1s ease-out";
+      closeBT.style.transition = "transform 2s ease-out";
       setTimeout(() => {
         closeBT.style.transform = "translateX(0)";
       }, 0);
       // 从左出场
       past.style.transform = "translateX(-100%)";
-      past.style.transition = "transform 1s ease-out";
+      past.style.transition = "transform 2s ease-out";
       setTimeout(() => {
         past.style.transform = "translateX(0)";
       }, 0);

@@ -31,9 +31,9 @@ window.addEventListener("load", () => {
   }
 });
 // 返回按钮
-document.querySelector(".back-button").addEventListener("click", function () {
-  window.history.back();
-});
+// document.querySelector(".back-button").addEventListener("click", function () {
+//   window.history.back();
+// });
 
 const stories = [
   {
