@@ -167,8 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
-  // 视窗的80%位于 top-container容器的时候，视频播放有声音
   const video = document.querySelector('.tv-video video');
+  if (!video) return;
+
+  // 添加用户交互检测
+  let hasUserInteracted = false;
+  document.addEventListener(
+    'click',
+    () => {
+      hasUserInteracted = true;
+    },
+    { once: true }
+  );
+
   // 创建 Intersection Observer
   const observer = new IntersectionObserver(
     (entries) => {
@@ -176,7 +187,14 @@ document.addEventListener('DOMContentLoaded', function () {
         if (entry.isIntersecting) {
           // 当视频80%进入视窗时播放声音
           if (entry.intersectionRatio >= 0.8) {
-            video.muted = false;
+            if (hasUserInteracted) {
+              video.muted = false;
+              video.play().catch((e) => console.log('播放失败:', e));
+            } else {
+              // 如果用户还未交互，保持静音播放
+              video.muted = true;
+              video.play().catch((e) => console.log('播放失败:', e));
+            }
           } else {
             video.muted = true;
           }
