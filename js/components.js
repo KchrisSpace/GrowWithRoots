@@ -32,7 +32,7 @@ class NavbarComponent extends HTMLElement {
       dropdown.addEventListener('mouseleave', () => {
         timeoutId = setTimeout(() => {
           content.style.display = 'none';
-        }, 100); // 300ms 延迟
+        }, 100); // 100ms 延迟
       });
     });
   }
@@ -40,28 +40,96 @@ class NavbarComponent extends HTMLElement {
   setupNavbarHover() {
     const navbar = this.shadowRoot.querySelector('.navbar');
     let navbarTimeoutId;
+    let lastMouseY = 0;
 
-    document.addEventListener('mousemove', (e) => {
+    // 节流函数
+    const throttle = (func, delay) => {
+      let timeoutId;
+      return function (...args) {
+        if (timeoutId) return;
+        timeoutId = setTimeout(() => {
+          func.apply(this, args);
+          timeoutId = null;
+        }, delay);
+      };
+    };
+
+    const handleMouseMove = throttle((e) => {
       const rect = navbar.getBoundingClientRect();
       const isHovering = e.clientY <= rect.bottom && e.clientY >= rect.top;
 
-      // 检查是否在页面顶部区域
+      // 检查是否在页面顶部区域 - 更精确的检测
       const topContainer = document.querySelector('.top-container');
       const header = document.querySelector('header');
-      const isInTopArea =
-        (topContainer &&
-          e.clientY <= topContainer.getBoundingClientRect().bottom) ||
-        (header && e.clientY <= header.getBoundingClientRect().bottom);
+      const page1 = document.querySelector('.page-1');
+
+      let isInTopArea = false;
+
+      if (topContainer) {
+        const topRect = topContainer.getBoundingClientRect();
+        isInTopArea = e.clientY <= topRect.bottom;
+      } else if (header) {
+        const headerRect = header.getBoundingClientRect();
+        isInTopArea = e.clientY <= headerRect.bottom;
+      } else if (page1) {
+        const page1Rect = page1.getBoundingClientRect();
+        isInTopArea = e.clientY <= page1Rect.bottom;
+      }
+
+      // 检查是否在下拉菜单区域
+      const dropdowns = this.shadowRoot.querySelectorAll('.dropdown');
+      let isInDropdownArea = false;
+
+      dropdowns.forEach((dropdown) => {
+        const dropdownRect = dropdown.getBoundingClientRect();
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+        // 检查是否在导航项区域
+        if (
+          e.clientX >= dropdownRect.left &&
+          e.clientX <= dropdownRect.right &&
+          e.clientY >= dropdownRect.top &&
+          e.clientY <= dropdownRect.bottom
+        ) {
+          isInDropdownArea = true;
+        }
+
+        // 检查是否在下拉内容区域
+        if (dropdownContent && dropdownContent.style.display === 'block') {
+          const contentRect = dropdownContent.getBoundingClientRect();
+          if (
+            e.clientX >= contentRect.left &&
+            e.clientX <= contentRect.right &&
+            e.clientY >= contentRect.top &&
+            e.clientY <= contentRect.bottom
+          ) {
+            isInDropdownArea = true;
+          }
+        }
+      });
 
       clearTimeout(navbarTimeoutId);
 
-      if (isHovering || isInTopArea) {
+      if (isHovering || isInTopArea || isInDropdownArea) {
         navbar.style.opacity = '1';
       } else {
+        // 减少延迟时间到200ms，让导航栏更快隐藏
         navbarTimeoutId = setTimeout(() => {
           navbar.style.opacity = '0';
-        }, 500);
+        }, 200);
       }
+
+      lastMouseY = e.clientY;
+    }, 16); // 约60fps的更新频率
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // 添加鼠标离开页面的事件监听
+    document.addEventListener('mouseleave', () => {
+      clearTimeout(navbarTimeoutId);
+      navbarTimeoutId = setTimeout(() => {
+        navbar.style.opacity = '0';
+      }, 100);
     });
   }
 
@@ -92,7 +160,7 @@ class NavbarComponent extends HTMLElement {
       position: fixed;
       top: 0;
       margin-top: 1.5rem;
-      z-index: 100;
+      z-index: 120;
       opacity: 0;
       transform: translateY(0);
     }
@@ -563,11 +631,11 @@ class AgriculturalChangeComponent extends HTMLElement {
 .agricultural-change-content-text::-webkit-scrollbar-track {
   background: #137c41;
   border-radius: 8px;
+    margin: 1rem 0;
 }
 .agricultural-change-content-text::-webkit-scrollbar-thumb {
   background: #f3e46c;
   border-radius: 8px;
-
 }
   .scroll-flat {
   width: 100%;
@@ -1237,7 +1305,9 @@ class RotatingBoxes extends HTMLElement {
         if (!inThrottle) {
           func.apply(this, args);
           inThrottle = true;
-          setTimeout(() => (inThrottle = false), limit);
+          setTimeout(() => {
+            inThrottle = false;
+          }, limit);
         }
       };
     };
@@ -1328,6 +1398,13 @@ class RotatingBoxes extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = `
       <style>
+        :host {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+        
         .scroll-container {
           height: 100%;
           display: flex;
@@ -1730,7 +1807,7 @@ class RotatingBoxes extends HTMLElement {
 
     // 使用节流处理滚动事件
     const throttledWheel = this.throttle((event) => {
-      // 移除 preventDefault，因为它会阻止默认滚动行为
+      console.log('Wheel event triggered', event.deltaY); // 添加调试信息
       const delta = Math.sign(event.deltaY);
       this.currentIndex =
         (this.currentIndex + delta + this.contents.length) %
@@ -1738,8 +1815,14 @@ class RotatingBoxes extends HTMLElement {
       this.updateContent();
     }, this.throttleTimeout);
 
-    this.shadowRoot.addEventListener('wheel', throttledWheel, {
+    // 监听整个组件的滚动事件
+    this.addEventListener('wheel', throttledWheel, {
       passive: true, // 将 passive 设置为 true，提高性能
+    });
+
+    // 同时监听 shadowRoot 的滚动事件
+    this.shadowRoot.addEventListener('wheel', throttledWheel, {
+      passive: true,
     });
   }
 
@@ -1795,7 +1878,7 @@ class RotatingBoxes extends HTMLElement {
     });
   }
 }
-// 返回按钮
+// 返回按钮1
 class BackButton extends HTMLElement {
   constructor() {
     super();
@@ -1837,9 +1920,50 @@ class BackButton extends HTMLElement {
     });
   }
 }
+// 返回按钮2
+class BackBtn extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
 
+  connectedCallback() {
+    this.render();
+    this.addEventListeners();
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        .back-btn {
+            position: absolute;
+            top: 4rem;
+            left: 4rem;
+            z-index: 20;
+          }
+        .back-btn img {
+          scale: 0.8;
+        }
+        .back-btn:hover {
+          cursor: pointer;
+          opacity: 0.7;
+        }
+      </style>
+      <div class="back-btn">
+        <img src="../../assets/imgs/back-btn.svg" alt="back-btn">
+      </div>
+    `;
+  }
+
+  addEventListeners() {
+    const backBtn = this.shadowRoot.querySelector('.back-btn');
+    backBtn.addEventListener('click', () => {
+      window.history.back();
+    });
+  }
+}
 customElements.define('back-button', BackButton);
-
+customElements.define('back-btn', BackBtn);
 customElements.define('navbar-component', NavbarComponent);
 customElements.define('title-component', TitleComponent);
 customElements.define(

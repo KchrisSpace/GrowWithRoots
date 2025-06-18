@@ -1,14 +1,36 @@
 // 添加TV底部动画
 function animateSvg() {
   const tvSvgs = document.querySelectorAll('.tv-bottom svg');
-  tvSvgs.forEach((svg) => {
+  tvSvgs.forEach((svg, index) => {
+    // 设置初始状态
+    gsap.set(svg, {
+      y: -400,
+      x: -50 + Math.random() * 100, // 随机水平位置
+      opacity: 0,
+      rotation: -45 + Math.random() * 90, // 随机旋转角度
+      scale: 0.5,
+    });
+
+    // 创建倾倒动画
     gsap.to(svg, {
-      y: '-=10',
-      duration: 2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-      delay: Math.random() * 4, // 随机延迟让动画错开
+      y: 0,
+      opacity: 1,
+      rotation: 0,
+      scale: 0.8,
+      duration: 1.2,
+      ease: 'bounce.out',
+      delay: index * 0.15, // 按顺序延迟
+      onComplete: () => {
+        // 完成入场动画后，开始轻微的浮动动画
+        gsap.to(svg, {
+          y: '-=8',
+          rotation: '+=3',
+          duration: 1.5,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true,
+        });
+      },
     });
   });
 }
@@ -74,23 +96,123 @@ if (feColorMatrix) {
   animateGlowAlpha();
 }
 
+//
+// 创建提示框
+function createTooltip() {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+  document.body.appendChild(tooltip);
+  return tooltip;
+}
+
+// 初始化提示框
+const tooltip = createTooltip();
+
+// 节流函数
+function throttle(func, limit) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+
+// 为text3和text-2添加鼠标悬停事件
+document.addEventListener('DOMContentLoaded', () => {
+  const text3Elements = document.querySelectorAll('.text-3');
+  const text2Elements = document.querySelectorAll('.text-2');
+
+  // 为text3添加事件
+  text3Elements.forEach((element) => {
+    element.addEventListener('mouseenter', (e) => {
+      tooltip.textContent = '点击';
+      tooltip.style.display = 'block';
+    });
+
+    // 使用节流函数包装mousemove事件处理
+    const throttledMove = throttle((e) => {
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 15}px`;
+    }, 16); // 约60fps的更新频率
+
+    element.addEventListener('mousemove', throttledMove);
+
+    element.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
+  });
+
+  // 为text-2添加事件
+  text2Elements.forEach((element) => {
+    element.addEventListener('mouseenter', (e) => {
+      tooltip.textContent = '点击';
+      tooltip.style.display = 'block';
+    });
+
+    // 使用节流函数包装mousemove事件处理
+    const throttledMove = throttle((e) => {
+      tooltip.style.left = `${e.clientX + 15}px`;
+      tooltip.style.top = `${e.clientY + 15}px`;
+    }, 16); // 约60fps的更新频率
+
+    element.addEventListener('mousemove', throttledMove);
+
+    element.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
+  });
+});
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
-  // 视窗的80%位于 top-container容器的时候，视频播放有声音
   const video = document.querySelector('.tv-video video');
+  const playButton = document.querySelector('.play-button');
+  const videoOverlay = document.querySelector('.video-overlay');
+  if (!video) return;
+
+  // 添加用户交互检测
+  let hasUserInteracted = false;
+  if (playButton) {
+    playButton.addEventListener(
+      'click',
+      () => {
+        if (videoOverlay) {
+          videoOverlay.style.display = 'none';
+          video.muted = false;
+          video.play().catch((e) => console.log('播放失败:', e));
+        }
+        hasUserInteracted = true;
+      },
+      { once: true }
+    );
+  }
+
   // 创建 Intersection Observer
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // 当视频80%进入视窗时播放声音
+          // 当视频80%进入视窗时
           if (entry.intersectionRatio >= 0.8) {
-            video.muted = false;
+            if (hasUserInteracted) {
+              // 只有在用户已经交互过的情况下才播放视频
+              video.muted = false;
+              video.play().catch((e) => console.log('播放失败:', e));
+            }
+            // 如果用户还未交互，不播放视频
           } else {
-            video.muted = true;
+            // 视频不在视窗内时静音
+            if (hasUserInteracted) {
+              video.muted = true;
+            }
           }
         } else {
-          video.muted = true;
+          // 视频不在视窗内时静音
+          if (hasUserInteracted) {
+            video.muted = true;
+          }
         }
       });
     },
@@ -194,12 +316,12 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   // 页面加载时的处理
-  window.addEventListener('load', () => {
-    // 如果是直接访问（没有hash），滚动到顶部
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
-    }
-  });
+  // window.addEventListener('load', () => {
+  //   // 如果是直接访问（没有hash），滚动到顶部
+  //   if (!window.location.hash) {
+  //     window.scrollTo(0, 0);
+  //   }
+  // });
 
   // 获取所有方块元素和内容容器
   const items = document.querySelectorAll('.item');
@@ -225,22 +347,22 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // 默认展开第七个盒子
-  const seventhItem = document.querySelector('.item:nth-child(7)');
-  if (seventhItem) {
-    const index = Array.from(items).indexOf(seventhItem);
-    const data = contentData[index];
+  // const seventhItem = document.querySelector('.item:nth-child(7)');
+  // if (seventhItem) {
+  //   const index = Array.from(items).indexOf(seventhItem);
+  //   const data = contentData[index];
 
-    // 更新内容
-    accordionContent.innerHTML = `
-      <h6>${data.title}</h6>
-      ${data.content.map((text) => `<p>${text}</p>`).join('')}
-    `;
+  //   // 更新内容
+  //   accordionContent.innerHTML = `
+  //     <h6>${data.title}</h6>
+  //     ${data.content.map((text) => `<p>${text}</p>`).join('')}
+  //   `;
 
-    // 添加 active 类
-    seventhItem.classList.add('active');
-    // 设置 focus 状态
-    seventhItem.focus();
-  }
+  //   // 添加 active 类
+  //   seventhItem.classList.add('active');
+  //   // 设置 focus 状态
+  //   seventhItem.focus();
+  // }
 
   // 24节气
   // 监听滚动事件
@@ -1488,7 +1610,27 @@ document.addEventListener('DOMContentLoaded', function () {
       elevation: 500,
       when: {
         turned: function (e, page) {
-          /*console.log('Current view: ', $(this).turn('view'));*/
+          const totalPages = $(this).turn('pages');
+          const preBtn = document.querySelector('.pre-btn');
+          const nextBtn = document.querySelector('.next-btn');
+
+          // 第一页时隐藏左箭头
+          if (page === 1) {
+            preBtn.style.opacity = '0';
+            preBtn.style.pointerEvents = 'none';
+          } else {
+            preBtn.style.opacity = '1';
+            preBtn.style.pointerEvents = 'auto';
+          }
+
+          // 最后一页时隐藏右箭头
+          if (page === totalPages) {
+            nextBtn.style.opacity = '0';
+            nextBtn.style.pointerEvents = 'none';
+          } else {
+            nextBtn.style.opacity = '1';
+            nextBtn.style.pointerEvents = 'auto';
+          }
         },
       },
     });
