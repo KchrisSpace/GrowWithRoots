@@ -36,19 +36,9 @@ hr {
 }
 
 .back-button {
-  position: fixed;
-  top: 40px;
-  left: 140px;
-  width: 60px;
-  height: 60px;
-  background-color: #4caf50;
-  color: #f3e66e;
-  font-size: 46px;
-  padding: 5px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-right: 20px;
+   position: fixed;
+   top: -10px;
+   left: 20px;
 }
 
 .title {
