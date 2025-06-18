@@ -526,7 +526,7 @@ class AgriculturalChangeComponent extends HTMLElement {
     // 获取所有 path 元素并设置 pointer-events 为 none
     const paths = this.shadowRoot.querySelectorAll('path');
     paths.forEach((path) => {
-      path.style.pointerEvents = 'none';
+      path.style.setProperty('pointer-events', 'none', 'important');
     });
 
     // 获取所有 <circle> 元素
@@ -1593,6 +1593,20 @@ class RotatingBoxes extends HTMLElement {
           transition: fill-opacity 0.2s ease-in-out;
         }
 
+        /* 确保path元素不会响应鼠标事件 */
+        path {
+          pointer-events: none !important;
+        }
+
+        /* 确保SVG元素不会拦截事件，只有circle响应 */
+        svg {
+          pointer-events: none;
+        }
+
+        svg circle {
+          pointer-events: auto;
+        }
+
         .rotate-box:nth-child(1) { animation: rotate1 60s linear infinite; }
         .rotate-box:nth-child(2) { animation: rotate2 60s linear infinite; }
         .rotate-box:nth-child(3) { animation: rotate3 60s linear infinite; }
@@ -1765,31 +1779,36 @@ class RotatingBoxes extends HTMLElement {
   }
 
   setupEventListeners() {
-    // 文字点击事件
-    const textElements = this.shadowRoot.querySelectorAll('.scroll-text p');
-    textElements.forEach((element) => {
-      element.addEventListener('click', () => {
-        const index = parseInt(element.dataset.index);
-        if (index !== this.currentIndex) {
-          this.currentIndex = index;
-          this.updateContent();
-        }
-      });
-    });
-
-    // 圆形点击事件
-    const circles = this.shadowRoot.querySelectorAll('circle');
-    circles.forEach((circle, index) => {
-      circle.addEventListener('click', () => {
-        if (index !== this.currentIndex) {
-          this.currentIndex = index;
-          this.updateContent();
-        }
-      });
-    });
-
-    // 旋转盒子点击事件
+    // 使用事件委托统一处理所有点击事件
     this.shadowRoot.addEventListener('click', (event) => {
+      // 明确忽略path元素的点击事件
+      if (event.target.tagName === 'path') {
+        event.stopPropagation();
+        return;
+      }
+
+      // 处理文字点击事件
+      if (event.target.matches('.scroll-text p')) {
+        const index = parseInt(event.target.dataset.index);
+        if (index !== this.currentIndex) {
+          this.currentIndex = index;
+          this.updateContent();
+        }
+        return;
+      }
+
+      // 处理圆形点击事件
+      if (event.target.tagName === 'circle') {
+        const circles = this.shadowRoot.querySelectorAll('circle');
+        const index = Array.from(circles).indexOf(event.target);
+        if (index !== -1 && index !== this.currentIndex) {
+          this.currentIndex = index;
+          this.updateContent();
+        }
+        return;
+      }
+
+      // 处理旋转盒子点击事件
       const rotateBox = event.target.closest('.rotate-box');
       if (rotateBox) {
         const index = parseInt(rotateBox.dataset.index);
@@ -1802,6 +1821,7 @@ class RotatingBoxes extends HTMLElement {
 
         // 添加当前盒子的 active 状态
         rotateBox.classList.add('active');
+        return;
       }
     });
 
