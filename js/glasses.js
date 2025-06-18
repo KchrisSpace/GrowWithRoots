@@ -310,10 +310,12 @@ const bgText = document.querySelector('.bg-text');
 const bottomText = document.querySelector('.bottom-text');
 const memoryContainer = document.querySelector('.memory-container');
 document.querySelector('.clickable-glass').addEventListener('click', () => {
+  // 添加点击后的变透明效果
+  const glassElement = document.querySelector('.clickable-glass');
+  glassElement.classList.add('clicked');
   // 1. 移除所有文字 mesh
   textMeshes.forEach((mesh) => scene.remove(mesh));
   textMeshes = [];
-
   // 2. 玻璃弹开动画
   modelGroup.children.forEach((obj, idx) => {
     const dir = idx % 2 === 0 ? -1 : 1;
@@ -355,33 +357,36 @@ document.querySelector('.clickable-glass').addEventListener('click', () => {
 });
 
 // 创建bottom文字的 Observer
-const bottomObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // 保存原始文本
-      const originalText = entry.target.textContent;
-      // 清空文本
-      entry.target.textContent = '';
-      
-      // 创建逐字动画
-      let currentText = '';
-      const chars = originalText.split('');
-      
-      chars.forEach((char, i) => {
-        setTimeout(() => {
-          currentText += char;
-          entry.target.textContent = currentText;
-        }, i * 100); // 每个字符间隔100ms
-      });
-      
-      // 一旦动画开始，就停止观察该元素
-      bottomObserver.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 1, // 当元素100%进入视窗时触发
-  rootMargin: '0px' // 确保元素真正进入视窗才触发
-});
+const bottomObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // 保存原始文本
+        const originalText = entry.target.textContent;
+        // 清空文本
+        entry.target.textContent = '';
+
+        // 创建逐字动画
+        let currentText = '';
+        const chars = originalText.split('');
+
+        chars.forEach((char, i) => {
+          setTimeout(() => {
+            currentText += char;
+            entry.target.textContent = currentText;
+          }, i * 100); // 每个字符间隔100ms
+        });
+
+        // 一旦动画开始，就停止观察该元素
+        bottomObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 1, // 当元素100%进入视窗时触发
+    rootMargin: '0px', // 确保元素真正进入视窗才触发
+  }
+);
 
 // 开始观察bottom文字
 bottomObserver.observe(bottomText);

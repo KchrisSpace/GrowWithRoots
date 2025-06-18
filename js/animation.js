@@ -98,7 +98,7 @@ const titleObserver = new IntersectionObserver(
         });
 
         // 一旦动画开始，就停止观察该元素
-        titleObserver.unobserve(entry.target);
+        // titleObserver.unobserve(entry.target);
       }
     });
   },

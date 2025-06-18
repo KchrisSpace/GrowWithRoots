@@ -7,20 +7,20 @@ const carBoxes = document.querySelectorAll('.car-box');
 const descriptionText = document.querySelector('.description p');
 
 // 文字逐字出现动画
-function typeWriter(element, text, speed = 10) {
-  let i = 0;
-  element.textContent = ''; // 清空原有文字
+// function typeWriter(element, text, speed = 10) {
+//   let i = 0;
+//   element.textContent = ''; // 清空原有文字
 
-  function type() {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    }
-  }
+//   function type() {
+//     if (i < text.length) {
+//       element.textContent += text.charAt(i);
+//       i++;
+//       setTimeout(type, speed);
+//     }
+//   }
 
-  type();
-}
+//   type();
+// }
 
 // 创建预览弹窗
 function createPreviewModal() {
@@ -131,10 +131,10 @@ function init() {
   initCardBoxes();
 
   // 添加文字动画
-  if (descriptionText) {
-    const originalText = descriptionText.textContent;
-    typeWriter(descriptionText, originalText, 100);
-  }
+  // if (descriptionText) {
+  //   const originalText = descriptionText.textContent;
+  //   typeWriter(descriptionText, originalText, 100);
+  // }
 
   // 创建 Intersection Observer
   const observer = new IntersectionObserver(

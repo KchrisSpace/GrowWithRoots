@@ -32,7 +32,7 @@ class NavbarComponent extends HTMLElement {
       dropdown.addEventListener('mouseleave', () => {
         timeoutId = setTimeout(() => {
           content.style.display = 'none';
-        }, 100); // 300ms 延迟
+        }, 100); // 100ms 延迟
       });
     });
   }
@@ -53,9 +53,41 @@ class NavbarComponent extends HTMLElement {
           e.clientY <= topContainer.getBoundingClientRect().bottom) ||
         (header && e.clientY <= header.getBoundingClientRect().bottom);
 
+      // 检查是否在下拉菜单区域
+      const dropdowns = this.shadowRoot.querySelectorAll('.dropdown');
+      let isInDropdownArea = false;
+
+      dropdowns.forEach((dropdown) => {
+        const dropdownRect = dropdown.getBoundingClientRect();
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+        // 检查是否在导航项区域
+        if (
+          e.clientX >= dropdownRect.left &&
+          e.clientX <= dropdownRect.right &&
+          e.clientY >= dropdownRect.top &&
+          e.clientY <= dropdownRect.bottom
+        ) {
+          isInDropdownArea = true;
+        }
+
+        // 检查是否在下拉内容区域
+        if (dropdownContent && dropdownContent.style.display === 'block') {
+          const contentRect = dropdownContent.getBoundingClientRect();
+          if (
+            e.clientX >= contentRect.left &&
+            e.clientX <= contentRect.right &&
+            e.clientY >= contentRect.top &&
+            e.clientY <= contentRect.bottom
+          ) {
+            isInDropdownArea = true;
+          }
+        }
+      });
+
       clearTimeout(navbarTimeoutId);
 
-      if (isHovering || isInTopArea) {
+      if (isHovering || isInTopArea || isInDropdownArea) {
         navbar.style.opacity = '1';
       } else {
         navbarTimeoutId = setTimeout(() => {

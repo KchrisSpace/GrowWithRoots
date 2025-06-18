@@ -334,22 +334,22 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // 默认展开第七个盒子
-  const seventhItem = document.querySelector('.item:nth-child(7)');
-  if (seventhItem) {
-    const index = Array.from(items).indexOf(seventhItem);
-    const data = contentData[index];
+  // const seventhItem = document.querySelector('.item:nth-child(7)');
+  // if (seventhItem) {
+  //   const index = Array.from(items).indexOf(seventhItem);
+  //   const data = contentData[index];
 
-    // 更新内容
-    accordionContent.innerHTML = `
-      <h6>${data.title}</h6>
-      ${data.content.map((text) => `<p>${text}</p>`).join('')}
-    `;
+  //   // 更新内容
+  //   accordionContent.innerHTML = `
+  //     <h6>${data.title}</h6>
+  //     ${data.content.map((text) => `<p>${text}</p>`).join('')}
+  //   `;
 
-    // 添加 active 类
-    seventhItem.classList.add('active');
-    // 设置 focus 状态
-    seventhItem.focus();
-  }
+  //   // 添加 active 类
+  //   seventhItem.classList.add('active');
+  //   // 设置 focus 状态
+  //   seventhItem.focus();
+  // }
 
   // 24节气
   // 监听滚动事件
