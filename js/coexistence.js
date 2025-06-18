@@ -168,38 +168,51 @@ document.addEventListener('DOMContentLoaded', () => {
 // 添加加载动画+转轴点击等事件
 document.addEventListener('DOMContentLoaded', function () {
   const video = document.querySelector('.tv-video video');
+  const playButton = document.querySelector('.play-button');
+  const videoOverlay = document.querySelector('.video-overlay');
   if (!video) return;
 
   // 添加用户交互检测
   let hasUserInteracted = false;
-  document.addEventListener(
-    'click',
-    () => {
-      hasUserInteracted = true;
-    },
-    { once: true }
-  );
+  if (playButton) {
+    playButton.addEventListener(
+      'click',
+      () => {
+        if (videoOverlay) {
+          videoOverlay.style.display = 'none';
+          video.muted = false;
+          video.play().catch((e) => console.log('播放失败:', e));
+        }
+        hasUserInteracted = true;
+      },
+      { once: true }
+    );
+  }
 
   // 创建 Intersection Observer
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // 当视频80%进入视窗时播放声音
+          // 当视频80%进入视窗时
           if (entry.intersectionRatio >= 0.8) {
             if (hasUserInteracted) {
+              // 只有在用户已经交互过的情况下才播放视频
               video.muted = false;
               video.play().catch((e) => console.log('播放失败:', e));
-            } else {
-              // 如果用户还未交互，保持静音播放
-              video.muted = true;
-              video.play().catch((e) => console.log('播放失败:', e));
             }
+            // 如果用户还未交互，不播放视频
           } else {
-            video.muted = true;
+            // 视频不在视窗内时静音
+            if (hasUserInteracted) {
+              video.muted = true;
+            }
           }
         } else {
-          video.muted = true;
+          // 视频不在视窗内时静音
+          if (hasUserInteracted) {
+            video.muted = true;
+          }
         }
       });
     },

@@ -50,6 +50,7 @@
   position: relative;
   z-index: 10;
 }
+
 .tv-video {
   width: 42rem;
   height: 36rem;
@@ -717,7 +718,6 @@ h5 + span {
   transform: translateY(-5px) scale(0.9);
 }
 
-
 .clickable-glass.clicked {
   animation: fade-out 0.5s ease-in-out forwards;
   pointer-events: none;
@@ -876,3 +876,31 @@ h5 + span {
   background-color: #dfd9d2;
   background-size: 100% 100%;
 }
+.video-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 42rem;
+  height: 36rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -52%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.video-overlay:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.play-button{
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 1;
+}
+
+.play-button:hover{
+  transform: scale(1.1);
+}
+

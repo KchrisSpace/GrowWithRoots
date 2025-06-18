@@ -40,18 +40,41 @@ class NavbarComponent extends HTMLElement {
   setupNavbarHover() {
     const navbar = this.shadowRoot.querySelector('.navbar');
     let navbarTimeoutId;
+    let lastMouseY = 0;
 
-    document.addEventListener('mousemove', (e) => {
+    // 节流函数
+    const throttle = (func, delay) => {
+      let timeoutId;
+      return function (...args) {
+        if (timeoutId) return;
+        timeoutId = setTimeout(() => {
+          func.apply(this, args);
+          timeoutId = null;
+        }, delay);
+      };
+    };
+
+    const handleMouseMove = throttle((e) => {
       const rect = navbar.getBoundingClientRect();
       const isHovering = e.clientY <= rect.bottom && e.clientY >= rect.top;
 
-      // 检查是否在页面顶部区域
+      // 检查是否在页面顶部区域 - 更精确的检测
       const topContainer = document.querySelector('.top-container');
       const header = document.querySelector('header');
-      const isInTopArea =
-        (topContainer &&
-          e.clientY <= topContainer.getBoundingClientRect().bottom) ||
-        (header && e.clientY <= header.getBoundingClientRect().bottom);
+      const page1 = document.querySelector('.page-1');
+
+      let isInTopArea = false;
+
+      if (topContainer) {
+        const topRect = topContainer.getBoundingClientRect();
+        isInTopArea = e.clientY <= topRect.bottom;
+      } else if (header) {
+        const headerRect = header.getBoundingClientRect();
+        isInTopArea = e.clientY <= headerRect.bottom;
+      } else if (page1) {
+        const page1Rect = page1.getBoundingClientRect();
+        isInTopArea = e.clientY <= page1Rect.bottom;
+      }
 
       // 检查是否在下拉菜单区域
       const dropdowns = this.shadowRoot.querySelectorAll('.dropdown');
@@ -90,10 +113,23 @@ class NavbarComponent extends HTMLElement {
       if (isHovering || isInTopArea || isInDropdownArea) {
         navbar.style.opacity = '1';
       } else {
+        // 减少延迟时间到200ms，让导航栏更快隐藏
         navbarTimeoutId = setTimeout(() => {
           navbar.style.opacity = '0';
-        }, 500);
+        }, 200);
       }
+
+      lastMouseY = e.clientY;
+    }, 16); // 约60fps的更新频率
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    // 添加鼠标离开页面的事件监听
+    document.addEventListener('mouseleave', () => {
+      clearTimeout(navbarTimeoutId);
+      navbarTimeoutId = setTimeout(() => {
+        navbar.style.opacity = '0';
+      }, 100);
     });
   }
 
@@ -124,7 +160,7 @@ class NavbarComponent extends HTMLElement {
       position: fixed;
       top: 0;
       margin-top: 1.5rem;
-      z-index: 100;
+      z-index: 120;
       opacity: 0;
       transform: translateY(0);
     }
@@ -1269,7 +1305,9 @@ class RotatingBoxes extends HTMLElement {
         if (!inThrottle) {
           func.apply(this, args);
           inThrottle = true;
-          setTimeout(() => (inThrottle = false), limit);
+          setTimeout(() => {
+            this.isScrolling = false;
+          }, limit);
         }
       };
     };
