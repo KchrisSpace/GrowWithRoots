@@ -682,9 +682,9 @@ body::-webkit-scrollbar {
   .seed {
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 8%;
     transform: translate(-50%, -50%);
-    width: 5%;
+    width: 11%;
   }
 }
 .page-7 {
@@ -834,7 +834,7 @@ body::-webkit-scrollbar {
   position: absolute;
   width: 30vw;
   height: 40vh;
-  bottom: 5vh;
+  bottom: -3vh;
   right: 2vw;
 }
 .page-7 .intro .title {
