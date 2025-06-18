@@ -316,12 +316,12 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   // 页面加载时的处理
-  window.addEventListener('load', () => {
-    // 如果是直接访问（没有hash），滚动到顶部
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
-    }
-  });
+  // window.addEventListener('load', () => {
+  //   // 如果是直接访问（没有hash），滚动到顶部
+  //   if (!window.location.hash) {
+  //     window.scrollTo(0, 0);
+  //   }
+  // });
 
   // 获取所有方块元素和内容容器
   const items = document.querySelectorAll('.item');
