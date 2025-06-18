@@ -1306,7 +1306,7 @@ class RotatingBoxes extends HTMLElement {
           func.apply(this, args);
           inThrottle = true;
           setTimeout(() => {
-            this.isScrolling = false;
+            inThrottle = false;
           }, limit);
         }
       };
@@ -1398,6 +1398,13 @@ class RotatingBoxes extends HTMLElement {
   render() {
     this.shadowRoot.innerHTML = `
       <style>
+        :host {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+        
         .scroll-container {
           height: 100%;
           display: flex;
@@ -1800,7 +1807,7 @@ class RotatingBoxes extends HTMLElement {
 
     // 使用节流处理滚动事件
     const throttledWheel = this.throttle((event) => {
-      // 移除 preventDefault，因为它会阻止默认滚动行为
+      console.log('Wheel event triggered', event.deltaY); // 添加调试信息
       const delta = Math.sign(event.deltaY);
       this.currentIndex =
         (this.currentIndex + delta + this.contents.length) %
@@ -1808,8 +1815,14 @@ class RotatingBoxes extends HTMLElement {
       this.updateContent();
     }, this.throttleTimeout);
 
-    this.shadowRoot.addEventListener('wheel', throttledWheel, {
+    // 监听整个组件的滚动事件
+    this.addEventListener('wheel', throttledWheel, {
       passive: true, // 将 passive 设置为 true，提高性能
+    });
+
+    // 同时监听 shadowRoot 的滚动事件
+    this.shadowRoot.addEventListener('wheel', throttledWheel, {
+      passive: true,
     });
   }
 
