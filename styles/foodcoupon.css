@@ -107,6 +107,8 @@ h5 + span {
 }
 video {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  top:0.1rem;
 }
 @keyframes cardShake {
   0% {
