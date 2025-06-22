@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>粮票</title>
-    <link rel="stylesheet" href="../styles/reset.css" />
-    <link rel="stylesheet" href="../styles/foodcoupon.css" />
+    <link rel="stylesheet" href="../styles/reset.css" >
+    <link rel="stylesheet" href="../styles/foodcoupon.css" >
     <script defer src="../js/components.js"></script>
     <script defer src="../js/fondcoupon.js"></script>
     <script defer src="../scripts/gsap.min.js"></script>
+    <style>
+      .container {
+  width: 100%;
+  background-image: url('../assets/imgs/background.webp');
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+}
+    </style>
   </head>
   <body>
     <div class="container">
@@ -92,6 +102,8 @@
               <video
                 src="../assets/video/food.mp4"
                 autoplay
+                muted
+                preload
                 loop
                 playsinline
                 controls></video>

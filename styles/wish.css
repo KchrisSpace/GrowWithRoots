@@ -13,7 +13,7 @@ body {
   width: 100vw;
   flex-direction: column;
   position: relative;
-  background-image: url("../assets/imgs/background.png");
+  background-image: url("../assets/imgs/background.webp");
 }
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
