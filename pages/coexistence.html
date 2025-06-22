@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>苦·共生</title>
-    <link rel="stylesheet" href="../styles/reset.css" />
-    <link rel="stylesheet" href="../styles/coexistence.css" />
-    <link rel="stylesheet" href="../styles/loading.css" />
+    <link rel="stylesheet" href="../styles/reset.css" >
+    <link rel="stylesheet" href="../styles/coexistence.css" >
+    <link rel="stylesheet" href="../styles/loading.css" >
     <script defer src="../scripts/jquery.js"></script>
     <script defer src="../scripts/turn.min.js"></script>
     <script defer src="../scripts/gsap.min.js"></script>
@@ -20,7 +20,17 @@
     <script defer src="../js/coexistence.js"></script>
     <script defer src="../js/rain.js"></script>
   </head>
-
+<style>
+  .middle-container {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('../assets/imgs/background.webp');
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+}
+</style>
   <body>
     <navbar-component></navbar-component>
     <div class="top-container">
@@ -33,13 +43,15 @@
         <!-- 电视机 -->
         <div class="tv-container">
             <div class="tv-video">
-                <video src="../assets/video/tv.mp4" 
+                <video
                 loop
                 muted
                 playsinline
                 controls="false"
                 preload="auto"
-                ></video>
+                >
+                <source src="../assets/video/tv.MP4" type="video/mp4">
+              </video>
               
                </div>
            <img src="../assets/imgs/coexistence/tele.png" alt="tele">

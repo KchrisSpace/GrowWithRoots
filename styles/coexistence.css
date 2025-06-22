@@ -92,7 +92,7 @@ video {
 .middle-container {
   width: 100%;
   min-height: 100vh;
-  background-image: url('../assets/imgs/background.png');
+  background-image: url('../assets/imgs/background.webp');
   background-size: contain;
   background-attachment: fixed;
   background-position: center;
